@@ -13,13 +13,13 @@
 ::-webkit-scrollbar-thumb:vertical{
   width:24px;
   height:24px;
-  background: rgb(214, 212, 212);
+  background: rgba(214, 212, 212,.3);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:horizontal{
   width:24px;
   height:24px;
-  background: rgb(214, 212, 212);
+  background: rgba(214, 212, 212,.3);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-button{

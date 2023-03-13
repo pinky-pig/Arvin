@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Pinky-pig',
+  title: 'Pp',
   author: 'Arvin',
   description: '记录 Arvin 的不枯燥生活',
   keywords: 'Arvin,Pinky-pig,Blog,前端,Vue',
