@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import Home from './home/index.vue'
 const online = useOnline()
 </script>
 
 <template>
   <div>
-    <Logos mb-6 />
     <Suspense>
       <ClientOnly>
-        <PageView v-if="online" />
+        <Home v-if="online" />
         <div v-else text-gray:80>
           You're offline
         </div>
@@ -18,6 +18,5 @@ const online = useOnline()
         </div>
       </template>
     </Suspense>
-    <InputEntry />
   </div>
 </template>
