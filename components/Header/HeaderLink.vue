@@ -1,6 +1,4 @@
 <script setup lang="ts">
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
-
 const props = defineProps(['href', 'class'])
 
 // const isActive = href === Astro.url.pathname.replace(/\/$/, '');
@@ -19,11 +17,9 @@ a {
     font-size: 1.1rem;
     margin-left: 1rem;
     margin-top: 0.3rem;
-    font-weight: bold !important;
-    color: #1F2937 !important;
+    /* color: #1F2937 !important; */
   }
   a.active {
-    font-weight: bold;
     text-decoration: underline;
   }
 </style>

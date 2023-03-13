@@ -23,7 +23,10 @@ html, body , #__nuxt{
 }
 
 html.dark {
-  background: #222;
+  background: rgb(9, 12, 16);
   color: white;
+}
+html{
+  background: rgb(247, 242, 242);
 }
 </style>

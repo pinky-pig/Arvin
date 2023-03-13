@@ -4,7 +4,7 @@ import HeaderLink from './HeaderLink.vue'
 </script>
 
 <template>
-  <div class="flex-1 text-right md:-mr-1 mr-1 flex flex-row justify-end items-center font-extrabold">
+  <div class="flex-1 text-right md:-mr-1 mr-1 flex flex-row justify-end items-center">
     <HeaderLink :href="SITE.homePage">
       Weekly
     </HeaderLink>
