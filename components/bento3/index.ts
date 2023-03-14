@@ -59,13 +59,12 @@ export function initGridContainer(
       currentClickedElement.value.x += disX
       currentClickedElement.value.y += disY
 
-      console.log(currentClickedElement.value.x)
       mouseFrom = { x: e.clientX, y: e.clientY }
 
-      // 边界检测 碰撞的要素
+      // 获取proxy的位置，然后判断是否碰撞到其他的元素
       const ele = getElementAtPosition(
-        currentClickedElement.value.x + currentClickedElement.value.width / 2,
-        currentClickedElement.value.y + currentClickedElement.value.height / 2,
+        (currentClickedElement.value.x + currentClickedElement.value.width / 2) * cellBox.width,
+        (currentClickedElement.value.y + currentClickedElement.value.height / 2) * cellBox.height,
       )
       ele && console.log(ele, '碰撞的要素')
 
@@ -81,8 +80,7 @@ export function initGridContainer(
     }
   }
   function mouseup(_e: MouseEvent) {
-    currentClickedElement.value.x = Math.floor(currentClickedElement.value.x)
-    currentClickedElement.value.y = Math.floor(currentClickedElement.value.y)
+    currentClickedElement.value = null
     mouseFrom.x = 0
     mouseFrom.y = 0
     isDragging = false
@@ -92,6 +90,8 @@ export function initGridContainer(
   function getCellObjectInStoreFromPosition(position: { x: number; y: number }): Object | null {
     let result: any = null
     const point = { x: position.x, y: position.y }
+    console.log(point.x, point.y)
+
     const initElement = document.elementFromPoint(point.x, point.y)
     if (initElement)
       result = gridCells.value.filter((ele: { id: string }) => ele.id === initElement.id)
@@ -109,7 +109,16 @@ export function initGridContainer(
     let hitElement: any | null = null
     // We need to to hit testing from front (end of the array) to back (beginning of the array)
     for (let i = gridCells.value.length - 1; i >= 0; --i) {
-      if (hitTest(gridCells.value[i], x, y)) {
+      const cell = {
+        ...gridCells.value[i],
+        ...{
+          x: gridCells.value[i].x * cellBox.width,
+          y: gridCells.value[i].y * cellBox.height,
+          width: gridCells.value[i].width * cellBox.width,
+          height: gridCells.value[i].height * cellBox.height,
+        },
+      }
+      if (hitTest(cell, x, y)) {
         hitElement = gridCells.value[i]
         break
       }
@@ -144,42 +153,5 @@ export function initGridContainer(
     }
     console.log(hitElement)
     return hitElement
-  }
-
-  // 判断当前元素在第几个 cell
-  function calculateCurrentElementInWhere() {
-    // 首选看 x ，值的范围为 1,2,3,4
-
-    if (currentClickedElement.value.x > 1 && currentClickedElement.value.x < 2) {
-      // 第2列的cell
-      proxyBox.value.x = 1
-    }
-    else if (currentClickedElement.value.x > 2 && currentClickedElement.value.x < 3) {
-      // 第3列的cell
-      proxyBox.value.x = 2
-    }
-    else if (currentClickedElement.value.x > 3 && currentClickedElement.value.x < 4) {
-      // 第4列的cell
-      proxyBox.value.x = 3
-    }
-    else if (currentClickedElement.value.x > 4 && currentClickedElement.value.x < 5) {
-      // 第4列的cell
-      proxyBox.value.x = 4
-    }
-
-    if (currentClickedElement.value.y > 1 && currentClickedElement.value.y < 2) {
-      // 第1列的cell
-      proxyBox.value.y = 1
-    }
-    else if (currentClickedElement.value.y > 2 && currentClickedElement.value.y < 3) {
-      // 第2列的cell
-      proxyBox.value.y = 2
-    }
-    else if (currentClickedElement.value.y > 3 && currentClickedElement.value.y < 4) {
-      proxyBox.value.y = 3
-    }
-    else if (currentClickedElement.value.y > 4 && currentClickedElement.value.y < 5) {
-      proxyBox.value.y = 4
-    }
   }
 }
