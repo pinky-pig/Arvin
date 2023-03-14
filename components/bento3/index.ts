@@ -107,6 +107,25 @@ export function initGridContainer(
    */
   function getElementAtPosition(x: number, y: number): any {
     let hitElement: any | null = null
+
+    const board = [
+      { id: '', x: 1, y: 1, width: 1, height: 1, component: '' },
+      { id: '', x: 2, y: 1, width: 1, height: 1, component: '' },
+      { id: '', x: 3, y: 1, width: 1, height: 1, component: '' },
+      { id: '', x: 4, y: 1, width: 1, height: 1, component: '' },
+      { id: '', x: 1, y: 2, width: 1, height: 1, component: '' },
+      { id: '', x: 2, y: 2, width: 1, height: 1, component: '' },
+      { id: '', x: 3, y: 2, width: 1, height: 1, component: '' },
+      { id: '', x: 4, y: 2, width: 1, height: 1, component: '' },
+      { id: '', x: 1, y: 3, width: 1, height: 1, component: '' },
+      { id: '', x: 2, y: 3, width: 1, height: 1, component: '' },
+      { id: '', x: 3, y: 3, width: 1, height: 1, component: '' },
+      { id: '', x: 4, y: 3, width: 1, height: 1, component: '' },
+      { id: '', x: 1, y: 4, width: 1, height: 1, component: '' },
+      { id: '', x: 2, y: 4, width: 1, height: 1, component: '' },
+      { id: '', x: 3, y: 4, width: 1, height: 1, component: '' },
+      { id: '', x: 4, y: 4, width: 1, height: 1, component: '' },
+    ]
     // We need to to hit testing from front (end of the array) to back (beginning of the array)
     for (let i = gridCells.value.length - 1; i >= 0; --i) {
       const cell = {
