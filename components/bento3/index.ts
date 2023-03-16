@@ -112,33 +112,33 @@ export function initGridContainer(
       // console.log(proxyBox.value)
 
       // 遍历每一个元素，如果其上面有值，那么就将其下移，如果没有，将移上去
-      // gridCells.value.forEach((n: any) => {
-      //   if (n.id !== currentClickedElement.value.id) {
-      //     const y = bubbleUp(n)
-      //     if (y < n.y)
-      //       n.y = y
-      //   }
-      // })
+      gridCells.value.forEach((n: any) => {
+        if (n.id !== currentClickedElement.value.id) {
+          const y = bubbleUp(n)
+          if (y < n.y)
+            n.y = y
+        }
+      })
 
-      // // 代理元素
-      // const y = bubbleUp(proxyBox.value)
-      // if (y < proxyBox.value.y)
-      //   proxyBox.value.y = y
+      // 代理元素
+      const y = bubbleUp(proxyBox.value)
+      if (y < proxyBox.value.y)
+        proxyBox.value.y = y
 
-      // // 从下往上找，一直找到最上层空值的位置
-      // function bubbleUp(node: any) {
-      //   for (let row = node.y - 1; row > 0; row--) {
-      //   // 如果一整行都为空，则直接继续往上找
-      //     if (area[row] === undefined)
-      //       continue
-      //     for (let col = node.x; col < node.x + node.width; col++) {
-      //     // 改行如果有内容，则直接返回下一行
-      //       if (area[row][col] !== undefined)
-      //         return row + 1
-      //     }
-      //   }
-      //   return 1
-      // }
+      // 从下往上找，一直找到最上层空值的位置
+      function bubbleUp(node: any) {
+        for (let row = node.y - 1; row > 0; row--) {
+        // 如果一整行都为空，则直接继续往上找
+          if (area[row] === undefined)
+            continue
+          for (let col = node.x; col < node.x + node.width; col++) {
+          // 改行如果有内容，则直接返回下一行
+            if (area[row][col] !== undefined)
+              return row + 1
+          }
+        }
+        return 1
+      }
 
       ///////////////////////////////////////////////////////////////////////////////
 
