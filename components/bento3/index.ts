@@ -98,6 +98,11 @@ export function initGridContainer(
       const allCellsWithProxy = [proxyBox.value, ...allCellsWithProxyByCurrent]
       area = getArea(allCellsWithProxy)
 
+      // 这里的问题是：拖拽元素从上往下，就会出现需要拖拽的距离较长，刚好要超过一个元素的高
+      // 上面既然已经碰撞了，那么碰撞相关的要素就会下移
+      // 但是因为当前的元素在上面，经过冒泡，又会向上，这样下面的也会向上，导致刚刚下来的现在又要上去
+      // 但是当前的要素肯定是要冒泡上移的，但是不应该这样冒泡上移
+
       // 这里从最上面往下遍历
       const lineCount = area.length
       testLine()
