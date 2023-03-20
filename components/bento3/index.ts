@@ -76,11 +76,6 @@ export function initGridContainer(
         if (item.id !== currentClickedElement.value.id)
           allCellsWithProxyByCurrent.push(item)
       })
-      // 2.判断当前拖拽的元素的占位位置，应该冒泡找到最顶的位置
-      area = getArea(allCellsWithProxyByCurrent)
-      const y = bubbleUp(proxyBox.value)
-      if (y < proxyBox.value.y)
-        proxyBox.value.y = y
 
       // 3.这里使用一个递归的方式，拖拽碰撞之后将所有的碰撞的元素都下移
       hitAllTest(proxyBox.value, allCellsWithProxyByCurrent)
@@ -92,7 +87,6 @@ export function initGridContainer(
             n.y += node.height
           }
         })
-
         if (hittedNodes.length > 0) {
           hittedNodes.forEach((n: any) => {
             hitAllTest(n, allNodes)
@@ -101,13 +95,31 @@ export function initGridContainer(
       }
 
       // 4.所有碰撞的元素移动之后，将每个元素遍历一边，然后将其冒泡到顶部
-      const allCellsWithProxy = [...allCellsWithProxyByCurrent, proxyBox.value]
+      const allCellsWithProxy = [proxyBox.value, ...allCellsWithProxyByCurrent]
       area = getArea(allCellsWithProxy)
-      allCellsWithProxyByCurrent.forEach((n: any) => {
-        const y = bubbleUp(n)
-        if (y < n.y)
-          n.y = y
-      })
+
+      // 这里从最上面往下遍历
+      const lineCount = area.length
+      testLine()
+      function testLine() {
+        for (let row = 0; row < lineCount; row++) {
+          if (area[row] !== undefined && area[row].length > 0) {
+            for (let col = 0; col < area[row].length; col++) {
+              if (area[row][col] !== undefined && area[row][col] !== null) {
+                allCellsWithProxy.forEach((n: any) => {
+                  if (n.id === area[row][col]) {
+                    const y = bubbleUp(n)
+                    if (y < n.y)
+                      n.y = y
+                  }
+                })
+              }
+            }
+          }
+          area = getArea(allCellsWithProxy)
+        }
+      }
+
       /////////////////////////////////////////////////////////////////////////////////////
 
       function bubbleUp(node: any) {
