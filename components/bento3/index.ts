@@ -80,21 +80,21 @@ export function initGridContainer(
       // 2.当前的元素要拖拽，于是将当前的元素抽出来，剩下的元素重新排列
       area = getArea(allCellsWithProxyByCurrent)
       const lineCount = area.length
-      testLine()
-      function testLine() {
+      arrangeByLine()
+      function arrangeByLine() {
         for (let row = 0; row < lineCount; row++) {
-          if (area[row] !== undefined && area[row].length > 0) {
-            for (let col = 0; col < area[row].length; col++) {
-              if (area[row][col] !== undefined && area[row][col] !== null) {
-                allCellsWithProxyByCurrent.forEach((n: any) => {
-                  if (n.id === area[row][col]) {
+          if (area[row] && area[row].length > 0) {
+            area[row].forEach((cell: any) => {
+              if (cell) {
+                allCellsWithProxyByCurrent.forEach((n: { id: any; y: number }) => {
+                  if (n.id === cell) {
                     const y = bubbleUp(n)
                     if (y < n.y)
                       n.y = y
                   }
                 })
               }
-            }
+            })
           }
           area = getArea(allCellsWithProxyByCurrent)
         }
@@ -107,8 +107,8 @@ export function initGridContainer(
       const y = bubbleUp(proxyBox.value)
       if (y < proxyBox.value.y)
         proxyBox.value.y = y
-      hitAllTest(proxyBox.value, allCellsWithProxyByCurrent)
-      function hitAllTest(node: any, allNodes: any) {
+      hitAllEle(proxyBox.value, allCellsWithProxyByCurrent)
+      function hitAllEle(node: any, allNodes: any) {
         const hittedNodes: any = []
         allNodes.forEach((n: any) => {
           if (node.id !== n.id && checkHit(node, n)) {
@@ -118,7 +118,7 @@ export function initGridContainer(
         })
         if (hittedNodes.length > 0) {
           hittedNodes.forEach((n: any) => {
-            hitAllTest(n, allNodes)
+            hitAllEle(n, allNodes)
           })
         }
       }
