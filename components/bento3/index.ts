@@ -113,7 +113,7 @@ export function initGridContainer(
         allNodes.forEach((n: any) => {
           if (node.id !== n.id && checkHit(node, n)) {
             hittedNodes.push(n)
-            n.y += node.height
+            n.y = node.y + node.height
           }
         })
         if (hittedNodes.length > 0) {
@@ -130,11 +130,25 @@ export function initGridContainer(
           if (area[row] === undefined)
             continue
           for (let col = node.x; col < node.x + node.width; col++) {
-            // 改行如果有内容，则直接返回下一行
+            // 该行如果有内容，则直接返回下一行
+            if (
+              area[row]
+              && area[row + 1]
+              && area[row][col] !== undefined
+              && area[row + 1][col] !== undefined
+              && area[row][col] === area[row + 1][col]
+            )
+
+              return row
+
+            else
+
             if (area[row][col] !== undefined)
+
               return row + 1
           }
         }
+
         return 1
       }
       function checkHit(node1: any, node2: any) {
