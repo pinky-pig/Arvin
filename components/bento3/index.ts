@@ -130,7 +130,18 @@ export function initGridContainer(
           if (area[row] === undefined)
             continue
           for (let col = node.x; col < node.x + node.width; col++) {
-            // 该行如果有内容，则直接返回下一行
+            // todo: 这里需要重构，根据当前这个元素的高度，决定返回的行数是多少
+            // const count = allCellsWithProxyByCurrent.filter((n: { id: any }) => n.id === area[row][col])[0]?.height
+            // if (count) {
+            //   for (let i = 0; i < count.length - 1; i++) {
+            //     if (
+            //       area[row + i]
+            //       && area[row + i][col] !== undefined
+            //       && area[row + i][col] !== area[row][col]
+            //     )
+            //       return row
+            //   }
+            // }
             if (
               area[row]
               && area[row + 1]
@@ -138,13 +149,10 @@ export function initGridContainer(
               && area[row + 1][col] !== undefined
               && area[row][col] === area[row + 1][col]
             )
-
               return row
-
             else
 
             if (area[row][col] !== undefined)
-
               return row + 1
           }
         }

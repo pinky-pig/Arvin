@@ -84,8 +84,8 @@ onMounted(() => {
 
 <style scoped>
 .grid-item {
-  /* border: 1px solid black;
+  border: 1px solid black;
   transition: all 500ms ease 0s;
-  will-change: transform; */
+  will-change: transform;
 }
 </style>
