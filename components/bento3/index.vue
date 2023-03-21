@@ -59,6 +59,7 @@ onMounted(() => {
       :id="`${item.id}`"
       :key="item.id"
       v-model="gridCells[index]"
+      :class="item !== currentClickedElement ? 'grid-item' : ''"
       :style="{
         position: 'absolute',
         left: `${item.x * cellBox.width}px`,
@@ -69,7 +70,7 @@ onMounted(() => {
     />
     <div
       v-show="currentClickedElement"
-      class="bg-gray-400"
+      class="bg-gray-400 grid-item"
       :style="{
         position: 'absolute',
         left: `${proxyBox.x * cellBox.width}px`,
@@ -80,3 +81,11 @@ onMounted(() => {
     />
   </div>
 </template>
+
+<style scoped>
+.grid-item {
+  border: 1px solid black;
+  transition: all 500ms ease 0s;
+  will-change: transform;
+}
+</style>
