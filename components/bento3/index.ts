@@ -77,7 +77,36 @@ export function initGridContainer(
           allCellsWithProxyByCurrent.push(item)
       })
 
-      // 3.这里使用一个递归的方式，拖拽碰撞之后将所有的碰撞的元素都下移
+      // 2.当前的元素要拖拽，于是将当前的元素抽出来，剩下的元素重新排列
+      area = getArea(allCellsWithProxyByCurrent)
+      const lineCount = area.length
+      testLine()
+      function testLine() {
+        for (let row = 0; row < lineCount; row++) {
+          if (area[row] !== undefined && area[row].length > 0) {
+            for (let col = 0; col < area[row].length; col++) {
+              if (area[row][col] !== undefined && area[row][col] !== null) {
+                allCellsWithProxyByCurrent.forEach((n: any) => {
+                  if (n.id === area[row][col]) {
+                    const y = bubbleUp(n)
+                    if (y < n.y)
+                      n.y = y
+                  }
+                })
+              }
+            }
+          }
+          area = getArea(allCellsWithProxyByCurrent)
+        }
+      }
+
+      // 3.剩下的元素重新排列之后，现在插入当前拖拽的元素
+      // 3.1 当前拖拽的元素的位置是四舍五入的 Math.round() ，这里需要将其冒泡到最上面的位置
+      // 3.2 冒泡完之后，就是插入。这里插入后，需要将所有的元素重新排列
+      // 3.3 重新排列就是将所有碰撞过的元素都下移，这里使用一个递归的方式
+      const y = bubbleUp(proxyBox.value)
+      if (y < proxyBox.value.y)
+        proxyBox.value.y = y
       hitAllTest(proxyBox.value, allCellsWithProxyByCurrent)
       function hitAllTest(node: any, allNodes: any) {
         const hittedNodes: any = []
@@ -93,39 +122,6 @@ export function initGridContainer(
           })
         }
       }
-
-      // 4.所有碰撞的元素移动之后，将每个元素遍历一边，然后将其冒泡到顶部
-      const allCellsWithProxy = [proxyBox.value, ...allCellsWithProxyByCurrent]
-      area = getArea(allCellsWithProxy)
-
-      // 这里的问题是：拖拽元素从上往下，就会出现需要拖拽的距离较长，刚好要超过一个元素的高
-      // 上面既然已经碰撞了，那么碰撞相关的要素就会下移
-      // 但是因为当前的元素在上面，经过冒泡，又会向上，这样下面的也会向上，导致刚刚下来的现在又要上去
-      // 但是当前的要素肯定是要冒泡上移的，但是不应该这样冒泡上移
-      // 这里可以根据 y 值判断， 到底是下移还是上移
-
-      // 这里从最上面往下遍历
-      const lineCount = area.length
-      testLine()
-      function testLine() {
-        for (let row = 0; row < lineCount; row++) {
-          if (area[row] !== undefined && area[row].length > 0) {
-            for (let col = 0; col < area[row].length; col++) {
-              if (area[row][col] !== undefined && area[row][col] !== null) {
-                allCellsWithProxy.forEach((n: any) => {
-                  if (n.id === area[row][col]) {
-                    const y = bubbleUp(n)
-                    if (y < n.y)
-                      n.y = y
-                  }
-                })
-              }
-            }
-          }
-          area = getArea(allCellsWithProxy)
-        }
-      }
-
       /////////////////////////////////////////////////////////////////////////////////////
 
       function bubbleUp(node: any) {
