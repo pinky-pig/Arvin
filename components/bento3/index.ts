@@ -12,7 +12,6 @@ export interface GridCellsType {
 let mouseFrom = { x: 0, y: 0 }
 let mouseTo = { x: 0, y: 0 }
 let isDragging = false
-const columnsWidth = 300
 let area: any = []
 export function initGridContainer(
   containerRef: Ref<HTMLElement>,

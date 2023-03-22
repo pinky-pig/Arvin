@@ -26,8 +26,8 @@ const props = defineProps({
 })
 
 const cellBox = {
-  width: 100,
-  height: 100,
+  width: 200,
+  height: 200,
 }
 
 const gridCells = ref(props.gridCells)
@@ -59,6 +59,7 @@ onMounted(() => {
       :id="`${item.id}`"
       :key="item.id"
       v-model="gridCells[index]"
+      style="border-radius: 9px;"
       :class="item !== currentClickedElement ? 'bento-item' : ''"
       :style="{
         position: 'absolute',
@@ -95,8 +96,6 @@ onMounted(() => {
 .bento-item {
   transition: all 500ms ease 0s;
   will-change: transform;
-
-  background-color: #fefefe;
   box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.05), 0px 0px 16px -8px rgba(0, 0, 0, 0.05), 0px 0px 16px -12px rgba(0, 0, 0, 0.12), 0px 0px 2px 0px rgba(0, 0, 0, 0.08);
   border: 1px solid #ffffff;
   overflow: hidden;
