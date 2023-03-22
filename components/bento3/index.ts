@@ -105,18 +105,15 @@ export function initGridContainer(
           })
         }
       }
-      function getAllCellsByArea(area: any, allCells: any) {
+      function getAllCellsByArea(area: any[], allCells: any[]) {
         const result: any = []
-        for (let row = 0; row < allCells.length; row++) {
-          if (area[row] && area[row].length > 0) {
-            area[row].forEach((cell: any) => {
-              allCellsWithProxyByCurrent.forEach((n: { id: any; y: number }) => {
-                if (n.id === cell && result.findIndex((ele: any) => ele.id === n.id) === -1)
-                  result.push(n)
-              })
-            })
-          }
-        }
+        // 数组去重
+        Array.from(new Set(area.flat())).forEach((cell: any) => {
+          allCells.forEach((n: { id: any; y: number }) => {
+            if (n.id === cell && result.findIndex((ele: any) => ele.id === n.id) === -1)
+              result.push(n)
+          })
+        })
         return result
       }
       function arrangeByLine() {
@@ -146,7 +143,7 @@ export function initGridContainer(
             continue
           for (let col = node.x; col < node.x + node.width; col++) {
             // todo: 这里需要重构，根据当前这个元素的高度，决定返回的行数是多少
-            const count = allCellsWithProxyByCurrent.filter((n: { id: any }) => n.id === area[row][col])[0]?.height
+            // const count = allCellsWithProxyByCurrent.filter((n: { id: any }) => n.id === area[row][col])[0]?.height
             if (
               area[row]
               && area[row + 1]
