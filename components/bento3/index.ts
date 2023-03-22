@@ -79,6 +79,46 @@ export function initGridContainer(
       area = getArea(allCellsWithProxyByCurrent)
       const lineCount = area.length
       arrangeByLine()
+
+      // 3.剩下的元素重新排列之后，现在插入当前拖拽的元素
+      // 3.1 当前拖拽的元素的位置是四舍五入的 Math.round() ，这里需要将其冒泡到最上面的位置
+      // 3.2 冒泡完之后，就是插入。这里插入后，需要将所有的元素重新排列
+      // 3.3 重新排列就是将所有碰撞过的元素都下移，这里使用一个递归的方式
+      const y = bubbleUp(proxyBox.value)
+      if (y < proxyBox.value.y)
+        proxyBox.value.y = y
+
+      // 将 allCellsWithProxyByCurrent 按照 area 从上至下的顺序重新排列
+      const allCellByAreaSort = getAllCellsByArea(area, allCellsWithProxyByCurrent)
+      hitAllEle(proxyBox.value, allCellByAreaSort)
+      function hitAllEle(node: any, allNodes: any) {
+        const hittedNodes: any = []
+        allNodes.forEach((n: any) => {
+          if (node.id !== n.id && checkHit(node, n)) {
+            hittedNodes.push(n)
+            n.y = node.y + node.height
+          }
+        })
+        if (hittedNodes.length > 0) {
+          hittedNodes.forEach((n: any) => {
+            hitAllEle(n, allNodes)
+          })
+        }
+      }
+      function getAllCellsByArea(area: any, allCells: any) {
+        const result: any = []
+        for (let row = 0; row < allCells.length; row++) {
+          if (area[row] && area[row].length > 0) {
+            area[row].forEach((cell: any) => {
+              allCellsWithProxyByCurrent.forEach((n: { id: any; y: number }) => {
+                if (n.id === cell && result.findIndex((ele: any) => ele.id === n.id) === -1)
+                  result.push(n)
+              })
+            })
+          }
+        }
+        return result
+      }
       function arrangeByLine() {
         for (let row = 0; row < lineCount; row++) {
           if (area[row] && area[row].length > 0) {
@@ -97,29 +137,6 @@ export function initGridContainer(
           area = getArea(allCellsWithProxyByCurrent)
         }
       }
-
-      // 3.剩下的元素重新排列之后，现在插入当前拖拽的元素
-      // 3.1 当前拖拽的元素的位置是四舍五入的 Math.round() ，这里需要将其冒泡到最上面的位置
-      // 3.2 冒泡完之后，就是插入。这里插入后，需要将所有的元素重新排列
-      // 3.3 重新排列就是将所有碰撞过的元素都下移，这里使用一个递归的方式
-      const y = bubbleUp(proxyBox.value)
-      if (y < proxyBox.value.y)
-        proxyBox.value.y = y
-      hitAllEle(proxyBox.value, allCellsWithProxyByCurrent)
-      function hitAllEle(node: any, allNodes: any) {
-        const hittedNodes: any = []
-        allNodes.forEach((n: any) => {
-          if (node.id !== n.id && checkHit(node, n)) {
-            hittedNodes.push(n)
-            n.y = node.y + node.height
-          }
-        })
-        if (hittedNodes.length > 0) {
-          hittedNodes.forEach((n: any) => {
-            hitAllEle(n, allNodes)
-          })
-        }
-      }
       /////////////////////////////////////////////////////////////////////////////////////
 
       function bubbleUp(node: any) {
@@ -129,7 +146,7 @@ export function initGridContainer(
             continue
           for (let col = node.x; col < node.x + node.width; col++) {
             // todo: 这里需要重构，根据当前这个元素的高度，决定返回的行数是多少
-            // const count = allCellsWithProxyByCurrent.filter((n: { id: any }) => n.id === area[row][col])[0]?.height
+            const count = allCellsWithProxyByCurrent.filter((n: { id: any }) => n.id === area[row][col])[0]?.height
             if (
               area[row]
               && area[row + 1]
@@ -141,7 +158,8 @@ export function initGridContainer(
               //  ██ || ██ ██
               //  ██ || ██ ██
             }
-            else if (area[row][col] !== undefined) {
+            else
+            if (area[row][col] !== undefined) {
               // 这里是一行的情况
               // ██ || ██ ██
               return row + 1

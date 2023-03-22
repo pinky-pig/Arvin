@@ -26,8 +26,8 @@ const props = defineProps({
 })
 
 const cellBox = {
-  width: 200,
-  height: 200,
+  width: 100,
+  height: 100,
 }
 
 const gridCells = ref(props.gridCells)
@@ -60,7 +60,7 @@ onMounted(() => {
       :key="item.id"
       v-model="gridCells[index]"
       style="border-radius: 9px;"
-      :class="item !== currentClickedElement ? 'bento-item' : ''"
+      :class="item !== currentClickedElement ? 'bento-item ' : 'z-9'"
       :style="{
         position: 'absolute',
         left: `${item.x * cellBox.width}px`,
