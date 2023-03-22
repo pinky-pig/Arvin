@@ -18,7 +18,7 @@ const props = defineProps({
       { id: '1', x: 1, y: 1, width: 1, height: 1, component: markRaw(GridCellOne) },
       { id: '2', x: 2, y: 1, width: 1, height: 1, component: markRaw(GridCellTwo) },
       { id: '3', x: 3, y: 1, width: 1, height: 1, component: markRaw(GridCellThree) },
-      { id: '4', x: 4, y: 1, width: 1, height: 2, component: markRaw(GridCellFour) },
+      { id: '4', x: 4, y: 1, width: 2, height: 2, component: markRaw(GridCellFour) },
       { id: '5', x: 1, y: 2, width: 2, height: 1, component: markRaw(GridCellFive) },
       { id: '6', x: 3, y: 2, width: 2, height: 1, component: markRaw(GridCellSix) },
     ] as GridCellsType[],
