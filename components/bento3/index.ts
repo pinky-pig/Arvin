@@ -1,5 +1,4 @@
 import type { Ref } from 'vue'
-import { getArea } from './utils/area'
 
 export interface GridCellsType {
   id: string
@@ -186,5 +185,20 @@ export function initGridContainer(
       result = gridCells.value.filter((ele: { id: string }) => ele.id === initElement.id)
 
     return result ? result[0] : null
+  }
+
+  function getArea(nodes: GridCellsType[]) {
+    const area: any = []
+    nodes.forEach((n) => {
+      for (let row = n.y; row < n.y + n.height; row++) {
+        const rowArr = area[row]
+        if (rowArr === undefined)
+          area[row] = []
+
+        for (let col = n.x; col < n.x + n.width; col++)
+          area[row][col] = n.id
+      }
+    })
+    return area
   }
 }

@@ -31,7 +31,7 @@ const cellBox = {
 }
 
 const gridCells = ref(props.gridCells)
-const gridContainerRef = ref()
+const bentoContainerRef = ref()
 
 const currentClickedElement: Ref<any> = ref()
 const proxyBox = ref<GridCellsType>({
@@ -44,14 +44,14 @@ const proxyBox = ref<GridCellsType>({
 })
 // 1.初始化盒子，给盒子添加鼠标点击事件
 onMounted(() => {
-  initGridContainer(gridContainerRef, gridCells, currentClickedElement, props, proxyBox, cellBox)
+  initGridContainer(bentoContainerRef, gridCells, currentClickedElement, props, proxyBox, cellBox)
 })
 </script>
 
 <template>
   <div
-    ref="gridContainerRef"
-    style="touch-action:none;height: 60vh;width:80vw;position: relative; border: 1px solid black; margin-left: auto; margin-right: auto;"
+    ref="bentoContainerRef"
+    class="bento-container"
   >
     <component
       :is="item.component"
@@ -59,7 +59,7 @@ onMounted(() => {
       :id="`${item.id}`"
       :key="item.id"
       v-model="gridCells[index]"
-      :class="item !== currentClickedElement ? 'grid-item' : ''"
+      :class="item !== currentClickedElement ? 'bento-item' : ''"
       :style="{
         position: 'absolute',
         left: `${item.x * cellBox.width}px`,
@@ -70,7 +70,7 @@ onMounted(() => {
     />
     <div
       v-show="currentClickedElement"
-      class="bg-gray-400 grid-item"
+      class="bento-item-placeholder"
       :style="{
         position: 'absolute',
         left: `${proxyBox.x * cellBox.width}px`,
@@ -83,9 +83,32 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.grid-item {
+.bento-container{
+  touch-action:none;
+  height: 60vh;
+  width:80vw;
+  position: relative;
   border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bento-item {
   transition: all 500ms ease 0s;
   will-change: transform;
+
+  background-color: #fefefe;
+  box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.05), 0px 0px 16px -8px rgba(0, 0, 0, 0.05), 0px 0px 16px -12px rgba(0, 0, 0, 0.12), 0px 0px 2px 0px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ffffff;
+  overflow: hidden;
+  border-radius: 9px;
+}
+.bento-item-placeholder{
+  transition: all 500ms ease 0s;
+  will-change: transform;
+  background-color: #e3e3e3;
+  box-shadow: 0px 0px 16px -1px rgba(0, 0, 0, 0.05), 0px 0px 16px -8px rgba(0, 0, 0, 0.05), 0px 0px 16px -12px rgba(0, 0, 0, 0.12), 0px 0px 2px 0px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e3e3e3;
+  overflow: hidden;
+  border-radius: 9px;
 }
 </style>
