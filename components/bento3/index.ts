@@ -12,7 +12,7 @@ export interface GridCellsType {
 let mouseFrom = { x: 0, y: 0 }
 let mouseTo = { x: 0, y: 0 }
 let isDragging = false
-let area: any = []
+let area: string[][] = []
 export function initGridContainer(
   containerRef: Ref<HTMLElement>,
   gridCells: Ref<GridCellsType[]>,
@@ -21,26 +21,19 @@ export function initGridContainer(
   proxyBox: Ref<GridCellsType>,
   cellBox: { width: number; height: number },
 ) {
-  // 绑定鼠标事件
-  addMouseEvent()
-  function addMouseEvent() {
+  bindMouseEvent()
+  function bindMouseEvent() {
     window.addEventListener('pointerdown', mousedown, false)
     window.addEventListener('pointermove', mousemove, false)
     window.addEventListener('pointerup', mouseup, false)
   }
   function mousedown(e: MouseEvent) {
     mouseFrom = { x: e.clientX, y: e.clientY }
-
     currentClickedElement.value = getCellObjectInStoreFromPosition(mouseFrom)
     if (currentClickedElement.value) {
       isDragging = true
-      // 提供一个占位的
+      // place-holder
       proxyBox.value = Object.assign({ tag: 'proxy' }, currentClickedElement.value)
-      const index = gridCells.value.findIndex((ele: GridCellsType) => ele.id === currentClickedElement.value.id)
-      if (index !== -1) {
-        const ele = gridCells.value.splice(index, 1)
-        gridCells.value.push(ele[0])
-      }
     }
   }
   function mousemove(e: MouseEvent) {
@@ -190,11 +183,10 @@ export function initGridContainer(
       }
     }
   }
-
   function mouseup(_e: MouseEvent) {
     if (currentClickedElement.value) {
-      currentClickedElement.value.x = Math.round(proxyBox.value.x)
-      currentClickedElement.value.y = Math.round(proxyBox.value.y)
+      currentClickedElement.value.x = proxyBox.value.x
+      currentClickedElement.value.y = proxyBox.value.y
       currentClickedElement.value = null
     }
     mouseFrom.x = 0
