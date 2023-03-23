@@ -36,7 +36,7 @@ export function initGridContainer(
       isDragging = true
       // 提供一个占位的
       proxyBox.value = Object.assign({ tag: 'proxy' }, currentClickedElement.value)
-      const index = gridCells.value.findIndex((ele: { id: any }) => ele.id === currentClickedElement.value.id)
+      const index = gridCells.value.findIndex((ele: GridCellsType) => ele.id === currentClickedElement.value.id)
       if (index !== -1) {
         const ele = gridCells.value.splice(index, 1)
         gridCells.value.push(ele[0])
@@ -69,7 +69,7 @@ export function initGridContainer(
 
       /////////////////////////////////////////////////////////////////////////////////////
       // 1.除了当前拖拽的元素之外的所有元素
-      const allCellsWithProxyByCurrent: any = []
+      const allCellsWithProxyByCurrent: GridCellsType[] = []
       gridCells.value.forEach((item) => {
         if (item.id !== currentClickedElement.value.id)
           allCellsWithProxyByCurrent.push(item)
@@ -95,18 +95,18 @@ export function initGridContainer(
       const allCellByAreaSort = getAllCellsByArea(area, allCellsWithProxyByCurrent)
       hitAllEle(proxyBox.value, allCellByAreaSort)
       // todo: 需要限制递归深度，避免无限递归导致的性能问题
-      function hitAllEle(node: any, allNodes: any) {
+      function hitAllEle(node: GridCellsType, allNodes: GridCellsType[]) {
         const hittedNodes: any = []
 
         // 1.找到当前元素第一层碰撞的元素
-        allNodes.forEach((n: any, index: number) => {
+        allNodes.forEach((n: GridCellsType, index: number) => {
           if (node.id !== n.id && checkHit(node, n)) {
             // 将当前碰撞的要素添加到数组中
             hittedNodes.push(n)
           }
         })
         // 2.碰撞到了之后，一格一格移动
-        hittedNodes.forEach((n: any) => {
+        hittedNodes.forEach((n: GridCellsType) => {
           for (let h = n.y + 1; h <= node.y + node.height; h++) {
             n.y = h
             // 每次移动一格之后，就来检测一下，是否还有元素被碰撞
@@ -114,12 +114,12 @@ export function initGridContainer(
           }
         })
       }
-      function getAllCellsByArea(area: any[], allCells: any[]) {
-        const result: any = []
+      function getAllCellsByArea(area: string[][], allCells: GridCellsType[]) {
+        const result: GridCellsType[] = []
         // 数组去重
-        Array.from(new Set(area.flat())).forEach((cell: any) => {
-          allCells.forEach((n: { id: any; y: number }) => {
-            if (n.id === cell && result.findIndex((ele: any) => ele.id === n.id) === -1)
+        Array.from(new Set(area.flat())).forEach((cell: string) => {
+          allCells.forEach((n) => {
+            if (n.id === cell && result.findIndex((ele: GridCellsType) => ele.id === n.id) === -1)
               result.push(n)
           })
         })
@@ -128,9 +128,9 @@ export function initGridContainer(
       function arrangeByLine() {
         for (let row = 0; row < lineCount; row++) {
           if (area[row] && area[row].length > 0) {
-            area[row].forEach((cell: any) => {
+            area[row].forEach((cell: string) => {
               if (cell) {
-                allCellsWithProxyByCurrent.forEach((n: { id: any; y: number }) => {
+                allCellsWithProxyByCurrent.forEach((n) => {
                   if (n.id === cell) {
                     const y = bubbleUp(n)
                     if (y < n.y)
@@ -145,7 +145,7 @@ export function initGridContainer(
       }
       /////////////////////////////////////////////////////////////////////////////////////
 
-      function bubbleUp(node: any) {
+      function bubbleUp(node: GridCellsType) {
         for (let row = node.y - 1; row > 0; row--) {
           // 如果一整行都为空，则直接继续往上找
           if (area[row] === undefined)
@@ -175,16 +175,18 @@ export function initGridContainer(
 
         return 1
       }
-      function checkHit(node1: any, node2: any) {
-        if (
-          node1.x < node2.x + node2.width
-          && node2.x < node1.x + node1.width
-          && node1.y < node2.y + node2.height
-          && node2.y < node1.y + node1.height
+      // 检查两个元素是否发生碰撞的功能函数
+      // 元素 a 的左侧坐标小于元素 b 的右侧坐标。
+      // 元素 a 的右侧坐标大于元素 b 的左侧坐标。
+      // 元素 a 的上方坐标小于元素 b 的下方坐标。
+      // 元素 a 的下方坐标大于元素 b 的上方坐标
+      function checkHit(a: GridCellsType, b: GridCellsType) {
+        return (
+          a.x < b.x + b.width
+          && a.x + a.width > b.x
+          && a.y < b.y + b.height
+          && a.y + a.height > b.y
         )
-          return true
-
-        return false
       }
     }
   }
