@@ -94,33 +94,23 @@ export function initGridContainer(
       // 于是就会出现越过刚才的那个元素向上冒泡
       const allCellByAreaSort = getAllCellsByArea(area, allCellsWithProxyByCurrent)
       hitAllEle(proxyBox.value, allCellByAreaSort)
-
+      // todo: 需要限制递归深度，避免无限递归导致的性能问题
       function hitAllEle(node: any, allNodes: any) {
         const hittedNodes: any = []
 
+        // 1.找到当前元素第一层碰撞的元素
         allNodes.forEach((n: any, index: number) => {
           if (node.id !== n.id && checkHit(node, n)) {
             // 将当前碰撞的要素添加到数组中
             hittedNodes.push(n)
-            // // 修改当前碰撞的元素的 y 值
-            // n.y = node.y + node.height
           }
         })
-        // if (hittedNodes.length > 0) {
-        //   hittedNodes.forEach((n: any) => {
-        //     hitAllEle(n, allNodes)
-        //   })
-        // }
-
-        // todo: 需要限制递归深度，避免无限递归导致的性能问题
+        // 2.碰撞到了之后，一格一格移动
         hittedNodes.forEach((n: any) => {
           for (let h = n.y + 1; h <= node.y + node.height; h++) {
-            // 当前被碰撞的元素每次只移动一格，所以需要循环
             n.y = h
             // 每次移动一格之后，就来检测一下，是否还有元素被碰撞
-            hittedNodes.forEach((n: any) => {
-              hitAllEle(n, allNodes)
-            })
+            hitAllEle(n, allNodes)
           }
         })
       }
