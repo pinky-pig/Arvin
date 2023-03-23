@@ -82,12 +82,11 @@ export function initGridContainer(
         proxyBox.value.y = y
 
       // 将 allCellsWithProxyByCurrent 按照 area 从上至下的顺序重新排列
-      // todo: 这里因为是从上至下的顺序，所以如果有元素被挤下面过多，那么就会出现空白的情况
-      // 这样就导致，本来下面的元素往下挤出去很远，然后这个下面的元素没有检测到他上面（就是刚才挤出去的元素）
-      // 于是就会出现越过刚才的那个元素向上冒泡
       const allCellByAreaSort = getAllCellsByArea(area, allCellsWithProxyByCurrent)
       hitAllEle(proxyBox.value, allCellByAreaSort)
       // todo: 需要限制递归深度，避免无限递归导致的性能问题
+      // 这里会有个元素重叠的情况。一般情况下，不会出现，因为碰撞走了
+      // 但是如果碰撞没有走，那么就会出现重叠的情况，这样这里的递归会一直走，这里需要处理
       function hitAllEle(node: GridCellsType, allNodes: GridCellsType[]) {
         const hittedNodes: any = []
 
