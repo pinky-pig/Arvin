@@ -3,25 +3,13 @@
 // 2.每列有四个格子，间距为 10
 // 3.组件能占分别是 1,2 两种
 // 4.这里先假设每个单元格的尺寸为 100*100
-import GridCellOne from './components/GridCellOne.vue'
-import GridCellTwo from './components/GridCellTwo.vue'
-import GridCellThree from './components/GridCellThree.vue'
-import GridCellFour from './components/GridCellFour.vue'
-import GridCellFive from './components/GridCellFive.vue'
-import GridCellSix from './components/GridCellSix.vue'
 import { initGridContainer } from './index.module'
 import type { BentoCellsType } from './index.module'
+import { cfg } from './config'
 
 const props = defineProps({
   gridCells: {
-    default: [
-      { id: '1', x: 0, y: 0, width: 1, height: 1, component: markRaw(GridCellOne) },
-      { id: '2', x: 1, y: 0, width: 1, height: 1, component: markRaw(GridCellTwo) },
-      { id: '3', x: 2, y: 0, width: 1, height: 2, component: markRaw(GridCellThree) },
-      { id: '4', x: 3, y: 0, width: 2, height: 2, component: markRaw(GridCellFour) },
-      { id: '5', x: 0, y: 1, width: 2, height: 1, component: markRaw(GridCellFive) },
-      { id: '6', x: 2, y: 1, width: 2, height: 1, component: markRaw(GridCellSix) },
-    ] as BentoCellsType[],
+    default: cfg as BentoCellsType[],
   },
 })
 
