@@ -8,23 +8,30 @@ const print = (val: string, e: any) => {
 </script>
 
 <template>
-  <Bento
-    class="bento-container"
-    :size="200"
-    :gap="10"
-    :maximum-cells="4"
-    @drag-start="print('drag-start', $event)"
-    @drag-end="print('drag-end', $event)"
-  />
+  <div class="container">
+    <Bento
+      class="bento-container"
+      :size="100"
+      :gap="10"
+      :maximum-cells="4"
+      @drag-start="print('drag-start', $event)"
+      @drag-end="print('drag-end', $event)"
+    />
+  </div>
 </template>
 
 <style scoped>
-.bento-container{
-  position: relative;
-  touch-action:none;
+.container {
   height: 60vh;
   width: 80vw;
   border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  place-items: center;
+}
+.bento-container{
+  border: 1px solid rgb(176, 108, 108);
   margin-left: auto;
   margin-right: auto;
 }

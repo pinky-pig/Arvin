@@ -22,7 +22,9 @@ const props = defineProps({
     default: 10,
   },
 })
+
 const emit = defineEmits(['dragStart', 'dragEnd'])
+const bentoContainerWidth = ref(`${props.maximumCells * props.size + (props.maximumCells - 1) * props.gap}px`)
 const bentoContainerClassName = ref(`bento-container-${generateUuid()}`)
 const bentoCells = ref(props.bentoCells)
 const bentoContainerRef = ref()
@@ -78,8 +80,9 @@ onMounted(() => {
 
 <style scoped>
 .bento-container{
+  touch-action:none;
   height: 500px;
-  width: 800px;
+  width: v-bind(bentoContainerWidth);
   position: relative;
 }
 .bento-item {
