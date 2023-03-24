@@ -6,6 +6,7 @@
 import { initGridContainer } from './index.module'
 import type { BentoCellsType } from './index.module'
 import { cfg } from './config'
+import { generateUuid } from './uuid'
 
 const props = defineProps({
   bentoCells: {
@@ -17,12 +18,14 @@ const props = defineProps({
   size: {
     default: 100,
   },
+  gap: {
+    default: 10,
+  },
 })
 const emit = defineEmits(['dragStart', 'dragEnd'])
-
+const bentoContainerClassName = ref(`bento-container-${generateUuid()}`)
 const bentoCells = ref(props.bentoCells)
 const bentoContainerRef = ref()
-
 const currentClickedElement: Ref<any> = ref()
 const proxyBox = ref<BentoCellsType>({
   id: 'proxy',
@@ -41,7 +44,7 @@ onMounted(() => {
 <template>
   <div
     ref="bentoContainerRef"
-    class="bento-container"
+    :class="bentoContainerClassName"
   >
     <component
       :is="item.component"
@@ -53,10 +56,10 @@ onMounted(() => {
       :class="item !== currentClickedElement ? 'bento-item ' : 'z-9'"
       :style="{
         position: 'absolute',
-        left: `${item.x * props.size}px`,
-        top: `${item.y * props.size}px`,
-        width: `${item.width * props.size}px`,
-        height: `${item.height * props.size}px`,
+        left: `${item.x * (props.size + props.gap)}px`,
+        top: `${item.y * (props.size + props.gap)}px`,
+        width: `${item.width === 2 ? item.width * props.size + props.gap : item.width * props.size}px`,
+        height: `${item.height === 2 ? item.height * props.size + props.gap : item.height * props.size}px`,
       }"
     />
     <div
@@ -75,13 +78,9 @@ onMounted(() => {
 
 <style scoped>
 .bento-container{
-  touch-action:none;
-  height: 60vh;
-  width:80vw;
+  height: 500px;
+  width: 800px;
   position: relative;
-  border: 1px solid black;
-  margin-left: auto;
-  margin-right: auto;
 }
 .bento-item {
   transition: all 500ms ease 0s;
