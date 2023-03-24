@@ -15,14 +15,14 @@ let isDragging = false
 let area: string[][] = []
 export function initGridContainer(
   containerRef: Ref<HTMLElement>,
-  gridCells: Ref<BentoCellsType[]>,
+  bentoCells: Ref<BentoCellsType[]>,
   currentClickedElement: Ref<any>,
   propsOption: any,
   proxyBox: Ref<BentoCellsType>,
   cellBox: { width: number; height: number },
 ) {
   // 1.初始化时，检查是否有重叠的元素
-  const overlap = checkOverlap(gridCells.value)
+  const overlap = checkOverlap(bentoCells.value)
   if (!overlap) {
     bindMouseEvent()
   }
@@ -51,10 +51,10 @@ export function initGridContainer(
       // place-holder
       proxyBox.value = Object.assign({ tag: 'proxy' }, currentClickedElement.value)
       // 将当前拖拽的元素放到最上面
-      const index = gridCells.value.findIndex((ele: { id: any }) => ele.id === currentClickedElement.value.id)
+      const index = bentoCells.value.findIndex((ele: { id: any }) => ele.id === currentClickedElement.value.id)
       if (index !== -1) {
-        const ele = gridCells.value.splice(index, 1)
-        gridCells.value.push(ele[0])
+        const ele = bentoCells.value.splice(index, 1)
+        bentoCells.value.push(ele[0])
       }
     }
   }
@@ -85,7 +85,7 @@ export function initGridContainer(
       /////////////////////////////////////////////////////////////////////////////////////
       // 1.除了当前拖拽的元素之外的所有元素
       const allCellsWithProxyByCurrent: BentoCellsType[] = []
-      gridCells.value.forEach((item) => {
+      bentoCells.value.forEach((item) => {
         if (item.id !== currentClickedElement.value.id)
           allCellsWithProxyByCurrent.push(item)
       })
@@ -237,7 +237,7 @@ export function initGridContainer(
     const point = { x: position.x, y: position.y }
     const initElement = document.elementFromPoint(point.x, point.y)
     if (initElement)
-      result = gridCells.value.filter((ele: { id: string }) => ele.id === initElement.id)
+      result = bentoCells.value.filter((ele: { id: string }) => ele.id === initElement.id)
 
     return result ? result[0] : null
   }

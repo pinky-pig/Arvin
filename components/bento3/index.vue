@@ -8,7 +8,7 @@ import type { BentoCellsType } from './index.module'
 import { cfg } from './config'
 
 const props = defineProps({
-  gridCells: {
+  bentoCells: {
     default: cfg as BentoCellsType[],
   },
 })
@@ -18,7 +18,7 @@ const cellBox = {
   height: 100,
 }
 
-const gridCells = ref(props.gridCells)
+const bentoCells = ref(props.bentoCells)
 const bentoContainerRef = ref()
 
 const currentClickedElement: Ref<any> = ref()
@@ -32,7 +32,7 @@ const proxyBox = ref<BentoCellsType>({
 })
 // 1.初始化盒子，给盒子添加鼠标点击事件
 onMounted(() => {
-  initGridContainer(bentoContainerRef, gridCells, currentClickedElement, props, proxyBox, cellBox)
+  initGridContainer(bentoContainerRef, bentoCells, currentClickedElement, props, proxyBox, cellBox)
 })
 </script>
 
@@ -43,10 +43,10 @@ onMounted(() => {
   >
     <component
       :is="item.component"
-      v-for="item, index in gridCells"
+      v-for="item, index in bentoCells"
       :id="`${item.id}`"
       :key="item.id"
-      v-model="gridCells[index]"
+      v-model="bentoCells[index]"
       style="border-radius: 9px;"
       :class="item !== currentClickedElement ? 'bento-item ' : 'z-9'"
       :style="{
