@@ -9,28 +9,45 @@ export interface BentoCellsType {
   [key: string]: any
 }
 
+const isDragging = ref(false)
 let mouseFrom = { x: 0, y: 0 }
 let mouseTo = { x: 0, y: 0 }
-let isDragging = false
 let area: string[][] = []
 export function initGridContainer(
   containerRef: Ref<HTMLElement>,
   bentoCells: Ref<BentoCellsType[]>,
   currentClickedElement: Ref<any>,
-  propsOption: any,
   proxyBox: Ref<BentoCellsType>,
   cellBox: { width: number; height: number },
+  propsOption: any,
+  emit: any,
 ) {
-  // 1.初始化时，检查是否有重叠的元素
+  // 监听拖拽事件返回
+  watch(isDragging, (v, o) => {
+    if (v)
+      emit('dragStart', currentClickedElement.value)
+    else if (!v)
+      emit('dragEnd', bentoCells.value)
+  })
+
+  // 1.初始化时，
+  // 1.1检查是否有重叠的元素
   const overlap = checkOverlap(bentoCells.value)
-  if (!overlap) {
+  // 1.2检查是否有超过边界的元素
+  const exceedingMaxCells = checkExceedingMaxCells(bentoCells.value, propsOption.maximumCells)
+  if (!overlap && !exceedingMaxCells.length) {
     bindMouseEvent()
   }
   else {
-    console.error('初始要素位置有重叠，请检查')
-    unBindMouseEvent()
+    console.error('初始要素位置有重叠或超过边界值，使用默认布局')
+    // unBindMouseEvent()
+    fixOverlap(bentoCells.value)
+    fixExceedingMaxCells(exceedingMaxCells, propsOption.maximumCells)
+    setTimeout(() => {
+      bindMouseEvent()
+      emit('dragEnd', bentoCells.value)
+    })
   }
-  // 2.如果有重叠的要素，默认摆放合适的位置
 
   function bindMouseEvent() {
     window.addEventListener('pointerdown', mousedown, false)
@@ -47,7 +64,7 @@ export function initGridContainer(
     mouseFrom = { x: e.clientX, y: e.clientY }
     currentClickedElement.value = getCellObjectInStoreFromPosition(mouseFrom)
     if (currentClickedElement.value) {
-      isDragging = true
+      isDragging.value = true
       // place-holder
       proxyBox.value = Object.assign({ tag: 'proxy' }, currentClickedElement.value)
       // 将当前拖拽的元素放到最上面
@@ -66,15 +83,15 @@ export function initGridContainer(
     if (!rect)
       return
 
-    if (isDragging) {
+    if (isDragging.value) {
       currentClickedElement.value.x += disX
       currentClickedElement.value.y += disY
 
       // 限制拖拽范围
       if (currentClickedElement.value.x < 0)
         currentClickedElement.value.x = 0
-      if (currentClickedElement.value.x + currentClickedElement.value.width > 4)
-        currentClickedElement.value.x = 4 - currentClickedElement.value.width
+      if (currentClickedElement.value.x + currentClickedElement.value.width > propsOption.maximumCells)
+        currentClickedElement.value.x = propsOption.maximumCells - currentClickedElement.value.width
       if (currentClickedElement.value.y < 0)
         currentClickedElement.value.y = 0
       mouseFrom = { x: e.clientX, y: e.clientY }
@@ -190,19 +207,6 @@ export function initGridContainer(
 
         return 0
       }
-      // 检查两个元素是否发生碰撞的功能函数
-      // 元素 a 的左侧坐标小于元素 b 的右侧坐标。
-      // 元素 a 的右侧坐标大于元素 b 的左侧坐标。
-      // 元素 a 的上方坐标小于元素 b 的下方坐标。
-      // 元素 a 的下方坐标大于元素 b 的上方坐标
-      function checkHit(a: BentoCellsType, b: BentoCellsType) {
-        return (
-          a.x < b.x + b.width
-          && a.x + a.width > b.x
-          && a.y < b.y + b.height
-          && a.y + a.height > b.y
-        )
-      }
     }
   }
   function mouseup(_e: MouseEvent) {
@@ -213,7 +217,7 @@ export function initGridContainer(
     }
     mouseFrom.x = 0
     mouseFrom.y = 0
-    isDragging = false
+    isDragging.value = false
   }
 
   // 判断传递过来的要素是否有重叠。true表示有重叠，false表示没有重叠
@@ -242,6 +246,10 @@ export function initGridContainer(
     return result ? result[0] : null
   }
 
+  // 返回值为一个二维数组。
+  // 该函数通过遍历输入的节点数组，将节点的id按照其位置信息记录在返回的二维数组中。
+  // 具体实现方式为，先遍历每个节点，再通过两层循环分别遍历节点所占据的行和列，
+  // 最后将该位置上的元素设为当前节点的id。
   function getArea(nodes: BentoCellsType[]) {
     const area: any = []
     nodes.forEach((n) => {
@@ -255,5 +263,78 @@ export function initGridContainer(
       }
     })
     return area
+  }
+
+  // 检查两个元素是否发生碰撞的功能函数
+  // 元素 a 的左侧坐标小于元素 b 的右侧坐标。
+  // 元素 a 的右侧坐标大于元素 b 的左侧坐标。
+  // 元素 a 的上方坐标小于元素 b 的下方坐标。
+  // 元素 a 的下方坐标大于元素 b 的上方坐标
+  function checkHit(a: BentoCellsType, b: BentoCellsType) {
+    return (
+      a.x < b.x + b.width
+          && a.x + a.width > b.x
+          && a.y < b.y + b.height
+          && a.y + a.height > b.y
+    )
+  }
+
+  // 将重叠的元素移动到下面
+  function fixOverlap(cells: BentoCellsType[]): void {
+    const n = cells.length
+    for (let i = 0; i < n - 1; i++) {
+      const cell1 = cells[i]
+      for (let j = i + 1; j < n; j++) {
+        const cell2 = cells[j]
+        if (checkHit(cell1, cell2)) {
+          const dy = Math.max(0, cell1.y + cell1.height)
+          cell2.y = dy
+        }
+      }
+    }
+  }
+
+  function fixExceedingMaxCells(cells: { element: BentoCellsType; type: 'maxX' | 'minX' | 'minY' }[], maximumCells: number): void {
+    cells.forEach((ele) => {
+      if (ele.type === 'maxX')
+        ele.element.x = maximumCells - ele.element.width
+      else if (ele.type === 'minX')
+        ele.element.x = 0
+      else if (ele.type === 'minY')
+        ele.element.y = 0
+    })
+  }
+  // 是否有超过边界的值
+  function checkExceedingMaxCells(bentoCells: BentoCellsType[], maximumCells: number) {
+    const exceedingElements: { element: BentoCellsType; type: 'maxX' | 'minX' | 'minY' }[] = []
+    bentoCells.forEach((element) => {
+      const maxX = element.x + element.width
+      const minX = element.x
+      const minY = element.y
+      switch (true) {
+        case maxX > maximumCells:
+          exceedingElements.push({
+            element,
+            type: 'maxX',
+          })
+          break
+        case minX < 0:
+          exceedingElements.push({
+            element,
+            type: 'minX',
+          })
+          break
+        case minY < 0:
+          exceedingElements.push({
+            element,
+            type: 'minY',
+          })
+          break
+
+        default:
+          break
+      }
+    })
+    return exceedingElements
   }
 }

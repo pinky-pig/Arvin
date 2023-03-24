@@ -11,7 +11,11 @@ const props = defineProps({
   bentoCells: {
     default: cfg as BentoCellsType[],
   },
+  maximumCells: {
+    default: 4,
+  },
 })
+const emit = defineEmits(['dragStart', 'dragEnd'])
 
 const cellBox = {
   width: 100,
@@ -32,7 +36,7 @@ const proxyBox = ref<BentoCellsType>({
 })
 // 1.初始化盒子，给盒子添加鼠标点击事件
 onMounted(() => {
-  initGridContainer(bentoContainerRef, bentoCells, currentClickedElement, props, proxyBox, cellBox)
+  initGridContainer(bentoContainerRef, bentoCells, currentClickedElement, proxyBox, cellBox, props, emit)
 })
 </script>
 
