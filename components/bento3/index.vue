@@ -9,18 +9,18 @@ import GridCellThree from './components/GridCellThree.vue'
 import GridCellFour from './components/GridCellFour.vue'
 import GridCellFive from './components/GridCellFive.vue'
 import GridCellSix from './components/GridCellSix.vue'
-import { initGridContainer } from '.'
-import type { GridCellsType } from '.'
+import { initGridContainer } from './index.module'
+import type { GridCellsType } from './index.module'
 
 const props = defineProps({
   gridCells: {
     default: [
-      { id: '1', x: 1, y: 1, width: 1, height: 1, component: markRaw(GridCellOne) },
-      { id: '2', x: 2, y: 1, width: 1, height: 1, component: markRaw(GridCellTwo) },
-      { id: '3', x: 3, y: 1, width: 1, height: 2, component: markRaw(GridCellThree) },
-      { id: '4', x: 4, y: 1, width: 2, height: 2, component: markRaw(GridCellFour) },
-      { id: '5', x: 1, y: 2, width: 2, height: 1, component: markRaw(GridCellFive) },
-      { id: '6', x: 3, y: 2, width: 2, height: 1, component: markRaw(GridCellSix) },
+      { id: '1', x: 0, y: 0, width: 1, height: 1, component: markRaw(GridCellOne) },
+      { id: '2', x: 1, y: 0, width: 1, height: 1, component: markRaw(GridCellTwo) },
+      { id: '3', x: 2, y: 0, width: 1, height: 2, component: markRaw(GridCellThree) },
+      { id: '4', x: 3, y: 0, width: 2, height: 2, component: markRaw(GridCellFour) },
+      { id: '5', x: 0, y: 1, width: 2, height: 1, component: markRaw(GridCellFive) },
+      { id: '6', x: 2, y: 1, width: 2, height: 1, component: markRaw(GridCellSix) },
     ] as GridCellsType[],
   },
 })

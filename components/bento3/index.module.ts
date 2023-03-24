@@ -34,6 +34,12 @@ export function initGridContainer(
       isDragging = true
       // place-holder
       proxyBox.value = Object.assign({ tag: 'proxy' }, currentClickedElement.value)
+      // 将当前拖拽的元素放到最上面
+      const index = gridCells.value.findIndex((ele: { id: any }) => ele.id === currentClickedElement.value.id)
+      if (index !== -1) {
+        const ele = gridCells.value.splice(index, 1)
+        gridCells.value.push(ele[0])
+      }
     }
   }
   function mousemove(e: MouseEvent) {
@@ -49,12 +55,12 @@ export function initGridContainer(
       currentClickedElement.value.y += disY
 
       // 限制拖拽范围
-      if (currentClickedElement.value.x < 1)
-        currentClickedElement.value.x = 1
-      if (currentClickedElement.value.x + currentClickedElement.value.width > 5)
-        currentClickedElement.value.x = 5 - currentClickedElement.value.width
-      if (currentClickedElement.value.y < 1)
-        currentClickedElement.value.y = 1
+      if (currentClickedElement.value.x < 0)
+        currentClickedElement.value.x = 0
+      if (currentClickedElement.value.x + currentClickedElement.value.width > 4)
+        currentClickedElement.value.x = 4 - currentClickedElement.value.width
+      if (currentClickedElement.value.y < 0)
+        currentClickedElement.value.y = 0
       mouseFrom = { x: e.clientX, y: e.clientY }
 
       proxyBox.value.x = Math.round(currentClickedElement.value.x)
@@ -138,7 +144,7 @@ export function initGridContainer(
       /////////////////////////////////////////////////////////////////////////////////////
 
       function bubbleUp(node: GridCellsType) {
-        for (let row = node.y - 1; row > 0; row--) {
+        for (let row = node.y - 1; row >= 0; row--) {
           // 如果一整行都为空，则直接继续往上找
           if (area[row] === undefined)
             continue
@@ -165,7 +171,7 @@ export function initGridContainer(
           }
         }
 
-        return 1
+        return 0
       }
       // 检查两个元素是否发生碰撞的功能函数
       // 元素 a 的左侧坐标小于元素 b 的右侧坐标。
