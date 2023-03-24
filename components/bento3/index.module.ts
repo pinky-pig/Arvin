@@ -21,12 +21,28 @@ export function initGridContainer(
   proxyBox: Ref<BentoCellsType>,
   cellBox: { width: number; height: number },
 ) {
-  bindMouseEvent()
+  // 1.初始化时，检查是否有重叠的元素
+  const overlap = checkOverlap(gridCells.value)
+  if (!overlap) {
+    bindMouseEvent()
+  }
+  else {
+    console.error('初始要素位置有重叠，请检查')
+    unBindMouseEvent()
+  }
+  // 2.如果有重叠的要素，默认摆放合适的位置
+
   function bindMouseEvent() {
     window.addEventListener('pointerdown', mousedown, false)
     window.addEventListener('pointermove', mousemove, false)
     window.addEventListener('pointerup', mouseup, false)
   }
+  function unBindMouseEvent() {
+    window.removeEventListener('pointerdown', mousedown, false)
+    window.removeEventListener('pointermove', mousemove, false)
+    window.removeEventListener('pointerup', mouseup, false)
+  }
+
   function mousedown(e: MouseEvent) {
     mouseFrom = { x: e.clientX, y: e.clientY }
     currentClickedElement.value = getCellObjectInStoreFromPosition(mouseFrom)
@@ -94,6 +110,7 @@ export function initGridContainer(
       // 这里会有个元素重叠的情况。一般情况下，不会出现，因为碰撞走了
       // 但是如果碰撞没有走，那么就会出现重叠的情况，这样这里的递归会一直走，这里需要处理
       function hitAllEle(node: BentoCellsType, allNodes: BentoCellsType[]) {
+        // area = getArea(allCellsWithProxyByCurrent)
         const hittedNodes: any = []
 
         // 1.找到当前元素第一层碰撞的元素
@@ -198,6 +215,22 @@ export function initGridContainer(
     mouseFrom.y = 0
     isDragging = false
   }
+
+  // 判断传递过来的要素是否有重叠。true表示有重叠，false表示没有重叠
+  function checkOverlap(elements: BentoCellsType[]): boolean {
+    for (let i = 0; i < elements.length; i++) {
+      const ele1 = elements[i]
+      for (let j = i + 1; j < elements.length; j++) {
+        const ele2 = elements[j]
+        const xOverlap = ele1.x + ele1.width > ele2.x && ele1.x < ele2.x + ele2.width
+        const yOverlap = ele1.y + ele1.height > ele2.y && ele1.y < ele2.y + ele2.height
+        if (xOverlap && yOverlap)
+          return true
+      }
+    }
+    return false
+  }
+
   // 获取当前点击的元素
   function getCellObjectInStoreFromPosition(position: { x: number; y: number }): Object | null {
     let result: any = null
