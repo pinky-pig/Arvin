@@ -10,7 +10,7 @@ import GridCellFour from './components/GridCellFour.vue'
 import GridCellFive from './components/GridCellFive.vue'
 import GridCellSix from './components/GridCellSix.vue'
 import { initGridContainer } from './index.module'
-import type { GridCellsType } from './index.module'
+import type { BentoCellsType } from './index.module'
 
 const props = defineProps({
   gridCells: {
@@ -21,7 +21,7 @@ const props = defineProps({
       { id: '4', x: 3, y: 0, width: 2, height: 2, component: markRaw(GridCellFour) },
       { id: '5', x: 0, y: 1, width: 2, height: 1, component: markRaw(GridCellFive) },
       { id: '6', x: 2, y: 1, width: 2, height: 1, component: markRaw(GridCellSix) },
-    ] as GridCellsType[],
+    ] as BentoCellsType[],
   },
 })
 
@@ -34,7 +34,7 @@ const gridCells = ref(props.gridCells)
 const bentoContainerRef = ref()
 
 const currentClickedElement: Ref<any> = ref()
-const proxyBox = ref<GridCellsType>({
+const proxyBox = ref<BentoCellsType>({
   id: 'proxy',
   index: 0,
   x: 0,

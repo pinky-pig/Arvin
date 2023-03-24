@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 
-export interface GridCellsType {
+export interface BentoCellsType {
   id: string
   x: number
   y: number
@@ -15,10 +15,10 @@ let isDragging = false
 let area: string[][] = []
 export function initGridContainer(
   containerRef: Ref<HTMLElement>,
-  gridCells: Ref<GridCellsType[]>,
+  gridCells: Ref<BentoCellsType[]>,
   currentClickedElement: Ref<any>,
   propsOption: any,
-  proxyBox: Ref<GridCellsType>,
+  proxyBox: Ref<BentoCellsType>,
   cellBox: { width: number; height: number },
 ) {
   bindMouseEvent()
@@ -68,7 +68,7 @@ export function initGridContainer(
 
       /////////////////////////////////////////////////////////////////////////////////////
       // 1.除了当前拖拽的元素之外的所有元素
-      const allCellsWithProxyByCurrent: GridCellsType[] = []
+      const allCellsWithProxyByCurrent: BentoCellsType[] = []
       gridCells.value.forEach((item) => {
         if (item.id !== currentClickedElement.value.id)
           allCellsWithProxyByCurrent.push(item)
@@ -93,18 +93,18 @@ export function initGridContainer(
       // todo: 需要限制递归深度，避免无限递归导致的性能问题
       // 这里会有个元素重叠的情况。一般情况下，不会出现，因为碰撞走了
       // 但是如果碰撞没有走，那么就会出现重叠的情况，这样这里的递归会一直走，这里需要处理
-      function hitAllEle(node: GridCellsType, allNodes: GridCellsType[]) {
+      function hitAllEle(node: BentoCellsType, allNodes: BentoCellsType[]) {
         const hittedNodes: any = []
 
         // 1.找到当前元素第一层碰撞的元素
-        allNodes.forEach((n: GridCellsType, index: number) => {
+        allNodes.forEach((n: BentoCellsType, index: number) => {
           if (node.id !== n.id && checkHit(node, n)) {
             // 将当前碰撞的要素添加到数组中
             hittedNodes.push(n)
           }
         })
         // 2.碰撞到了之后，一格一格移动
-        hittedNodes.forEach((n: GridCellsType) => {
+        hittedNodes.forEach((n: BentoCellsType) => {
           for (let h = n.y + 1; h <= node.y + node.height; h++) {
             n.y = h
             // 每次移动一格之后，就来检测一下，是否还有元素被碰撞
@@ -112,12 +112,12 @@ export function initGridContainer(
           }
         })
       }
-      function getAllCellsByArea(area: string[][], allCells: GridCellsType[]) {
-        const result: GridCellsType[] = []
+      function getAllCellsByArea(area: string[][], allCells: BentoCellsType[]) {
+        const result: BentoCellsType[] = []
         // 数组去重
         Array.from(new Set(area.flat())).forEach((cell: string) => {
           allCells.forEach((n) => {
-            if (n.id === cell && result.findIndex((ele: GridCellsType) => ele.id === n.id) === -1)
+            if (n.id === cell && result.findIndex((ele: BentoCellsType) => ele.id === n.id) === -1)
               result.push(n)
           })
         })
@@ -143,7 +143,7 @@ export function initGridContainer(
       }
       /////////////////////////////////////////////////////////////////////////////////////
 
-      function bubbleUp(node: GridCellsType) {
+      function bubbleUp(node: BentoCellsType) {
         for (let row = node.y - 1; row >= 0; row--) {
           // 如果一整行都为空，则直接继续往上找
           if (area[row] === undefined)
@@ -178,7 +178,7 @@ export function initGridContainer(
       // 元素 a 的右侧坐标大于元素 b 的左侧坐标。
       // 元素 a 的上方坐标小于元素 b 的下方坐标。
       // 元素 a 的下方坐标大于元素 b 的上方坐标
-      function checkHit(a: GridCellsType, b: GridCellsType) {
+      function checkHit(a: BentoCellsType, b: BentoCellsType) {
         return (
           a.x < b.x + b.width
           && a.x + a.width > b.x
@@ -209,7 +209,7 @@ export function initGridContainer(
     return result ? result[0] : null
   }
 
-  function getArea(nodes: GridCellsType[]) {
+  function getArea(nodes: BentoCellsType[]) {
     const area: any = []
     nodes.forEach((n) => {
       for (let row = n.y; row < n.y + n.height; row++) {
