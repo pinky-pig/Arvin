@@ -18,7 +18,7 @@ export function initGridContainer(
   bentoCells: Ref<BentoCellsType[]>,
   currentClickedElement: Ref<any>,
   proxyBox: Ref<BentoCellsType>,
-  cellBox: { width: number; height: number },
+  size: number,
   propsOption: any,
   emit: any,
 ) {
@@ -77,8 +77,8 @@ export function initGridContainer(
   }
   function mousemove(e: MouseEvent) {
     mouseTo = { x: e.clientX, y: e.clientY }
-    const disX = (mouseTo.x - mouseFrom.x) / cellBox.width
-    const disY = (mouseTo.y - mouseFrom.y) / cellBox.height
+    const disX = (mouseTo.x - mouseFrom.x) / size
+    const disY = (mouseTo.y - mouseFrom.y) / size
     const rect = containerRef.value?.getBoundingClientRect()
     if (!rect)
       return

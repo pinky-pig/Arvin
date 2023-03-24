@@ -14,13 +14,11 @@ const props = defineProps({
   maximumCells: {
     default: 4,
   },
+  size: {
+    default: 100,
+  },
 })
 const emit = defineEmits(['dragStart', 'dragEnd'])
-
-const cellBox = {
-  width: 100,
-  height: 100,
-}
 
 const bentoCells = ref(props.bentoCells)
 const bentoContainerRef = ref()
@@ -36,7 +34,7 @@ const proxyBox = ref<BentoCellsType>({
 })
 // 1.初始化盒子，给盒子添加鼠标点击事件
 onMounted(() => {
-  initGridContainer(bentoContainerRef, bentoCells, currentClickedElement, proxyBox, cellBox, props, emit)
+  initGridContainer(bentoContainerRef, bentoCells, currentClickedElement, proxyBox, props.size, props, emit)
 })
 </script>
 
@@ -55,10 +53,10 @@ onMounted(() => {
       :class="item !== currentClickedElement ? 'bento-item ' : 'z-9'"
       :style="{
         position: 'absolute',
-        left: `${item.x * cellBox.width}px`,
-        top: `${item.y * cellBox.height}px`,
-        width: `${item.width * cellBox.width}px`,
-        height: `${item.height * cellBox.height}px`,
+        left: `${item.x * props.size}px`,
+        top: `${item.y * props.size}px`,
+        width: `${item.width * props.size}px`,
+        height: `${item.height * props.size}px`,
       }"
     />
     <div
@@ -66,10 +64,10 @@ onMounted(() => {
       class="bento-item-placeholder"
       :style="{
         position: 'absolute',
-        left: `${proxyBox.x * cellBox.width}px`,
-        top: `${proxyBox.y * cellBox.height}px`,
-        width: `${proxyBox.width * cellBox.width}px`,
-        height: `${proxyBox.height * cellBox.height}px`,
+        left: `${proxyBox.x * props.size}px`,
+        top: `${proxyBox.y * props.size}px`,
+        width: `${proxyBox.width * props.size}px`,
+        height: `${proxyBox.height * props.size}px`,
       }"
     />
   </div>
