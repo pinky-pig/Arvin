@@ -69,10 +69,10 @@ onMounted(() => {
       class="bento-item-placeholder"
       :style="{
         position: 'absolute',
-        left: `${proxyBox.x * props.size}px`,
-        top: `${proxyBox.y * props.size}px`,
-        width: `${proxyBox.width * props.size}px`,
-        height: `${proxyBox.height * props.size}px`,
+        left: `${proxyBox.x * (props.size + props.gap)}px`,
+        top: `${proxyBox.y * (props.size + props.gap)}px`,
+        width: `${proxyBox.width === 2 ? proxyBox.width * props.size + props.gap : proxyBox.width * props.size}px`,
+        height: `${proxyBox.height === 2 ? proxyBox.height * props.size + props.gap : proxyBox.height * props.size}px`,
       }"
     />
   </div>
