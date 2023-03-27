@@ -61,6 +61,6 @@ useResizeObserver(containerRef, (entries) => {
 }
 :deep(.bento-item-placeholder){
   border-radius: 12px !important;
-  background-color: var(--second-bg-color);
+  background-color: var(--card--placeholder-bg);
 }
 </style>

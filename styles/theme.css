@@ -1,27 +1,15 @@
 html.dark{
   background: black;
-  --primary-bg-color                      :#222222;
-  --primary-text-color                    :#EDEDED;
 
-  --primary-bg-color-light                :#30363D;
-  --primary-text-color-light              :#EDEDED90;
-
-  --second-bg-color                       :#0D1117;
-  --second-text-color                     :#EDEDED;
-  --second-bg-color-light                 :#30363D;
-  --second-text-color-light               :#EDEDED;
+  --card--bg              : #0D1117;
+  --card--border          : #30363D;
+  --card--placeholder-bg  : #1c2025;
 }
 
 html{
   background: white;
-  --primary-bg-color                      :#ffffff;
-  --primary-text-color                    :#222222;
 
-  --primary-bg-color-light                :#ede9e9;
-  --primary-text-color-light              :#30363D90;
-
-  --second-bg-color                       :#ffffff;
-  --second-text-color                     :#30363D90;
-  --second-bg-color-light                 :#ffffff;
-  --second-text-color-light               :#30363D90;
+  --card--bg              : #ffffff;
+  --card--border          : #ede9e9;
+  --card--placeholder-bg  : #ede9e9;
 }
