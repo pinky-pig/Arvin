@@ -1,5 +1,5 @@
 <template>
-  <div class=" card-container ">
+  <div class="card-container">
     <slot />
   </div>
 </template>
@@ -7,7 +7,7 @@
 <style scoped>
 .card-container {
   background-color: var(--second-bg-color);
-  border-color: var(--primary-bg-color-light);
+  border-color: var(--second-bg-color-light);
   border-width: 5px;
   border-style: solid;
   margin-bottom: 8px;

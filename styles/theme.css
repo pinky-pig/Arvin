@@ -7,7 +7,9 @@ html.dark{
   --primary-text-color-light              :#EDEDED90;
 
   --second-bg-color                       :#0D1117;
-  --second-text-color                    :#EDEDED;
+  --second-text-color                     :#EDEDED;
+  --second-bg-color-light                 :#30363D;
+  --second-text-color-light               :#EDEDED;
 }
 
 html{
@@ -15,6 +17,11 @@ html{
   --primary-bg-color                      :#ffffff;
   --primary-text-color                    :#222222;
 
-  --primary-bg-color-light                :#EDEDED;
+  --primary-bg-color-light                :#ede9e9;
   --primary-text-color-light              :#30363D90;
+
+  --second-bg-color                       :#ffffff;
+  --second-text-color                     :#30363D90;
+  --second-bg-color-light                 :#ffffff;
+  --second-text-color-light               :#30363D90;
 }

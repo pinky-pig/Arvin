@@ -56,12 +56,11 @@ useResizeObserver(containerRef, (entries) => {
 }
 
 .bento-container {
-  border: 1px solid rgb(176, 108, 108);
   margin-left: auto;
   margin-right: auto;
 }
 :deep(.bento-item-placeholder){
   border-radius: 12px !important;
-  background-color: var(--primary-bg-color);
+  background-color: var(--second-bg-color);
 }
 </style>
