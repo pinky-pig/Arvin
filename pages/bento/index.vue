@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Bento from '~/components/bento3/index.vue'
+import Bento from '~/components/bento/index.vue'
 
 const print = (val: string, e: any) => {
   // eslint-disable-next-line no-console
