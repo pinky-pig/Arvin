@@ -13,6 +13,7 @@ specifiers:
   nuxt: ^3.2.2
   pinia: ^2.0.30
   typescript: ^4.9.5
+  v3-bento: ^0.0.2
 
 devDependencies:
   '@antfu/eslint-config': 0.35.2_7kw3g6rralp5ps6mg3uyzz6azm
@@ -27,6 +28,7 @@ devDependencies:
   nuxt: 3.2.2_7kw3g6rralp5ps6mg3uyzz6azm
   pinia: 2.0.30_typescript@4.9.5
   typescript: 4.9.5
+  v3-bento: 0.0.2
 
 packages:
 
@@ -8591,6 +8593,10 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: true
+
+  /v3-bento/0.0.2:
+    resolution: {integrity: sha512-v9ONYYn36jSvHqGLoJ1zhcRrb66oZntfrbFtN5rFAn6B53W+m1vo4YrpdsZzwQ1A0G9Xe96LqcAV+llHNQhUjg==}
     dev: true
 
   /validate-npm-package-license/3.0.4:

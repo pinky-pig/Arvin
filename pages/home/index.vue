@@ -1,12 +1,38 @@
 <script setup lang="ts">
+import Bento from 'v3-bento'
+
+const print = (val: string, e: any) => {
+  // eslint-disable-next-line no-console
+  console.log(val, e)
+}
 </script>
 
 <template>
-  <div
-    class="box-border mx-auto transition-all -mt-5 mb-12 md:box-border box-content pr-3 w-full max-w-xl md:max-w-2xl xl:max-w-88rem lg:max-w-5xl"
-  >
-    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 mx-0 md:-mr-5 mr-0">
-      <Card v-for="index in 2" :key="index" />
-    </div>
+  <div class="container">
+    <Bento
+      class="bento-container"
+      :size="100"
+      :gap="10"
+      :maximum-cells="4"
+      @drag-start="print('drag-start', $event)"
+      @drag-end="print('drag-end', $event)"
+    />
   </div>
 </template>
+
+<style scoped>
+.container {
+  height: 60vh;
+  width: 80vw;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  place-items: center;
+}
+.bento-container{
+  border: 1px solid rgb(176, 108, 108);
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// 这个不用了，使用下面这个仓库里的代码
+// <https://github.com/pinky-pig/what-is-v3-bento>
 // 1.总共有两列，每一列里面有两列
 // 2.每列有四个格子，间距为 10
 // 3.组件能占分别是 1,2 两种
