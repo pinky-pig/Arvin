@@ -1,0 +1,20 @@
+html.dark{
+  background: black;
+  --primary-bg-color                      :#222222;
+  --primary-text-color                    :#EDEDED;
+
+  --primary-bg-color-light                :#30363D;
+  --primary-text-color-light              :#EDEDED90;
+
+  --second-bg-color                       :#0D1117;
+  --second-text-color                    :#EDEDED;
+}
+
+html{
+  background: white;
+  --primary-bg-color                      :#ffffff;
+  --primary-text-color                    :#222222;
+
+  --primary-bg-color-light                :#EDEDED;
+  --primary-text-color-light              :#30363D90;
+}

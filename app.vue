@@ -15,6 +15,7 @@ useHead({
 
 <style>
 @import './styles/index.css';
+@import './styles/theme.css';
 
 html, body , #__nuxt{
   height: 100vh;
@@ -23,7 +24,7 @@ html, body , #__nuxt{
 }
 
 html.dark {
-  background: rgb(9, 12, 16);
+  background: #090C10;
   color: white;
 }
 html{
