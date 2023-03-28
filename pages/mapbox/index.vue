@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import 'mapbox-gl/dist/mapbox-gl.css'
-import './lit-logo-marker'
 import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config/param'
