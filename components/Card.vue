@@ -14,5 +14,8 @@
   overflow: hidden;
   border-radius: 12px !important;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

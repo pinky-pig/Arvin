@@ -2,6 +2,6 @@
   <main class="text-center">
     <Header />
     <slot />
-    <Footer />
+    <!-- <Footer /> -->
   </main>
 </template>
