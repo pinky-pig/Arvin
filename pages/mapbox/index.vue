@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import 'mapbox-gl/dist/mapbox-gl.css'
+import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config'
 const mapContainer = ref(null)
@@ -11,11 +13,16 @@ onMounted(() => {
     zoom: 15,
     accessToken: MapboxSetting.token,
   })
+
   const el = document.createElement('div')
   el.className = 'marker'
+  el.style.backgroundImage = 'url(https://placekitten.com/g/60/60/)'
+  el.style.width = '60px'
+  el.style.height = '60px'
+  el.style.backgroundSize = '100%'
   new mapboxgl.Marker(el)
-    .setLngLat([118.888175, 32.048268]) // 经纬度坐标值
-    .addTo(map)
+    .setLngLat([118.888175, 32.048268] as LngLatLike)
+    .addTo(map!)
 })
 onUnmounted(() => {
   map!.remove()
@@ -23,9 +30,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Card>
-    <div ref="mapContainer" style="width: 100%; height: 100vh;" />
-  </Card>
+  <div ref="mapContainer" style="width: 672px; height: 435px;" />
 </template>
 
 <style scoped>

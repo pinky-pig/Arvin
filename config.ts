@@ -17,3 +17,7 @@ export enum UnsplashSetting {
   AccessKey = 'KM1kMtcaYX2SZQR1m_o-pwg4RJZUVivPZgfJsbw5h2o',
   SecretKey = 'ma572d0k1fKQIBlLm49h9k3A7np9X_ezS1hfu4Upaeo',
 }
+
+export enum MapboxSetting {
+  token = 'pk.eyJ1IjoicGlua3ktcGlnIiwiYSI6ImNsZnJvZ2Q1cDAwZ3ozcG56bXFwbjAzZjAifQ.eEOFvRbKqZHQ3OxeqPBsXw',
+}
