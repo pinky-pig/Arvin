@@ -22,9 +22,37 @@ export class LogoMarker extends LitElement {
       -webkit-box-pack: center;
       justify-content: center;
       will-change: transform;;
+      transition: all 0.5s ease 0s;
+    }
+    .LogoMarker:hover {
+      transform: scale(1.1);
+    }
+    .logo {
+      max-width: 44px;
+      max-height: 44px;
+      transition: all 0.5s ease 0s;
+    }
+    .LogoMarker:hover .logo{
+      animation: shake 1.5s ease-in-out infinite;
+    }
+    @keyframes shake {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+      25%{
+        transform: scale(1.1) rotate(-20deg);
+      }
+      50% {
+        transform: scale(1) rotate(0deg);
+      }
+      75%{
+        transform: scale(1.1) rotate(20deg);
+      }
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
     }
   `
-
   constructor() {
     super()
     const anyThis = this as any
@@ -47,7 +75,7 @@ export class LogoMarker extends LitElement {
 
     return html` 
       <div class="LogoMarker" @click="${this.onButtonClick}">
-        <img src=${anyThis.name} alt="">
+        <img class="logo" src=${anyThis.name} alt="">
       </div>
     `
   }
