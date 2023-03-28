@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  MyLocation
+  Mapbox Preview
 </template>
 
 <style scoped>
