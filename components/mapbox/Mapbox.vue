@@ -13,6 +13,7 @@ onMounted(() => {
     zoom: 14,
     accessToken: MapboxSetting.token,
   })
+
   const el = document.createElement('div')
   el.innerHTML = '<logo-marker />'
   new mapboxgl.Marker(el)
