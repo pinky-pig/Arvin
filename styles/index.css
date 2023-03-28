@@ -1,4 +1,9 @@
+@import url('https://gw.alipayobjects.com/os/k/font/lxgwwenkaiscreenr.css');
 
+main {
+  font-family: 'LXGW WenKai Screen R', sans-serif;
+  letter-spacing: 0.6px;
+}
 ::-webkit-scrollbar{
   width:6px;
   height:6px;
