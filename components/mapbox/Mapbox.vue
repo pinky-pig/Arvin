@@ -8,7 +8,7 @@ let map: mapboxgl.Map | null = null
 onMounted(() => {
   map = new mapboxgl.Map({
     container: mapContainer.value!,
-    style: 'mapbox://styles/mapbox/dark-v11',
+    style: MapboxSetting.mapLightStyle,
     center: [118.888175, 32.048268],
     zoom: 14,
     accessToken: MapboxSetting.token,
@@ -22,6 +22,11 @@ onMounted(() => {
 })
 onUnmounted(() => {
   map!.remove()
+})
+
+const color = useColorMode()
+watch(() => color.value, () => {
+  map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
 </script>
 
