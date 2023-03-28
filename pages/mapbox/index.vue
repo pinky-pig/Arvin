@@ -17,23 +17,17 @@ onMounted(() => {
   })
 
   const el = document.createElement('div')
-  el.className = 'marker'
-  el.style.backgroundImage = 'url(https://placekitten.com/g/60/60/)'
-  el.style.width = '60px'
-  el.style.height = '60px'
-  el.style.backgroundSize = '100%'
+  el.innerHTML = '<logo-marker name="http://placekitten.com/60/60" />'
   new mapboxgl.Marker(el)
     .setLngLat([118.888175, 32.048268] as LngLatLike)
     .addTo(map!)
 })
-// console.log(customElements, 'customElements ')
 onUnmounted(() => {
   map!.remove()
 })
 </script>
 
 <template>
-  <logo-marker />
   <div ref="mapContainer" style="width: 672px; height: 435px;" />
 </template>
 
