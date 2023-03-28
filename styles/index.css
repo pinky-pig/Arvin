@@ -28,3 +28,10 @@
 ::-webkit-scrollbar-corner{
   display:none;
 }
+
+a.mapboxgl-ctrl-logo{
+  display:none !important;
+}
+.mapboxgl-ctrl-attrib.mapboxgl-compact{
+  display:none !important;
+}
