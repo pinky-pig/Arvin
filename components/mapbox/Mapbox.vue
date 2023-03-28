@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import mapboxgl from 'mapbox-gl'
-import { MapboxSetting } from '~~/config'
+import { MapboxSetting } from '~~/config/param'
+
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
 onMounted(() => {

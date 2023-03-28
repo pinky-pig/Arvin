@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AstroLogo from './AstroLogo.vue'
 import HeaderRight from './HeaderRight.vue'
-import { SITE } from '@/config'
+import { SITE } from '~~/config/param'
 </script>
 
 <template>

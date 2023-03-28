@@ -2,7 +2,8 @@
 import 'mapbox-gl/dist/mapbox-gl.css'
 import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
-import { MapboxSetting } from '~~/config'
+import { MapboxSetting } from '~~/config/param'
+
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
 onMounted(() => {
@@ -24,6 +25,7 @@ onMounted(() => {
     .setLngLat([118.888175, 32.048268] as LngLatLike)
     .addTo(map!)
 })
+// console.log(customElements, 'customElements ')
 onUnmounted(() => {
   map!.remove()
 })

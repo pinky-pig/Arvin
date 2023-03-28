@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SITE } from '../../config'
 import HeaderLink from './HeaderLink.vue'
+import { SITE } from '~~/config/param'
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SITE } from '../../config'
+import { SITE } from '~~/config/param'
 
 const props = defineProps(['size'])
 </script>
