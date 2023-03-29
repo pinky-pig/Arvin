@@ -16,7 +16,7 @@ onMounted(() => {
   })
 
   const el = document.createElement('div')
-  el.innerHTML = '<logo-marker />'
+  el.innerHTML = '<pop-marker />'
   new mapboxgl.Marker(el)
     .setLngLat([118.888175, 32.048268] as LngLatLike)
     .addTo(map!)
