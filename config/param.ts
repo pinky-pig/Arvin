@@ -20,6 +20,6 @@ export enum UnsplashSetting {
 
 export enum MapboxSetting {
   token = 'pk.eyJ1IjoicGlua3ktcGlnIiwiYSI6ImNsZnJvZ2Q1cDAwZ3ozcG56bXFwbjAzZjAifQ.eEOFvRbKqZHQ3OxeqPBsXw',
-  mapLightStyle = 'mapbox://styles/pinky-pig/clfs5wzom000301ozvqsqkyr7',
-  mapDarkStyle = 'mapbox://styles/pinky-pig/clft0vsbr000401tfn0ya9019',
+  mapLightStyle = 'mapbox://styles/pinky-pig/clft0vsbr000401tfn0ya9019',
+  mapDarkStyle = 'mapbox://styles/pinky-pig/clft35kll000o01osk8svnlfg',
 }
