@@ -21,5 +21,5 @@ export enum UnsplashSetting {
 export enum MapboxSetting {
   token = 'pk.eyJ1IjoicGlua3ktcGlnIiwiYSI6ImNsZnJvZ2Q1cDAwZ3ozcG56bXFwbjAzZjAifQ.eEOFvRbKqZHQ3OxeqPBsXw',
   mapLightStyle = 'mapbox://styles/pinky-pig/clfs5wzom000301ozvqsqkyr7',
-  mapDarkStyle = 'mapbox://styles/mapbox/streets-v11',
+  mapDarkStyle = 'mapbox://styles/pinky-pig/clft0vsbr000401tfn0ya9019',
 }

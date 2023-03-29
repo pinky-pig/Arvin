@@ -2,13 +2,14 @@
 import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config/param'
+const color = useColorMode()
 
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
 onMounted(() => {
   map = new mapboxgl.Map({
     container: mapContainer.value!,
-    style: 'mapbox://styles/mapbox/dark-v11',
+    style: color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle,
     center: [118.888175, 32.048268],
     zoom: 15,
     accessToken: MapboxSetting.token,
@@ -22,6 +23,10 @@ onMounted(() => {
 })
 onUnmounted(() => {
   map!.remove()
+})
+
+watch(() => color.value, () => {
+  map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
 </script>
 
