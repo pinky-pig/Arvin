@@ -15,17 +15,20 @@ onMounted(() => {
     accessToken: MapboxSetting.token,
   })
 
-  const el = document.createElement('div')
-  el.innerHTML = '<logo-marker />'
-  new mapboxgl.Marker(el)
-    .setLngLat([118.888175, 32.048268] as LngLatLike)
-    .addTo(map!)
+  map.on('load', () => {
+    const el = document.createElement('div')
+    el.innerHTML = '<logo-marker />'
+    new mapboxgl.Marker(el)
+      .setLngLat([118.888175, 32.048268] as LngLatLike)
+      .addTo(map!)
+  })
 })
 onUnmounted(() => {
   map!.remove()
 })
 
 watch(() => color.value, () => {
+  // 切换回默认主题
   map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
 </script>
