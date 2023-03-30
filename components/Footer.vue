@@ -1,8 +1,9 @@
 <template>
   <div
+    id="foot"
     text="xl gray4"
-    m-5
     flex
+    py-5
     justify-center
     gap-3
   >
@@ -11,3 +12,13 @@
     <DarkToggle />
   </div>
 </template>
+
+<style scoped>
+#foot{
+  position: fixed;
+  z-index: 9993;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+</style>
