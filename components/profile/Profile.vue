@@ -8,7 +8,7 @@ const handleSwitch = () => {
 
 <template>
   <Card>
-    <div class="p-10 relative">
+    <div class="p-10 relative pointer-events-none">
       <img class="w-96px h-96px mb-8 dark:bg-[var(--card--border)] rounded-full" src="/logo.png" alt="">
 
       <p style="z-index:1" class="intro-text">
@@ -17,7 +17,7 @@ const handleSwitch = () => {
         , a front-end developer from Nanjing. I'm interested in Vue, Web Components, Drag, and Music.
       </p>
 
-      <button class="switch-btn" @click="handleSwitch">
+      <button class="switch-btn pointer-events-auto" @click="handleSwitch">
         <div ref="iconRef" class="icon" :class="currentAvatar === 'Arvin' ? 'icon_rotate_one' : 'icon_rotate_two'" style="transform: rotate(0);">
           <svg
             width="15.702"

@@ -51,7 +51,6 @@ useResizeObserver(containerRef, (entries) => {
     <div
       ref="containerRef"
       w-full
-      h-60vh
       mx-auto
       grid
       place-items-center
