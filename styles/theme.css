@@ -1,5 +1,6 @@
 html.dark{
   background: black;
+  --text-color: rgb(240, 242, 248);
 
   --card--bg              : #0D1117;
   --card--border          : #30363D;
@@ -8,6 +9,7 @@ html.dark{
 
 html{
   background: white;
+  --text-color: rgb(13, 17, 23);
 
   --card--bg              : #ffffff;
   --card--border          : #ede9e9;

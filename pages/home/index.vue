@@ -36,7 +36,7 @@ useResizeObserver(containerRef, (entries) => {
   }
   else {
     maximumCells.value = 6
-    size.value = 240
+    size.value = 180
   }
 })
 </script>
