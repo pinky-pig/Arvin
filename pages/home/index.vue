@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
 import V3bento from 'v3-bento'
-import { bentoCells } from './bento'
+import { bentoCellsInDesktop, bentoCellsInMobile } from './bento'
 
 definePageMeta({
   layout: 'home',
@@ -16,6 +16,8 @@ const maximumCells = ref(4)
 const size = ref(180)
 const gap = ref(10)
 const containerRef = ref(null)
+const disabled = ref(false)
+const bentoCells = ref(bentoCellsInDesktop)
 
 useResizeObserver(containerRef, (entries) => {
   const entry = entries[0]
@@ -24,7 +26,16 @@ useResizeObserver(containerRef, (entries) => {
   // todo: 这里最好修改，如果当前的宽度除以当前的尺寸，
   // 比如 2 * size < width < 3 * size
   // 那么就缩小这个 size ，正好能显示三个
+
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  disabled.value = false
+  if (window.innerWidth <= 768 && isMobile) {
+    // 手机端
+    disabled.value = true
+  }
+
   if (width < 380) {
+    bentoCells.value = bentoCellsInMobile
     maximumCells.value = 2
     size.value = width / 2 - gap.value
     return
@@ -60,6 +71,7 @@ useResizeObserver(containerRef, (entries) => {
         :bento-cells="bentoCells"
         :size="size"
         :gap="gap"
+        :disabled="disabled"
         :maximum-cells="maximumCells"
         @drag-start="print('drag-start', $event)"
         @drag-end="print('drag-end', $event)"
