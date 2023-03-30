@@ -16,7 +16,7 @@ specifiers:
   nuxt-ssr-lit: ^1.4.3
   pinia: ^2.0.33
   typescript: ^5.0.2
-  v3-bento: 0.0.2-alpha.5
+  v3-bento: 0.0.2-alpha.5.2
 
 dependencies:
   mapbox-gl: 2.13.0
@@ -36,7 +36,7 @@ devDependencies:
   nuxt: 3.3.2_bcnce6t2n5ss3lv2getliffzhq
   pinia: 2.0.33_typescript@5.0.2
   typescript: 5.0.2
-  v3-bento: 0.0.2-alpha.5
+  v3-bento: 0.0.2-alpha.5.2
 
 packages:
 
@@ -8036,8 +8036,8 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /v3-bento/0.0.2-alpha.5:
-    resolution: {integrity: sha512-g08oZQSuGHLk2boQ40CLlko2gmH02qkxGWj069a2/06C3lvpjcRVVtprEZ6BxyPpupga6KXVGufI0p9hP/ottg==}
+  /v3-bento/0.0.2-alpha.5.2:
+    resolution: {integrity: sha512-5sIZ2dHq0NRH9l3CcigIQVb83b1cAPDea8Nb3YzlaSMrBaklqnYOeL1DB19hV545J4hD+KIqbd+3l40MjFZM9w==}
     dev: true
 
   /validate-npm-package-license/3.0.4:
