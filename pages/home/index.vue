@@ -8,7 +8,7 @@ definePageMeta({
   layout: 'home',
 })
 
-const print = (val: string, e: any) => {
+function print(val: string, e: any) {
   // eslint-disable-next-line no-console
   console.log(val, e)
 }
