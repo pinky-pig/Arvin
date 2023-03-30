@@ -17,7 +17,7 @@ onMounted(() => {
 
   map.on('load', () => {
     const el = document.createElement('div')
-    el.innerHTML = '<logo-marker />'
+    el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
     new mapboxgl.Marker(el)
       .setLngLat([118.888175, 32.048268] as LngLatLike)
       .addTo(map!)

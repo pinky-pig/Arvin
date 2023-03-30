@@ -20,7 +20,7 @@ onMounted(() => {
 
   map.on('load', () => {
     const el = document.createElement('div')
-    el.innerHTML = '<logo-marker name="http://localhost:3000/logo.svg" />'
+    el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
     new mapboxgl.Marker(el, {
       anchor: 'bottom',
       offset: [0, -20],
