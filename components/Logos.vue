@@ -14,7 +14,7 @@
     />
     <div flex flex-col children:mx-auto>
       <img w-18 h-18 inline-block src="/vite.png">
-      <span text-purple5 mt--2>Vitesse</span>
+      <span text-purple5 mt--2>Arvin</span>
     </div>
   </div>
 </template>
