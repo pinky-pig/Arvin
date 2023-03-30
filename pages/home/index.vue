@@ -16,8 +16,10 @@ const maximumCells = ref(4)
 const size = ref(180)
 const gap = ref(10)
 const containerRef = ref(null)
-const disabled = ref(false)
-const bentoCells = ref(bentoCellsInDesktop)
+
+const isMobileRef = computed(() => window.innerWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+const disabled = computed(() => isMobileRef.value)
+const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop)
 
 useResizeObserver(containerRef, (entries) => {
   const entry = entries[0]
@@ -27,15 +29,7 @@ useResizeObserver(containerRef, (entries) => {
   // 比如 2 * size < width < 3 * size
   // 那么就缩小这个 size ，正好能显示三个
 
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-  disabled.value = false
-  if (window.innerWidth <= 768 && isMobile) {
-    // 手机端
-    disabled.value = true
-  }
-
   if (width < 380) {
-    bentoCells.value = bentoCellsInMobile
     maximumCells.value = 2
     size.value = width / 2 - gap.value
     return
