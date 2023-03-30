@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { useResizeObserver } from '@vueuse/core'
 import V3bento from 'v3-bento'
 import { bentoCells } from './bento'
-// import V3bento from '../../packages/v3-bento/dist/v3-bento.es.js'
 
 definePageMeta({
   layout: 'home',
