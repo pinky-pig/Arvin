@@ -1,7 +1,9 @@
 <template>
-  <main class="text-center">
-    <Header />
+  <main class="py-20 px-5 text-center">
     <slot />
-    <!-- <Footer /> -->
+    <Footer />
+    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
+      [Home Layout]
+    </div>
   </main>
 </template>
