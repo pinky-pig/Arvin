@@ -1,15 +1,23 @@
 <script setup lang="ts">
 const iconRef = ref<HTMLElement | null>(null)
+const avatarBgRef = ref<HTMLElement | null>(null)
 const currentAvatar = ref('Arvin')
-const handleSwitch = () => {
+function handleSwitch() {
   currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
+  avatarBgRef.value?.classList.add('expanding-bg-circle')
+  setTimeout(() => {
+    avatarBgRef.value?.classList.remove('expanding-bg-circle')
+  }, 1000)
 }
 </script>
 
 <template>
   <Card>
     <div class="p-10 relative pointer-events-none">
-      <img class="w-96px h-96px mb-8 dark:bg-[var(--card--border)] rounded-full" src="/logo.png" alt="">
+      <div class="relative w-96px h-96px mb-30px">
+        <img class="w-96px h-96px mb-8 dark:bg-[var(--card--border)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
+        <div ref="avatarBgRef" />
+      </div>
 
       <p style="z-index:1" class="intro-text">
         I’m
@@ -88,7 +96,7 @@ const handleSwitch = () => {
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
-  color: rgb(240, 242, 248);
+  color: var(--text-color);
   margin-left: 6px;
 }
 
@@ -114,6 +122,42 @@ const handleSwitch = () => {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+.expanding-bg-circle{
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 42px;
+  transform: translate(-50%, 0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: bg-expanding 1s cubic-bezier(0.42, 0, 0.5, 1) forwards;
+}
+
+@keyframes bg-expanding {
+  0% {
+    background-color: rgba(152, 208, 255, 0.5);
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    background-color: rgba(152, 208, 255, 0.5);
+    opacity: 0;
+    transform: scale(40);
+  }
+}
+
+@keyframes avatar-expanding {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
   }
 }
 </style>
