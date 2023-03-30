@@ -28,8 +28,8 @@ export class LogoMarker extends LitElement {
       transform: scale(1.1);
     }
     .logo {
-      max-width: 44px;
-      max-height: 44px;
+      max-width: 56px;
+      max-height: 56px;
       transition: all 0.5s ease 0s;
     }
     .LogoMarker:hover .logo{
