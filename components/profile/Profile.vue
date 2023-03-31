@@ -15,7 +15,7 @@ function handleSwitch() {
   <Card>
     <div class="p-10 relative pointer-events-none">
       <div class="relative w-96px h-96px mb-30px">
-        <img class="w-96px h-96px mb-8 dark:bg-[var(--card--border)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
+        <img class="avatar-img w-96px h-96px mb-8 dark:bg-[var(--header-avatar-bg)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
         <div ref="avatarBgRef" />
       </div>
 
@@ -33,10 +33,10 @@ function handleSwitch() {
             viewBox="0 0 15.702 15.702"
           >
             <g transform="translate(2.62 2.617)">
-              <path d="M14.8,12.032a5.229,5.229,0,0,1-9.824,2.482" transform="translate(-4.34 -6.777)" fill="none" stroke="#F0F2F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
-              <path d="M4,9.149A5.231,5.231,0,0,1,13.83,6.731" transform="translate(-4.004 -4)" fill="none" stroke="#F0F2F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
-              <path d="M15.953,6.952h2.313V4.639" transform="translate(-8.135 -4.221)" fill="none" stroke="#F0F2F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
-              <path d="M6.825,15.825H4.512v2.313" transform="translate(-4.18 -8.088)" fill="none" stroke="#F0F2F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
+              <path d="M14.8,12.032a5.229,5.229,0,0,1-9.824,2.482" transform="translate(-4.34 -6.777)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
+              <path d="M4,9.149A5.231,5.231,0,0,1,13.83,6.731" transform="translate(-4.004 -4)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
+              <path d="M15.953,6.952h2.313V4.639" transform="translate(-8.135 -4.221)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
+              <path d="M6.825,15.825H4.512v2.313" transform="translate(-4.18 -8.088)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" />
             </g>
             <path id="Path_9" data-name="Path 9" d="M0,0H15.7V15.7H0Z" fill="none" />
           </svg>
@@ -82,6 +82,7 @@ function handleSwitch() {
   box-shadow: rgb(48, 54, 61) 0px 0px 0px 5px;
 }
 .switch-btn .icon{
+  color: var(--text-color);
   display: flex;
   -webkit-box-align: center;
   align-items: center;
@@ -98,6 +99,10 @@ function handleSwitch() {
   font-weight: 400;
   color: var(--text-color);
   margin-left: 6px;
+}
+.avatar-img{
+  border-radius: 50%;
+  box-shadow: var(--header-avatar-shadow), var(--header-avatar-shadow-1);
 }
 
 .icon_rotate_one{
