@@ -1,13 +1,32 @@
 <script setup lang="ts">
 const iconRef = ref<HTMLElement | null>(null)
 const avatarBgRef = ref<HTMLElement | null>(null)
+const avatarImgRef = ref<HTMLElement | null>(null)
 const currentAvatar = ref('Arvin')
 function handleSwitch() {
+  clearAllSetTimeout()
   currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
-  avatarBgRef.value?.classList.add('expanding-bg-circle')
+  avatarImgRef.value?.classList.add('expanding-avatar-circle')
   setTimeout(() => {
-    avatarBgRef.value?.classList.remove('expanding-bg-circle')
+    avatarBgRef.value?.classList.add('expanding-bg-circle')
+    setTimeout(() => {
+      avatarBgRef.value?.classList.remove('expanding-bg-circle')
+    }, 1000)
+  }, 500)
+
+  setTimeout(() => {
+    avatarImgRef.value?.classList.remove('expanding-avatar-circle')
   }, 1000)
+}
+
+// const debouncedSwitch = useDebounceFn(() => {
+//   handleSwitch()
+// }, 3000)
+
+function clearAllSetTimeout() {
+  let id = setTimeout(() => { }, 0) as unknown as number
+  while (id--)
+    clearTimeout(id)
 }
 </script>
 
@@ -15,8 +34,8 @@ function handleSwitch() {
   <Card>
     <div class="p-10 relative pointer-events-none">
       <div class="relative w-96px h-96px mb-30px">
-        <img class="avatar-img w-96px h-96px mb-8 dark:bg-[var(--header-avatar-bg)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
-        <div ref="avatarBgRef" />
+        <img ref="avatarImgRef" class="avatar-img w-96px h-96px mb-8 dark:bg-[var(--header-avatar-bg)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
+        <div ref="avatarBgRef" class="avatar-bg" />
       </div>
 
       <p style="z-index:1" class="intro-text">
@@ -60,7 +79,7 @@ function handleSwitch() {
   color: var(--text-color);
 }
 .switch-btn{
-  box-shadow: rgb(48, 54, 61) 0px 0px 0px 2px;
+  box-shadow: var(--card--border) 0px 0px 0px 2px;
   position: absolute;
   height: 36px;
   padding: 0px 12px;
@@ -79,7 +98,7 @@ function handleSwitch() {
 .switch-btn:hover{
   cursor: pointer;
   transition: box-shadow 0.2s ease-out 0s;
-  box-shadow: rgb(48, 54, 61) 0px 0px 0px 5px;
+  box-shadow: var(--card--border) 0px 0px 0px 5px;
 }
 .switch-btn .icon{
   color: var(--text-color);
@@ -142,6 +161,9 @@ function handleSwitch() {
   animation: bg-expanding 1s cubic-bezier(0.42, 0, 0.5, 1) forwards;
 }
 
+.expanding-avatar-circle{
+  animation: avatar-expanding 1s cubic-bezier(0.42, 0, 0.5, 1) forwards;
+}
 @keyframes bg-expanding {
   0% {
     background-color: rgba(152, 208, 255, 0.5);
@@ -157,12 +179,24 @@ function handleSwitch() {
 
 @keyframes avatar-expanding {
   0% {
-    opacity: 0.8;
-    transform: scale(0.2);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    opacity: 0.5;
+    transform: scale(0.5) rotate(-15deg) ;
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0) rotate(-30deg) ;
+  }
+  75%{
+    opacity: 0.5;
+    transform: scale(0.5) rotate(-15deg) ;
   }
   100% {
-    opacity: 0;
-    transform: scale(1);
+    opacity: 1;
+    transform: scale(1) rotate(0deg) ;
   }
 }
 </style>
