@@ -17,6 +17,11 @@
   will-change: opacity,transform;
   backdrop-filter: saturate(50%) blur(8px);
   -webkit-backdrop-filter: saturate(50%) blur(8px);
+  box-shadow: 0 0 transparent, 0 0 transparent, var(--header-border-shadow);
+  /* 加上下面这个是设置渐变毛玻璃 */
+  /* background: red;
+  mask-image: linear-gradient(to top, transparent, #000);
+  -webkit-mask-image: linear-gradient(to top, transparent, #000); */
 }
 
 @media (min-width: 768px) {
