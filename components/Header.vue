@@ -3,17 +3,13 @@
 </script>
 
 <template>
-  <div id="nav-bg" style="transform: translate3d(0px, 0px, 0px);">
+  <div id="nav-bg" class="flex justify-start flex-row items-center" style="transform: translate3d(0px, 0px, 0px);">
     <img class="w-56px h-56px" src="/logo.svg" alt="">
   </div>
 </template>
 
 <style scoped>
 #nav-bg {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
   padding: 0 1.5rem;
   position: fixed;
   z-index: 9993;
