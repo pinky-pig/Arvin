@@ -94,10 +94,10 @@ function clearAllSetTimeout() {
   transition: all 0.2s ease-out 0s;
   will-change: box-shadow, transform;
   gap: 10px;
+  transition: box-shadow 0.2s ease-out 0s;
 }
 .switch-btn:hover{
   cursor: pointer;
-  transition: box-shadow 0.2s ease-out 0s;
   box-shadow: var(--card--border) 0px 0px 0px 5px;
 }
 .switch-btn .icon{

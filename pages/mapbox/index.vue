@@ -118,9 +118,18 @@ watch(() => color.value, () => {
 </script>
 
 <template>
-  <div ref="mapContainer" style="width: 672px; height: 435px;" />
+  <div class="mapbox-container w-full h-435px flex justify-center items-center">
+    <div ref="mapContainer" class="map w-672px h-full" />
+  </div>
 </template>
 
 <style scoped>
-
+.map{
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--card--bg);
+  border-color: var(--card--border);
+  border-width: 2px;
+  border-style: solid;
+}
 </style>
