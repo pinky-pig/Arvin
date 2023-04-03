@@ -33,4 +33,25 @@ html.dark {
 html{
   background: rgb(247, 242, 242);
 }
+
+/* .slide-enter-active,
+.slide-leave-active {
+  transition: all 0.75s ease-out;
+}
+.slide-enter-to {
+  position: absolute;
+  bottom: 0;
+}
+.slide-enter-from {
+  position: absolute;
+  bottom: -50%;
+}
+.slide-leave-to {
+  position: absolute;
+  top: -50%;
+}
+.slide-leave-from {
+  position: absolute;
+  top: 0;
+} */
 </style>

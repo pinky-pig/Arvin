@@ -4,6 +4,15 @@ import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config/param'
 const color = useColorMode()
 
+definePageMeta({
+  title: 'Mapbox',
+  subtitle: '地图组件',
+  layout: 'detail',
+  // pageTransition: {
+  //   name: 'rotate',
+  // },
+})
+
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
 onMounted(() => {
