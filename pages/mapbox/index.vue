@@ -126,6 +126,7 @@ watch(() => color.value, () => {
 <style scoped>
 .map{
   border-radius: 12px;
+  transform: translateY(0); /* ios map 圆角 不生效解决方案 */
   overflow: hidden;
   background-color: var(--card--bg);
   border-color: var(--card--border);
