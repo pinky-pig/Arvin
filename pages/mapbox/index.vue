@@ -5,9 +5,10 @@ import { MapboxSetting } from '~~/config/param'
 const color = useColorMode()
 
 definePageMeta({
+  key: 'index',
   title: 'Mapbox',
   subtitle: '地图组件',
-  layout: 'detail',
+  keepalive: true,
   // pageTransition: {
   //   name: 'rotate',
   // },
@@ -117,10 +118,11 @@ onMounted(() => {
     )
   })
 })
+console.log(222)
 onUnmounted(() => {
   map!.remove()
+  console.log(3333)
 })
-
 watch(() => color.value, () => {
   map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
