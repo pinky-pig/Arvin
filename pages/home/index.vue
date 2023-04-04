@@ -6,6 +6,8 @@ import { bentoCellsInDesktop, bentoCellsInMobile } from './bento'
 
 definePageMeta({
   layout: 'home',
+  key: route => route.fullPath,
+  keepalive: true,
 })
 
 function print(val: string, e: any) {
@@ -17,11 +19,23 @@ const size = ref(180)
 const gap = ref(10)
 const containerRef = ref(null)
 
-const isMobileRef = computed(() => window.innerWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
-const disabled = computed(() => isMobileRef.value)
+const isMobileRef = ref(window.innerWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+const disabled = ref(isMobileRef.value)
 const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop)
 
+// 这个值是因为当前组件进行了 keepalive ，但是 useResizeObserver 会执行，
+// 所以需要一个标记，来判断是否是第一次加载
+const firstLoad = ref(true)
+onActivated(() => {
+  firstLoad.value = false
+})
+onMounted(() => {
+  firstLoad.value = false
+})
 useResizeObserver(containerRef, (entries) => {
+  if (!firstLoad.value)
+    return
+
   const entry = entries[0]
   const { width } = entry.contentRect
 
