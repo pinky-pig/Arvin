@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LngLatLike } from 'mapbox-gl'
+// import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config/param'
 const color = useColorMode()
@@ -16,13 +16,13 @@ onMounted(() => {
     accessToken: MapboxSetting.token,
   })
 
-  map.on('load', () => {
-    const el = document.createElement('div')
-    el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
-    new mapboxgl.Marker(el)
-      .setLngLat([118.888175, 32.048268] as LngLatLike)
-      .addTo(map!)
-  })
+  // map.on('load', () => {
+  //   const el = document.createElement('div')
+  //   el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
+  //   new mapboxgl.Marker(el)
+  //     .setLngLat([118.888175, 32.048268] as LngLatLike)
+  //     .addTo(map!)
+  // })
 })
 onUnmounted(() => {
   map!.remove()

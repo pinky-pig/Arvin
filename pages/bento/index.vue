@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useResizeObserver } from '@vueuse/core'
 import V3bento from 'v3-bento'
+import { useResizeObserver } from '@vueuse/core'
 import { bentoCellsInDesktop, bentoCellsInMobile } from './bento'
 
 definePageMeta({
@@ -26,9 +26,11 @@ const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesk
 // 这个值是因为当前组件进行了 keepalive ，但是 useResizeObserver 会执行，
 // 所以需要一个标记，来判断是否是第一次加载
 const firstLoad = ref(true)
-onActivated(() => {
-  firstLoad.value = false
-})
+// onActivated(() => {
+//   debugger
+//   console.log('activated')
+//   firstLoad.value = false
+// })
 onMounted(() => {
   firstLoad.value = false
 })
@@ -86,6 +88,7 @@ useResizeObserver(containerRef, (entries) => {
       />
     </div>
   </div>
+  <NuxtPage />
 </template>
 
 <style scoped>

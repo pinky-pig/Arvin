@@ -16,7 +16,7 @@
 <style scoped>
 #foot{
   position: fixed;
-  z-index: 9993;
+  z-index: 2;
   bottom: 0;
   left: 0;
   width: 100%;

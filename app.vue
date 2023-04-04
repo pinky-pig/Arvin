@@ -34,7 +34,7 @@ html{
   background: rgb(247, 242, 242);
 }
 
-/* .slide-enter-active,
+.slide-enter-active,
 .slide-leave-active {
   transition: all 0.75s ease-out;
 }
@@ -53,5 +53,5 @@ html{
 .slide-leave-from {
   position: absolute;
   top: 0;
-} */
+}
 </style>

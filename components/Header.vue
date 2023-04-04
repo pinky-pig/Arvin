@@ -12,7 +12,7 @@
 #nav-bg {
   padding: 0 1.5rem;
   position: fixed;
-  z-index: 9993;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;

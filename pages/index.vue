@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Home from './home/index.vue'
+import Bento from './bento/index.vue'
 const online = useOnline()
 </script>
 
@@ -7,7 +7,7 @@ const online = useOnline()
   <div>
     <Suspense>
       <ClientOnly>
-        <Home v-if="online" />
+        <Bento v-if="online" />
         <div v-else text-gray:80>
           You're offline
         </div>

@@ -9,12 +9,7 @@ definePageMeta({
   subtitle: '地图组件',
   key: route => route.fullPath,
   keepalive: true,
-  // layout: 'detail',
-  // pageTransition: {
-  //   name: 'rotate',
-  // },
 })
-
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
 onMounted(() => {
@@ -122,12 +117,43 @@ onMounted(() => {
 watch(() => color.value, () => {
   map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
+
+const router = useRouter()
+const bubbleCardRef = ref<HTMLElement | null>(null)
+function toHome() {
+  bubbleCardRef.value && (bubbleCardRef.value as any).bubble(1)
+
+  setTimeout(() => {
+    router.push('/')
+  }, 600)
+}
 </script>
 
 <template>
-  <div class="mapbox-container w-full h-435px flex justify-center items-center">
-    <div ref="mapContainer" class="map w-672px h-full" />
-  </div>
+  <BubbleCard ref="bubbleCardRef">
+    <template #icon>
+      <div class="return-arrow" @click="toHome">
+        <div i-carbon:direction-loop-left />
+      </div>
+    </template>
+    <template #title>
+      Mapbox
+    </template>
+    <template #operate-button>
+      <button class="text-brand-charcoal rounded-md px-3 py-2 text-sm inline-flex items-center gap-2 overflow-hidden !cursor-not-allowed opacity-40 pointer-events-none bg-brand-yellow">
+        <span data-projection-id="19">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z" />
+          </svg>
+        </span>
+        <span>Reset</span>
+      </button>
+    </template>
+
+    <div class="mapbox-container w-full h-435px flex justify-center items-center">
+      <div ref="mapContainer" class="map w-672px h-full" />
+    </div>
+  </BubbleCard>
 </template>
 
 <style scoped>
@@ -139,5 +165,22 @@ watch(() => color.value, () => {
   border-color: var(--card--border);
   border-width: 2px;
   border-style: solid;
+}
+.return-arrow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  border-radius: 18px;
+  color: var(--text-color);
+  background: var(--card--bg);
+  box-shadow: var(--card--border) 0px 0px 0px 2px;
+  transition: box-shadow 0.2s ease-out 0s;
+}
+.return-arrow:hover{
+  cursor: pointer;
+  box-shadow: var(--card--border) 0px 0px 0px 5px;
 }
 </style>
