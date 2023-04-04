@@ -139,26 +139,15 @@ function toHome() {
     <template #title>
       Mapbox
     </template>
-    <template #operate-button>
-      <button class="text-brand-charcoal rounded-md px-3 py-2 text-sm inline-flex items-center gap-2 overflow-hidden !cursor-not-allowed opacity-40 pointer-events-none bg-brand-yellow">
-        <span data-projection-id="19">
-          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z" />
-          </svg>
-        </span>
-        <span>Reset</span>
-      </button>
-    </template>
 
     <div class="mapbox-container w-full h-435px flex justify-center items-center">
-      <div ref="mapContainer" class="map w-672px h-full" />
+      <div ref="mapContainer" class="map rounded-3xl w-672px h-full" />
     </div>
   </BubbleCard>
 </template>
 
 <style scoped>
 .map{
-  border-radius: 12px;
   transform: translateY(0); /* ios map 圆角 不生效解决方案 */
   overflow: hidden;
   background-color: var(--card--bg);

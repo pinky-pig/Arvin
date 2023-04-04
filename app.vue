@@ -27,11 +27,12 @@ html, body , #__nuxt{
 }
 
 html.dark {
-  background: #090C10;
-  color: white;
+  background: var(--background);
+  color: var(--text-color);
 }
 html{
-  background: rgb(247, 242, 242);
+  background: var(--background);
+  color: var(--text-color);
 }
 
 .slide-enter-active,
