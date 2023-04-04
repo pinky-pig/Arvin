@@ -2,12 +2,17 @@ import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
+  devtools: {
+    enabled: true,
+    vscode: {},
+  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
+    '@nuxt/devtools',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
   experimental: {
@@ -53,7 +58,7 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
-    // layoutTransition: { name: 'slide', mode: 'out-in' },
+    layoutTransition: { name: 'slide', mode: 'out-in' },
   },
   pwa,
 })
