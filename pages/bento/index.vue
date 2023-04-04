@@ -25,19 +25,8 @@ const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesk
 
 // 这个值是因为当前组件进行了 keepalive ，但是 useResizeObserver 会执行，
 // 所以需要一个标记，来判断是否是第一次加载
-const firstLoad = ref(true)
-// onActivated(() => {
-//   debugger
-//   console.log('activated')
-//   firstLoad.value = false
-// })
-onMounted(() => {
-  firstLoad.value = false
-})
-useResizeObserver(containerRef, (entries) => {
-  if (!firstLoad.value)
-    return
 
+useResizeObserver(containerRef, (entries) => {
   const entry = entries[0]
   const { width } = entry.contentRect
 
