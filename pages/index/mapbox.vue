@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
+import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './helps'
 import { MapboxSetting } from '~~/config/param'
 const color = useColorMode()
 
@@ -26,93 +26,9 @@ onMounted(() => {
   })
 
   map.on('load', () => {
-    const el = document.createElement('div')
-    el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
-    new mapboxgl.Marker(el, {
-      anchor: 'bottom',
-      offset: [0, -20],
-      draggable: true,
-      // rotationAlignment: 'map',
-    })
-      .setPopup(
-        new mapboxgl.Popup({ offset: 25 })
-          .setHTML('<h1>Arvin</h1>'),
-      )
-      .setLngLat([118.888175, 32.048268] as LngLatLike)
-      .addTo(map!)
-    map!.addSource('earthquakes', {
-      type: 'geojson',
-      data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson',
-    })
-
-    map!.setFog({
-      'range': [-1, 2],
-      'horizon-blend': 0.3,
-      'color': 'white',
-      // 'high-color': '#add8e6',
-      // 'space-color': '#d8f2ff',
-      // 'star-intensity': 0.0,
-    })
-
-    // map!.setFog({
-    //   'range': [1.0, 8.0],
-    //   'color': [
-    //     'interpolate',
-    //     ['cubic-bezier', 0.2, 0.4, 0.6, 0.8],
-    //     ['heatmap-density'],
-    //     0.2,
-    //     'rgb(103,169,207)',
-    //     0.4,
-    //     'rgb(209,229,240)',
-    //     0.6,
-    //     'rgb(255,219,199)',
-    //     0.8,
-    //     'rgb(255,255,25)',
-    //     1,
-    //     'rgb(255,255,255)',
-    //   ],
-    //   'horizon-blend': 0.01,
-    // })
-
-    // map!.flyTo({
-    //   center: [138.7186086, 35.3606247],
-    //   zoom: 12,
-    //   duration: 10000,
-    //   essential: true,
-    //   pitch: 75,
-    // })
-    map!.addLayer(
-      {
-        'id': 'add-3d-buildings',
-        'source': 'composite',
-        'source-layer': 'building',
-        'filter': ['==', 'extrude', 'true'],
-        'type': 'fill-extrusion',
-        'minzoom': 15,
-        'paint': {
-          'fill-extrusion-color': '#aaa',
-          'fill-extrusion-height': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            15,
-            0,
-            15.05,
-            ['get', 'height'],
-          ],
-          'fill-extrusion-base': [
-            'interpolate',
-            ['linear'],
-            ['zoom'],
-            15,
-            0,
-            15.05,
-            ['get', 'min_height'],
-          ],
-          'fill-extrusion-opacity': 0.6,
-        },
-      },
-    )
+    addMarkerToMapbox(map!)
+    addFogToMapbox(map!)
+    addlayerToMapbox(map!)
   })
 })
 onUnmounted(() => {
@@ -132,9 +48,40 @@ function toHome() {
   }, 600)
 }
 
-function test() {
-  // eslint-disable-next-line no-console
-  console.log('test')
+function locateUser() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords
+      // 在地图上添加用户位置标记
+      const el = document.createElement('div')
+      el.innerHTML = `<pop-marker name="${'/logo.svg'}" />`
+      new mapboxgl.Marker(el)
+        .setLngLat([longitude, latitude])
+        .addTo(map!)
+      // 将地图视图移动到用户位置
+      map!.flyTo({
+        center: [longitude, latitude],
+        zoom: 14,
+        duration: 10000,
+        essential: true,
+        pitch: 75,
+      })
+    },
+    (error) => {
+      console.error(error)
+    },
+    { enableHighAccuracy: true },
+  )
+}
+
+function toEarth() {
+  map!.flyTo({
+    center: [118.888175, 32.048268],
+    zoom: 0,
+    duration: 10000,
+    essential: true,
+    pitch: 75,
+  })
 }
 </script>
 
@@ -156,13 +103,13 @@ function test() {
     <template #bottom>
       <div class="bottom w-full flex justify-center items-center">
         <Dockbar>
-          <DockbarItem :has-divide-line="false" tooltip="tooltip" @click="test">
+          <DockbarItem :has-divide-line="false" tooltip="地球模式" @click="toEarth">
             <div i-carbon:earth-southeast-asia class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
-          <DockbarItem :has-divide-line="true" tooltip="tooltip" @click="test">
+          <DockbarItem :has-divide-line="true" tooltip="当前位置" @click="locateUser">
             <div i-carbon:location class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
-          <DockbarItem :has-divide-line="false" tooltip="tooltip" @click="test">
+          <DockbarItem :has-divide-line="false" tooltip="更多">
             <div i-carbon:settings class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
         </Dockbar>
