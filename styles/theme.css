@@ -10,6 +10,10 @@ html.dark{
   --header-avatar-bg        : #6A89A790;
   --header-avatar-shadow    : 0 0 transparent, 0 0 transparent, 0 -1px 0 hsla(0,0%,100%,.1) inset;
   --header-avatar-shadow-1  : 0 0 0 11px #6A89A750, 0 0 0 24px #6A89A730;
+
+  --dockbar-bg              : #262626;
+  --dockbar-placeholder-bg  : #404040;
+  --dockbar-text            : #FAFAFA;
 }
 
 html{
@@ -24,4 +28,8 @@ html{
   --header-avatar-bg        : #f2f2f290;
   --header-avatar-shadow  : 0 2px 4px rgba(0,0,0,.02),0 1px 0 rgba(0,0,0,.06);
   --header-avatar-shadow-1  : 0 0 0 11px #f2f2f290, 0 0 0 24px #fafafa80;
+
+  --dockbar-bg              : #262626;
+  --dockbar-placeholder-bg  : #404040;
+  --dockbar-text            : #FAFAFA;
 }

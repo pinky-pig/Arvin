@@ -53,8 +53,11 @@ function bubble(type: number, div = (detailBox.value as HTMLElement)) {
         </div>
       </div>
     </nav>
-    <div class="p-4 flex-1 bg-[var(--background)]">
+    <main class="p-4 flex-grow-2 bg-[var(--background)]">
       <slot />
+    </main>
+    <div class="bg-[var(--background)]">
+      <slot name="bottom" />
     </div>
   </div>
 </template>
