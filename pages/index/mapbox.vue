@@ -149,21 +149,21 @@ function test() {
       Mapbox
     </template>
 
-    <div class="mapbox-container w-full h-435px flex justify-center items-center">
-      <div ref="mapContainer" class="map rounded-3xl w-672px h-full" />
+    <div class="mapbox-container w-full h-full flex justify-center items-center">
+      <div ref="mapContainer" class="map rounded-3xl w-672px h-435px" />
     </div>
 
     <template #bottom>
       <div class="bottom w-full flex justify-center items-center">
         <Dockbar>
           <DockbarItem :has-divide-line="false" tooltip="tooltip" @click="test">
-            <div i-carbon:earth-southeast-asia class=" text-white w-full h-full" />
+            <div i-carbon:earth-southeast-asia class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
           <DockbarItem :has-divide-line="true" tooltip="tooltip" @click="test">
-            <div i-carbon:location class=" text-white w-full h-full" />
+            <div i-carbon:location class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
           <DockbarItem :has-divide-line="false" tooltip="tooltip" @click="test">
-            <div i-carbon:settings class=" text-white w-full h-full" />
+            <div i-carbon:settings class=" text-[var(--dockbar-text)] w-full h-full" />
           </DockbarItem>
         </Dockbar>
       </div>

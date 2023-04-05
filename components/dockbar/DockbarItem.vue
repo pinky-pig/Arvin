@@ -56,7 +56,7 @@ const emit = defineEmits(['click'])
   line-height: 1.25rem;
   visibility: hidden;
   width: 120px;
-  color: #fff;
+  color: var(--dockbar-text);
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
