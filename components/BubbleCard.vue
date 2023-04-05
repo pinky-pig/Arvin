@@ -5,11 +5,7 @@ defineExpose({
   bubble,
 })
 
-onMounted(() => {
-  // 取消父级组件滚动条的影响
-  document.body.style.overflow = 'hidden'
-})
-
+document.body.style.overflow = 'hidden'
 onUnmounted(() => {
   document.body.style.overflow = 'auto'
 })
