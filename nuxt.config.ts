@@ -3,7 +3,7 @@ import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
   devtools: {
-    enabled: true,
+    enabled: false,
     vscode: {},
   },
   modules: [
