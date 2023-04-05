@@ -5,6 +5,14 @@ defineExpose({
   bubble,
 })
 
+onMounted(() => {
+  // 取消父级组件滚动条的影响
+  document.body.style.overflow = 'hidden'
+})
+
+onUnmounted(() => {
+  document.body.style.overflow = 'auto'
+})
 // 这里本来上升和下降都是使用 requestAnimationFrame 实现的，但是在 Safari 上会出现卡顿的情况，所以改为使用 CSS 动画
 function bubble(type: number, div = (detailBox.value as HTMLElement)) {
   const duration = 600 // 动画持续时间

@@ -12,6 +12,7 @@ definePageMeta({
 })
 const mapContainer = ref(null)
 let map: mapboxgl.Map | null = null
+
 onMounted(() => {
   map = new mapboxgl.Map({
     container: mapContainer.value!,
@@ -113,6 +114,9 @@ onMounted(() => {
       },
     )
   })
+})
+onUnmounted(() => {
+  map?.remove()
 })
 watch(() => color.value, () => {
   map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)

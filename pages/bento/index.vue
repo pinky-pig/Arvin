@@ -77,6 +77,7 @@ useResizeObserver(containerRef, (entries) => {
       />
     </div>
   </div>
+
   <NuxtPage />
 </template>
 
