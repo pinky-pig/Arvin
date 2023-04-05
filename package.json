@@ -16,7 +16,7 @@
     "nuxt-ssr-lit": "^1.4.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.38.2",
+    "@antfu/eslint-config": "^0.38.4",
     "@iconify-json/carbon": "^1.1.16",
     "@iconify-json/twemoji": "^1.1.11",
     "@nuxt/devtools": "^0.3.1",
@@ -27,9 +27,9 @@
     "@vite-pwa/nuxt": "^0.0.7",
     "@vueuse/nuxt": "^9.13.0",
     "eslint": "^8.37.0",
-    "nuxt": "^3.3.2",
+    "nuxt": "^3.3.3",
     "pinia": "^2.0.33",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "v3-bento": "0.0.2-alpha.5.4"
   }
 }
