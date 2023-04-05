@@ -1,14 +1,11 @@
 <script setup lang="ts">
 const detailBox = ref<HTMLElement | null>(null)
 
-onMounted(() => {
-  detailBox.value && bubble(0, detailBox.value)
-})
-
 defineExpose({
   bubble,
 })
 
+// 这里本来上升和下降都是使用 requestAnimationFrame 实现的，但是在 Safari 上会出现卡顿的情况，所以改为使用 CSS 动画
 function bubble(type: number, div = (detailBox.value as HTMLElement)) {
   const duration = 600 // 动画持续时间
   let startTime = 0 // 动画开始时间
@@ -34,7 +31,7 @@ function bubble(type: number, div = (detailBox.value as HTMLElement)) {
 </script>
 
 <template>
-  <div ref="detailBox" class="fixed top-0 left-0 bottom-0 right-0 z-50 flex flex-col">
+  <div ref="detailBox" class="bubbleCardUp fixed top-0 left-0 bottom-0 right-0 z-50 flex flex-col">
     <nav class="py-3 px-4 md:px-8 bg-[var(--card--placeholder-bg)] font-medium">
       <div class="flex gap-2 items-center justify-between">
         <div class="flex gap-4 items-center">
@@ -55,5 +52,16 @@ function bubble(type: number, div = (detailBox.value as HTMLElement)) {
 </template>
 
 <style scoped>
+.bubbleCardUp{
+  animation: slide-up .6s ease-in-out;
+}
 
+@keyframes slide-up {
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
 </style>
