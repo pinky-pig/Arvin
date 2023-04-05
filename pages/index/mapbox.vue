@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import mapboxgl from 'mapbox-gl'
-import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './helps'
+import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './mapbox-helps'
 import { MapboxSetting } from '~~/config/param'
 const color = useColorMode()
 
@@ -94,6 +94,10 @@ function toEarth() {
     </template>
     <template #title>
       Mapbox
+    </template>
+
+    <template #operate-button>
+      <DarkToggle />
     </template>
 
     <div class="mapbox-container w-full h-full flex justify-center items-center">
