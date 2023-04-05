@@ -8,6 +8,7 @@ export const bentoCellsInDesktop = [
   { id: '2', x: 2, y: 0, width: 2, height: 1, component: markRaw(Mapbox) },
   { id: '3', x: 2, y: 1, width: 1, height: 1, component: markRaw(CountDown) },
   { id: '4', x: 3, y: 1, width: 1, height: 1, component: markRaw(Dark) },
+  // { id: '5', x: 3, y: 1, width: 2, height: 2, component: markRaw(Weekly) },
 ]
 
 export const bentoCellsInMobile = [
