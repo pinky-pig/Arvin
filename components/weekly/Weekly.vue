@@ -13,13 +13,10 @@ const color = useColorMode()
       alt=""
     >
 
-    <a class="detail-arrow" href="https://arvin-weekly.netlify.app/" target="_self">
+    <a class="detail-arrow" href="https://arvin-weekly.netlify.app/" target="_blank">
       <div class="w-16px h-16px" i-carbon-arrow-up-right />
     </a>
-
-    <!-- <button class="detail-arrow" >
-      <div class="w-16px h-16px" i-carbon-arrow-up-right />
-    </button> -->
+    666
   </div>
 </template>
 
