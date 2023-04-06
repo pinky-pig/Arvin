@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const color = useColorMode()
+// https://arvin-weekly.netlify.app/
 </script>
 
 <template>
@@ -12,9 +13,13 @@ const color = useColorMode()
       alt=""
     >
 
-    <button class="detail-arrow">
+    <a class="detail-arrow" href="https://arvin-weekly.netlify.app/" target="_self">
       <div class="w-16px h-16px" i-carbon-arrow-up-right />
-    </button>
+    </a>
+
+    <!-- <button class="detail-arrow" >
+      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+    </button> -->
   </div>
 </template>
 
