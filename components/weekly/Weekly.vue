@@ -1,37 +1,42 @@
 <script setup lang="ts">
+const color = useColorMode()
 </script>
 
 <template>
-  <div class="select-none  bg-gray-300">
-    <!-- <img class="image pointer-events-none rounded-md overflow-hidden" src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230405174353.png" alt=""> -->
-    <div class=" pointer">
-      Weekly
-    </div>
+  <div class="relative select-none bg-[var(--card--bg)] overflow-hidden">
+    <img :style="{ opacity: color.value === 'dark' ? 0 : 1 }" src="https://nevflynn.com/images/wrap-bg.svg" alt="">
+    <img
+      class="object-fill rounded-md pointer-events-none rounded-md absolute left-0 top-0 h-full w-full"
+      src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230406143158.png"
+      style="transform: rotate(330deg) translate3d(100px, 10px, 10px);"
+      alt=""
+    >
+
+    <button class="detail-arrow">
+      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+    </button>
   </div>
 </template>
 
 <style scoped>
-.image{
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  overflow-clip-margin: content-box;
-    overflow: clip;
-    cursor: pointer;
-}
-.pointer{
-  height: 40px;
-  background: hsl(0 0% 95.1%);
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: hsl(0 0% 43.5%);
-  margin-top: 4px;
+.detail-arrow{
   display: flex;
-  gap: 4px;
-  transition: background 150ms ease 0s, color 150ms ease 0s;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  color: var(--text-color);
+  border-radius: 18px;
+  background: var(--card--bg);
+  box-shadow: var(--card--border) 0px 0px 0px 2px;
+  transition: box-shadow 0.2s ease-out 0s;
+}
+
+.detail-arrow:hover{
+  cursor: pointer;
+  box-shadow: var(--card--border) 0px 0px 0px 5px;
 }
 </style>
