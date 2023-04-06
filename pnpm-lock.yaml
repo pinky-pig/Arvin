@@ -7,10 +7,12 @@ specifiers:
   '@nuxt/devtools': ^0.3.1
   '@nuxtjs/color-mode': ^3.2.0
   '@pinia/nuxt': ^0.4.7
+  '@types/animejs': ^3.1.7
   '@types/mapbox-gl': ^2.7.10
   '@unocss/nuxt': ^0.50.6
   '@vite-pwa/nuxt': ^0.0.7
   '@vueuse/nuxt': ^9.13.0
+  animejs: ^3.2.1
   eslint: ^8.37.0
   mapbox-gl: ^2.13.0
   nuxt: ^3.3.3
@@ -30,10 +32,12 @@ devDependencies:
   '@nuxt/devtools': 0.3.1_nuxt@3.3.3
   '@nuxtjs/color-mode': 3.2.0
   '@pinia/nuxt': 0.4.7_typescript@5.0.3
+  '@types/animejs': 3.1.7
   '@types/mapbox-gl': 2.7.10
   '@unocss/nuxt': 0.50.6
   '@vite-pwa/nuxt': 0.0.7
   '@vueuse/nuxt': 9.13.0_nuxt@3.3.3
+  animejs: 3.2.1
   eslint: 8.37.0
   nuxt: 3.3.3_vwh6htx42aidho2qgfca5u5rwm
   pinia: 2.0.33_typescript@5.0.3
@@ -2425,6 +2429,10 @@ packages:
       minimatch: 7.4.5
     dev: true
 
+  /@types/animejs/3.1.7:
+    resolution: {integrity: sha512-kFSyjM+fLo3oE9noWEtUvF82ttN8fTrKohiEMIrSzEzEjnsCmtO0rBCUQBlSPEb2w8vfN+v4/Zo0tK21Bgmq4g==}
+    dev: true
+
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
@@ -3152,6 +3160,10 @@ packages:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
+    dev: true
+
+  /animejs/3.2.1:
+    resolution: {integrity: sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==}
     dev: true
 
   /ansi-escapes/4.3.2:

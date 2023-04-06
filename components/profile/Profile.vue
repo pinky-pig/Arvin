@@ -41,7 +41,7 @@ function clearAllSetTimeout() {
       <p style="z-index:1" class="intro-text">
         I’m
         <span style="font-family:Moranga Bold;font-size:40px">Arvin</span>
-        , a front-end developer from Nanjing. I'm interested in Vue, Web Components, Drag, and Music.
+        , a front-end developer from Nanjing. I'm interested in Vue, Nuxt, Web Components, WebGIS, and Music.
       </p>
 
       <button class="switch-btn pointer-events-auto" @click="handleSwitch">
