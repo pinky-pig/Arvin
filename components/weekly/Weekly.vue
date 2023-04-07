@@ -13,7 +13,7 @@ const color = useColorMode()
       alt=""
     >
 
-    <a class="detail-arrow" href="https://arvin-weekly.netlify.app/" target="_blank">
+    <a class="detail-arrow" href="https://weekly.mmeme.me/" target="_blank">
       <div class="w-16px h-16px" i-carbon-arrow-up-right />
     </a>
     666
