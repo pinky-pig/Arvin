@@ -86,7 +86,7 @@ function toEarth() {
 </script>
 
 <template>
-  <BubbleCard ref="bubbleCardRef">
+  <BubbleCard ref="bubbleCardRef" :has-animation="true">
     <template #icon>
       <div class="return-arrow" @click="toHome">
         <div i-carbon:direction-loop-left />
