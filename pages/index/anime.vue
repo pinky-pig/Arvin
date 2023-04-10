@@ -163,7 +163,7 @@ function toHome() {
 <template>
   <BubbleCard ref="bubbleCardRef">
     <div class="container relative">
-      <svg class="w-full h-full" viewBox="-25 200 670 560">
+      <svg class="w-full h-full" style="transform: scaleY(0.8);" viewBox="-25 200 670 560">
         <!-- M 30 56 Q 14 56 6 48 Q 0 40 12 33 Q 30 25 50 33 Q 62 40 54 48 Q 46 56 30 56 Z -->
         <path ref="pathRef0" d="M 300 560 Q 140 560 60 480" stroke-width="1" stroke="white" fill="transparent" />
         <path ref="pathRef1" d="M 60 480 Q 10 400 120 330 " stroke-width="1" stroke="white" fill="transparent" />
@@ -209,7 +209,7 @@ function toHome() {
   width: 20px;
   background-color: lime;
   border-radius: 50%;
-  top: -10px;
+  top: 10px;
   left: -10px;
 }
 .red-circle{
@@ -218,7 +218,7 @@ function toHome() {
   width: 20px;
   background-color: red;
   border-radius: 50%;
-  top: -10px;
+  top: 10px;
   left: -10px;
 }
 .blue-circle{
@@ -227,7 +227,7 @@ function toHome() {
   width: 20px;
   background-color: blue;
   border-radius: 50%;
-  top: -10px;
+  top: 10px;
   left: -10px;
 }
 .orange-circle{
@@ -236,7 +236,7 @@ function toHome() {
   width: 20px;
   background-color: orange;
   border-radius: 50%;
-  top: -10px;
+  top: 10px;
   left: -10px;
 }
 .gray-circle{
@@ -245,7 +245,7 @@ function toHome() {
   width: 20px;
   background-color: gray;
   border-radius: 50%;
-  top: -10px;
+  top: 10px;
   left: -10px;
 }
 
