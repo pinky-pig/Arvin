@@ -32,6 +32,6 @@
     "nuxt": "^3.3.3",
     "pinia": "^2.0.33",
     "typescript": "^5.0.3",
-    "v3-bento": "0.0.2-alpha.5.4"
+    "v3-bento": "0.0.2-alpha.5.5"
   }
 }

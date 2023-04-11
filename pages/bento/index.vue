@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import V3bento from 'v3-bento'
-import { useResizeObserver } from '@vueuse/core'
 import { bentoCellsInDesktop, bentoCellsInMobile } from './bento'
 
 definePageMeta({
@@ -19,35 +18,19 @@ const size = ref(180)
 const gap = ref(10)
 const containerRef = ref(null)
 
-const isMobileRef = ref(window.innerWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+const isMobileRef = ref(document.body.clientWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
 const disabled = ref(isMobileRef.value)
 const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop)
 
-// 这个值是因为当前组件进行了 keepalive ，但是 useResizeObserver 会执行，
-// 所以需要一个标记，来判断是否是第一次加载
-
-useResizeObserver(containerRef, (entries) => {
-  const entry = entries[0]
-  const { width } = entry.contentRect
-
-  // todo: 这里最好修改，如果当前的宽度除以当前的尺寸，
-  // 比如 2 * size < width < 3 * size
-  // 那么就缩小这个 size ，正好能显示三个
-
-  if (width < 380) {
-    maximumCells.value = 2
-    size.value = width / 2 - gap.value
-    return
-  }
-  if (Math.ceil(width / (size.value + gap.value)) <= 6) {
-    maximumCells.value = Math.floor(width / (size.value + gap.value))
-    size.value = 180
-  }
-  else {
-    maximumCells.value = 6
-    size.value = 180
-  }
-})
+if (isMobileRef.value) {
+  // 如果是移动端
+  maximumCells.value = 2
+  size.value = (document.body.clientWidth - 50) / 2
+}
+else {
+  // 如果是桌面端
+  maximumCells.value = 4
+}
 </script>
 
 <template>
