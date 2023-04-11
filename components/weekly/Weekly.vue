@@ -16,7 +16,6 @@ const color = useColorMode()
     <a class="detail-arrow" href="https://weekly.mmeme.me/" target="_blank">
       <div class="w-16px h-16px" i-carbon-arrow-up-right />
     </a>
-    666
   </div>
 </template>
 

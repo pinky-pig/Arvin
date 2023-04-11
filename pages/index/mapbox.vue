@@ -2,6 +2,7 @@
 import mapboxgl from 'mapbox-gl'
 import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './mapbox.module'
 import { MapboxSetting } from '~~/config/param'
+
 const color = useColorMode()
 
 definePageMeta({

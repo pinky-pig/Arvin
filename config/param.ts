@@ -10,6 +10,7 @@ export const SITE = {
   twitterId: 'ArvinnWang',
   githubId: 'pinky-pig',
   repo: 'pinky-pig/what-is-my-astro-blog',
+  notion: 'https://hail-manatee-fc5.notion.site/a3d8b723782e48a3b3570980e83c70ae?v=0c510fa996e2492b943e7746c1bd9974',
 }
 
 export enum UnsplashSetting {
@@ -20,6 +21,6 @@ export enum UnsplashSetting {
 
 export enum MapboxSetting {
   token = 'pk.eyJ1IjoicGlua3ktcGlnIiwiYSI6ImNsZnJvZ2Q1cDAwZ3ozcG56bXFwbjAzZjAifQ.eEOFvRbKqZHQ3OxeqPBsXw',
-  mapLightStyle = 'mapbox://styles/pinky-pig/clft0vsbr000401tfn0ya9019',
+  mapLightStyle = 'mapbox://styles/pinky-pig/clgc32u1e004g01n2bitvj86a',
   mapDarkStyle = 'mapbox://styles/pinky-pig/clft35kll000o01osk8svnlfg',
 }

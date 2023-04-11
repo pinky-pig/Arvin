@@ -2,6 +2,7 @@
 // import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config/param'
+
 const color = useColorMode()
 const router = useRouter()
 
