@@ -23,7 +23,6 @@ specifiers:
   v3-bento: 0.0.2-alpha.5.5
 
 dependencies:
-  case-police: 0.5.14
   mapbox-gl: 2.13.0
   nuxt-ssr-lit: 1.4.3
 
@@ -40,6 +39,7 @@ devDependencies:
   '@vite-pwa/nuxt': 0.0.7
   '@vueuse/nuxt': 9.13.0_nuxt@3.3.3
   animejs: 3.2.1
+  case-police: 0.5.14
   eslint: 8.37.0
   nuxt: 3.3.3_vwh6htx42aidho2qgfca5u5rwm
   pinia: 2.0.33_typescript@5.0.3
@@ -3588,7 +3588,7 @@ packages:
   /case-police/0.5.14:
     resolution: {integrity: sha512-+m4+xJJlqkA6nVYATw+Y2/STB58H5EI9eTUYdMB+okP34wuHe6xrZYVosiZanS5qrYQwVW2/9znT5VRFis5D8w==}
     hasBin: true
-    dev: false
+    dev: true
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
