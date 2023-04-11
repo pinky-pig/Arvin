@@ -13,7 +13,7 @@ const currentItem = ref(0)
 const duration_setting = 1000
 const pause_setting = 2000
 
-// 1. 有四段路径 Dom
+// 1. 有四段路径 DOM
 const pathRef0 = ref(null)
 const pathRef1 = ref(null)
 const pathRef2 = ref(null)

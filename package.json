@@ -12,6 +12,7 @@
     "start:generate": "npx serve .output/public"
   },
   "dependencies": {
+    "case-police": "^0.5.14",
     "mapbox-gl": "^2.13.0",
     "nuxt-ssr-lit": "^1.4.3"
   },

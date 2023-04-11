@@ -13,6 +13,7 @@ specifiers:
   '@vite-pwa/nuxt': ^0.0.7
   '@vueuse/nuxt': ^9.13.0
   animejs: ^3.2.1
+  case-police: ^0.5.14
   eslint: ^8.37.0
   mapbox-gl: ^2.13.0
   nuxt: ^3.3.3
@@ -22,6 +23,7 @@ specifiers:
   v3-bento: 0.0.2-alpha.5.5
 
 dependencies:
+  case-police: 0.5.14
   mapbox-gl: 2.13.0
   nuxt-ssr-lit: 1.4.3
 
@@ -3582,6 +3584,11 @@ packages:
 
   /caniuse-lite/1.0.30001474:
     resolution: {integrity: sha512-iaIZ8gVrWfemh5DG3T9/YqarVZoYf0r188IjaGwx68j4Pf0SGY6CQkmJUIE+NZHkkecQGohzXmBGEwWDr9aM3Q==}
+
+  /case-police/0.5.14:
+    resolution: {integrity: sha512-+m4+xJJlqkA6nVYATw+Y2/STB58H5EI9eTUYdMB+okP34wuHe6xrZYVosiZanS5qrYQwVW2/9znT5VRFis5D8w==}
+    hasBin: true
+    dev: false
 
   /chalk/2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
