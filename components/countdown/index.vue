@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { countdownTime } from './helper'
+
 const time = ref(countdownTime()) // 23.84
 
 function runAtMidnight(callback: Function) {
