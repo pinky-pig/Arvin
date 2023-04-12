@@ -17,7 +17,7 @@ function toggleDark() {
 <template>
   <Card>
     <label class="switch">
-      <input type="checkbox" @click="toggleDark">
+      <input type="checkbox" @click="useToggleTheme">
       <span class="slider" />
     </label>
   </Card>

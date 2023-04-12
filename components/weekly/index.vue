@@ -7,7 +7,14 @@ const color = useColorMode()
   <div class="relative select-none bg-[var(--card--bg)] overflow-hidden">
     <img class="select-none pointer-events-none" :style="{ opacity: color.value === 'dark' ? 0 : 1 }" src="https://nevflynn.com/images/wrap-bg.svg" alt="">
     <img
-      class="object-fill select-none rounded-md pointer-events-none rounded-md absolute left-0 top-0 h-full w-full"
+      class="
+        object-fill
+        select-none
+        pointer-events-none
+        absolute
+        left-0
+        top-0
+      "
       src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230406143158.png"
       style="transform: rotate(330deg) translate3d(100px, 10px, 10px);"
       alt=""

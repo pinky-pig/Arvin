@@ -1,27 +1,3 @@
-<script setup lang="ts">
-import V3bento from 'v3-bento'
-
-import { bentoCellsInDesktop, bentoCellsInMobile } from './bento/bento'
-
-definePageMeta({
-  layout: 'home',
-  key: route => route.fullPath,
-  keepalive: true,
-})
-
-function print(val: string, e: any) {
-  // eslint-disable-next-line no-console
-  console.log(val, e)
-}
-const maximumCells = ref(4)
-const size = ref(180)
-const gap = ref(10)
-const containerRef = ref(null)
-const isMobileRef = ref(document.body.clientWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
-const disabled = ref(isMobileRef.value)
-const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop)
-</script>
-
 <template>
   <button
     class="
@@ -33,45 +9,21 @@ const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesk
     "
     @click="useToggleTheme"
   >
-    切换主题
+    404
   </button>
-  <div
-    text="xl gray4"
-    flex
-    justify-center
-    gap-3
-  >
-    <div
-      w-full
-      mx-auto
-      grid
-      place-items-center
-      select-none
-    >
-      <client-only placeholder="loading...">
-        <V3bento
-          class="bento-container"
-          :bento-cells="bentoCells"
-          :size="size"
-          :gap="gap"
-          :disabled="disabled"
-          :maximum-cells="maximumCells"
-          @drag-start="print('drag-start', $event)"
-          @drag-end="print('drag-end', $event)"
-        />
-      </client-only>
-    </div>
-  </div>
-  <NuxtPage />
-</template>
 
-<style scoped>
-.bento-container {
-  margin-left: auto;
-  margin-right: auto;
-}
-:deep(.bento-item-placeholder){
-  border-radius: 12px !important;
-  background-color: var(--card--placeholder-bg);
-}
-</style>
+  <div
+    class="
+      w-370px
+      h-180px
+      m-l-50
+      overflow-hidden
+      bg-dark-300
+    "
+  >
+    <img
+      src="https://img1.baidu.com/it/u=413643897,2296924942&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
+      style="transform: rotate(330deg) translate3d(100px, 10px, 10px); border-radius: 0.375rem;"
+    >
+  </div>
+</template>
