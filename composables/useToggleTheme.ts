@@ -3,7 +3,7 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition
  * @param event 鼠标事件，用于动画的起始位置
  */
-export function useToggleTheme(event: MouseEvent) {
+export function useToggleTheme(event: MouseEvent, duration = 1000) {
   // 1. 计算动画的结束半径
   const x = event.clientX
   const y = event.clientY
@@ -34,7 +34,7 @@ export function useToggleTheme(event: MouseEvent) {
         clipPath: isDark ? [...clipPath].reverse() : clipPath,
       },
       {
-        duration: 1000,
+        duration,
         easing: 'ease-in',
         pseudoElement: isDark
           ? '::view-transition-old(root)'

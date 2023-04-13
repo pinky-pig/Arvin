@@ -9,7 +9,15 @@ useHead({
   }],
 })
 
-function toggleDark() {
+const checkboxRef = ref(null as HTMLInputElement | null)
+onMounted(() => {
+  checkboxRef.value!.checked = color.value === 'light'
+})
+watch(color, () => {
+  checkboxRef.value!.checked = color.value === 'light'
+})
+
+function toggleDark(e: MouseEvent) {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
 }
 </script>
@@ -17,7 +25,7 @@ function toggleDark() {
 <template>
   <Card>
     <label class="switch">
-      <input type="checkbox" @click="useToggleTheme">
+      <input ref="checkboxRef" type="checkbox" @click="toggleDark">
       <span class="slider" />
     </label>
   </Card>
@@ -41,18 +49,18 @@ function toggleDark() {
 
 /* The slider */
 .slider {
-  --background: #28096b;
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--background);
+  background-color: #28096b;
   transition: .5s;
   border-radius: 30px;
 }
 
+/* 月亮模式 */
 .slider:before {
   position: absolute;
   content: "";
@@ -62,7 +70,7 @@ function toggleDark() {
   left: 10%;
   bottom: 15%;
   box-shadow: inset 8px -4px 0px 0px #fff000;
-  background: var(--background);
+  background: #28096b;
   transition: .5s;
 }
 
@@ -70,6 +78,7 @@ input:checked + .slider {
   background-color: #522ba7;
 }
 
+/* 太阳模式 */
 input:checked + .slider:before {
   transform: translateX(100%);
   box-shadow: inset 15px -4px 0px 15px #fff000;
