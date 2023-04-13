@@ -31,6 +31,19 @@ else {
   // 如果是桌面端
   maximumCells.value = 4
 }
+
+const { width } = useWindowSize()
+watch(width, () => {
+  // 这里有点小闪动，是因为整体 mediaQuery 的原因
+  if (width.value < 380) {
+    size.value = Math.max(width.value / 2 - gap.value, 100)
+    maximumCells.value = 2
+  }
+  else if (Math.ceil(width.value / (size.value + gap.value)) <= 6) {
+    maximumCells.value = Math.floor(width.value / (size.value + gap.value))
+  }
+  else { maximumCells.value = 6 }
+})
 </script>
 
 <template>
