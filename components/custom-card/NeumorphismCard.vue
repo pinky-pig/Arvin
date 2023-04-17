@@ -39,7 +39,7 @@
   height: 158px;
   width: 158px;
   border-radius: 20px;
-  background: linear-gradient(to bottom, #EFEFEF, #fff);
+  background: linear-gradient(to bottom, #EFEFEF, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
