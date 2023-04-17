@@ -160,6 +160,7 @@ function toEarth() {
 .bottom{
   position: fixed;
   bottom: 30px;
+  left: 0px;
   width: 100%;
 }
 .menu{
