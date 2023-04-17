@@ -101,25 +101,33 @@ function toEarth() {
       <DarkToggle />
     </template>
 
-    <div class="mapbox-container w-full h-full flex justify-center items-center">
-      <div ref="mapContainer" class="map rounded-3xl w-672px h-435px" />
+    <div
+      class="
+        mapbox-container
+        bg-[var(--card--placeholder-bg)]
+        w-full h-full
+        flex justify-center items-center
+        rounded-3xl
+        "
+    >
+      <div ref="mapContainer" class="map rounded-3xl w-full h-full " />
     </div>
 
-    <template #bottom>
-      <div class="bottom w-full flex justify-center items-center">
-        <Dockbar>
-          <DockbarItem :has-divide-line="false" tooltip="地球模式" @click="toEarth">
-            <div i-carbon:earth-southeast-asia class=" text-[var(--dockbar-text)] w-full h-full" />
-          </DockbarItem>
-          <DockbarItem :has-divide-line="true" tooltip="当前位置" @click="locateUser">
-            <div i-carbon:location class=" text-[var(--dockbar-text)] w-full h-full" />
-          </DockbarItem>
-          <DockbarItem :has-divide-line="false" tooltip="更多">
-            <div i-carbon:settings class=" text-[var(--dockbar-text)] w-full h-full" />
-          </DockbarItem>
-        </Dockbar>
-      </div>
-    </template>
+    <div class="bottom w-full flex justify-center items-center">
+      <Dockbar>
+        <DockbarItem :has-divide-line="false" tooltip="地球模式" @click="toEarth">
+          <div i-carbon:earth-southeast-asia class=" text-[var(--dockbar-text)] w-full h-full" />
+        </DockbarItem>
+        <DockbarItem :has-divide-line="true" tooltip="当前位置" @click="locateUser">
+          <div i-carbon:location class=" text-[var(--dockbar-text)] w-full h-full" />
+        </DockbarItem>
+        <DockbarItem :has-divide-line="false" tooltip="更多">
+          <div i-carbon:settings class=" text-[var(--dockbar-text)] w-full h-full" />
+        </DockbarItem>
+      </Dockbar>
+    </div>
+
+    <!-- <div class="menu" /> -->
   </BubbleCard>
 </template>
 
@@ -148,5 +156,19 @@ function toEarth() {
 .return-arrow:hover{
   cursor: pointer;
   box-shadow: var(--card--border) 0px 0px 0px 5px;
+}
+.bottom{
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+}
+.menu{
+  position: fixed;
+  bottom: 120px;
+  left: 30px;
+  width: 300px;
+  height: 200px;
+  background: var(--dockbar-placeholder-bg);
+  border-radius: 20px;
 }
 </style>
