@@ -12,8 +12,10 @@
     "start:generate": "npx serve .output/public"
   },
   "dependencies": {
+    "@types/three": "^0.150.2",
     "mapbox-gl": "^2.13.0",
-    "nuxt-ssr-lit": "1.5.0-beta.5"
+    "nuxt-ssr-lit": "1.5.0-beta.5",
+    "three": "^0.151.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.38.4",
@@ -24,6 +26,7 @@
     "@pinia/nuxt": "^0.4.8",
     "@types/animejs": "^3.1.7",
     "@types/mapbox-gl": "^2.7.10",
+    "@types/node": "^18.15.11",
     "@unocss/nuxt": "^0.51.4",
     "@vite-pwa/nuxt": "^0.0.7",
     "@vueuse/nuxt": "^9.13.0",
