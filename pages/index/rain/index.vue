@@ -216,7 +216,7 @@ function toHome() {
       </div>
     </template>
     <template #title>
-      Mapbox
+      Rain
     </template>
 
     <template #operate-button>
