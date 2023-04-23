@@ -3,12 +3,7 @@ import * as THREE from 'three'
 
 const settings = { fps: 30, parallaxVal: 1 }
 let scene: any, camera: any, renderer: any, material: any
-let videoElement: any
 let clock = new THREE.Clock()
-
-definePageMeta({
-  layout: 'none',
-})
 
 async function init() {
   const container = document.getElementById('rain-container-component')
@@ -76,63 +71,6 @@ function render() {
 onMounted(() => {
   init()
   render()
-
-  window.addEventListener('resize', (_e) => {
-    const parentElement = renderer.domElement.parentElement
-    renderer.setSize(parentElement.offsetWidth, parentElement.offsetHeight, 2)
-    material.uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
-  })
-})
-
-const rainSettings = reactive({
-  intensityValue: 0.4,
-  speedValue: 0.4,
-  brightnessValue: 0.8,
-  normalValue: 0.5,
-  zoomValue: 2.61,
-  lightningValue: false,
-})
-watch(rainSettings, () => {
-  material.uniforms.u_intensity.value = rainSettings.intensityValue
-  material.uniforms.u_speed.value = rainSettings.speedValue
-  material.uniforms.u_brightness.value = rainSettings.brightnessValue
-  material.uniforms.u_normal.value = rainSettings.normalValue
-  material.uniforms.u_zoom.value = rainSettings.zoomValue
-  material.uniforms.u_lightning.value = rainSettings.lightningValue
-})
-
-const backgroundSettings = reactive({
-  blurQualityValue: 16,
-  blurValue: 0.5,
-  parallaxValue: 1,
-  scaleToFillValue: true,
-  panningValue: false,
-  postProcessingValue: true,
-})
-watch(backgroundSettings, () => {
-  material.uniforms.u_blur_iterations.value = backgroundSettings.blurQualityValue
-  material.uniforms.u_blur_intensity.value = backgroundSettings.blurValue
-  settings.parallaxVal = backgroundSettings.parallaxValue
-  material.uniforms.u_texture_fill.value = backgroundSettings.scaleToFillValue
-  material.uniforms.u_panning.value = backgroundSettings.panningValue
-  material.uniforms.u_post_processing.value = backgroundSettings.postProcessingValue
-})
-
-const renderSettings = reactive({
-  fps: 30,
-})
-watch(renderSettings, () => {
-  settings.fps = renderSettings.fps
-})
-
-const isShowRainSettings = ref(false)
-function handleIsOpenSettingsPanel() {
-  isShowRainSettings.value = !isShowRainSettings.value
-}
-
-defineExpose({
-  isShowRainSettings,
-  handleIsOpenSettingsPanel,
 })
 
 const router = useRouter()
@@ -145,7 +83,6 @@ function toRain() {
   <div class="parent-rain-node relative select-none bg-[var(--card--bg)] overflow-hidden">
     <div class="overflow-hidden pointer-events-none">
       <div id="rain-container-component" />
-      <input id="filePicker" type="file" accept=".jpg, .jpeg, .png, .mp4, .webm" style="visibility: hidden">
     </div>
 
     <button class="detail-arrow" @click="toRain">
