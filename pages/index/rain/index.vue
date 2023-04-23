@@ -7,15 +7,15 @@ let scene: any, camera: any, renderer: any, material: any
 let videoElement: any
 let clock = new THREE.Clock()
 
-definePageMeta({
-  layout: 'none',
-})
-
 async function init() {
-  const container = document.getElementById('container')
+  const container = document.getElementById('rainContainer')
   renderer = new THREE.WebGLRenderer({
     antialias: false,
   })
+  // renderer.setSize(
+  //   (document.querySelector('.rain-node') as HTMLElement).offsetWidth,
+  //   (document.querySelector('.rain-node') as HTMLElement).offsetHeight,
+  // )
   renderer.setSize(window.innerWidth, window.innerHeight, 2)
   container!.appendChild(renderer.domElement)
   scene = new THREE.Scene()
@@ -76,6 +76,10 @@ onMounted(() => {
   render()
 
   window.addEventListener('resize', (_e) => {
+    // renderer.setSize(
+    //   (document.querySelector('.rain-node') as HTMLElement).offsetWidth,
+    //   (document.querySelector('.rain-node') as HTMLElement).offsetHeight,
+    // )
     renderer.setSize(window.innerWidth, window.innerHeight, 2)
     material.uniforms.u_resolution.value = new THREE.Vector2(window.innerWidth, window.innerHeight)
   })
@@ -186,30 +190,104 @@ defineExpose({
   isShowRainSettings,
   handleIsOpenSettingsPanel,
 })
+
+definePageMeta({
+  title: 'Mapbox',
+  subtitle: '地图组件',
+  key: route => route.fullPath,
+  keepalive: true,
+})
+const router = useRouter()
+const bubbleCardRef = ref<HTMLElement | null>(null)
+function toHome() {
+  bubbleCardRef.value && (bubbleCardRef.value as any).bubble(1)
+
+  setTimeout(() => {
+    router.push('/')
+  }, 600)
+}
 </script>
 
 <template>
-  <div class="overflow-hidden">
-    <div id="container" />
-    <input id="filePicker" type="file" accept=".jpg, .jpeg, .png, .mp4, .webm" style="visibility: hidden">
+  <BubbleCard ref="bubbleCardRef" :has-animation="true">
+    <template #icon>
+      <div class="return-arrow" @click="toHome">
+        <div i-carbon:direction-loop-left />
+      </div>
+    </template>
+    <template #title>
+      Mapbox
+    </template>
 
-    <Settings
-      v-if="true"
-      :rain-settings="rainSettings"
-      :background-settings="backgroundSettings"
-      :render-settings="renderSettings"
-      @changeBackground="changeBackground"
-    />
-  </div>
+    <template #operate-button>
+      <DarkToggle />
+    </template>
+
+    <div
+      class="
+        rain-node
+        overflow-hidden
+        bg-[var(--card--placeholder-bg)]
+        w-full h-full
+        flex justify-center items-center
+        rounded-3xl
+        "
+    >
+      <div class="overflow-hidden">
+        <div id="rainContainer" />
+        <input id="filePicker" type="file" accept=".jpg, .jpeg, .png, .mp4, .webm" style="visibility: hidden">
+
+        <Settings
+          v-if="true"
+          :rain-settings="rainSettings"
+          :background-settings="backgroundSettings"
+          :render-settings="renderSettings"
+          @changeBackground="changeBackground"
+        />
+      </div>
+    </div>
+  </BubbleCard>
 </template>
 
 <style scoped>
-#container {
-  position: absolute;
-  /* transform: scale(1.09); */
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+.map{
+  transform: translateY(0); /* ios map 圆角 不生效解决方案 */
+  overflow: hidden;
+  background-color: var(--card--bg);
+  border-color: var(--card--border);
+  border-width: 2px;
+  border-style: solid;
+}
+.return-arrow{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  border-radius: 18px;
+  color: var(--text-color);
+  background: var(--card--bg);
+  box-shadow: var(--card--border) 0px 0px 0px 2px;
+  transition: box-shadow 0.2s ease-out 0s;
+}
+.return-arrow:hover{
+  cursor: pointer;
+  box-shadow: var(--card--border) 0px 0px 0px 5px;
+}
+.bottom{
+  position: fixed;
+  bottom: 30px;
+  left: 0px;
+  width: 100%;
+}
+.menu{
+  position: fixed;
+  bottom: 120px;
+  left: 30px;
+  width: 300px;
+  height: 200px;
+  background: var(--dockbar-placeholder-bg);
+  border-radius: 20px;
 }
 </style>

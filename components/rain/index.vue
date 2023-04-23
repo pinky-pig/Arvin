@@ -17,7 +17,7 @@ async function init() {
   })
   renderer.setSize(
     (document.querySelector('.parent-rain-node') as HTMLElement).offsetWidth,
-    (document.querySelector('.parent-rain-node') as HTMLElement).offsetWidth,
+    (document.querySelector('.parent-rain-node') as HTMLElement).offsetHeight,
   )
   container!.appendChild(renderer.domElement)
   scene = new THREE.Scene()

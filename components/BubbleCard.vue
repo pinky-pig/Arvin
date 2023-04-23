@@ -56,7 +56,7 @@ function bubble(type: number, div = (detailBox.value as HTMLElement)) {
         </div>
       </div>
     </nav>
-    <main class="p-4 flex-grow-2 bg-[var(--background)]">
+    <main class="p-4 flex-grow-2 bg-[var(--background)] flex-1 overflow-hidden">
       <slot />
     </main>
     <div class="bg-[var(--background)]">
