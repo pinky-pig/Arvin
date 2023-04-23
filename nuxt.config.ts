@@ -15,6 +15,8 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -59,7 +61,7 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
-    layoutTransition: { name: 'slide', mode: 'out-in' },
+    // layoutTransition: { name: 'slide', mode: 'out-in' },
   },
   pwa,
 })
