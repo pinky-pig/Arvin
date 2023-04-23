@@ -143,7 +143,7 @@ function toRain() {
 
 <template>
   <div class="parent-rain-node relative select-none bg-[var(--card--bg)] overflow-hidden">
-    <div class="overflow-hidden">
+    <div class="overflow-hidden pointer-events-none">
       <div id="rain-container-component" />
       <input id="filePicker" type="file" accept=".jpg, .jpeg, .png, .mp4, .webm" style="visibility: hidden">
     </div>
