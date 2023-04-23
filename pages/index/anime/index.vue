@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+
 // Anime Docs: https://animejs.com/documentation/
 // GitHub: https://github.com/juliangarnier/anime
 import anime from 'animejs'

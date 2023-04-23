@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import mapboxgl from 'mapbox-gl'
-import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './mapbox.module'
+import { addFogToMapbox, addMarkerToMapbox, addlayerToMapbox } from './helps'
 import { MapboxSetting } from '~~/config/param'
 
 const color = useColorMode()
