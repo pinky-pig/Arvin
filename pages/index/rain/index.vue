@@ -124,8 +124,10 @@ watch(renderSettings, () => {
 
 function changeBackground() {
   document.getElementById('filePicker')!.addEventListener('change', function () {
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
     if ((this as any).files[0] === undefined)
       return
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
     const file = (this as any).files[0]
     if (file.type === 'image/jpg' || file.type === 'image/jpeg' || file.type === 'image/png') {
       disposeVideoElement(videoElement)
