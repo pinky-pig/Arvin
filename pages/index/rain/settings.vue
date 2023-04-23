@@ -114,7 +114,7 @@ const settingList = ref<Setting[]>([
 ])
 
 // 当前的选项卡
-const currentItem = ref<Setting>()
+const currentItem = ref<Setting | null>(null)
 // 当前的选项卡的背景颜色
 const currentItemBgRef = ref<HTMLElement>()
 // 选中当前选项卡
@@ -140,12 +140,20 @@ function handleActiveTab(item: Setting, index: number) {
     }
   })
 }
+
+const target = ref(null)
+onClickOutside(target, (event) => {
+  currentItem.value = null;
+  (document.querySelector('.tab-panel') as HTMLElement).style.height = '0';
+  (document.querySelector('.tab-panel') as HTMLElement).style.marginBottom = '0';
+  (document.querySelector('.tab-panel') as HTMLElement).style.marginTop = '0'
+})
 </script>
 
 <template>
   <div>
     <!-- <Teleport to="#mainTest"> -->
-    <div class="setting-modal flex flex-col ">
+    <div ref="target" class="setting-modal flex flex-col ">
       <div
         class="
           tab-panel
