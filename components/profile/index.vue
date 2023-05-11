@@ -39,9 +39,9 @@ function clearAllSetTimeout() {
       </div>
 
       <p style="z-index:1" class="intro-text">
-        I’m
-        <span style="font-family:Moranga Bold;font-size:40px">Arvin</span>
-        , a front-end developer from Nanjing. I'm interested in Vue, Nuxt, Web Components, WebGIS, and Music.
+        我是
+        <span style="font-family:LXGW WenKai Screen R;font-size:40px">王文博</span>
+        , 目前生活在南京的前端开发者。我很热衷 Vue、Nuxt、Lit、WebGIS。
       </p>
 
       <button class="switch-btn pointer-events-auto" @click="handleSwitch">
@@ -61,7 +61,7 @@ function clearAllSetTimeout() {
           </svg>
         </div>
         <p class="text">
-          Toggle Arvin
+          Toggle
         </p>
       </button>
     </div>
@@ -70,9 +70,10 @@ function clearAllSetTimeout() {
 
 <style scoped>
 .intro-text{
+  margin-top: 60px;
   text-align: start;
   font-size: 15px;
-  font-family: "Silka Regular";
+  font-family: "LXGW WenKai Screen R";
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;
@@ -112,7 +113,7 @@ function clearAllSetTimeout() {
 .switch-btn .text{
   line-height: normal;
   font-size: 14px;
-  font-family: "Silka Medium";
+  font-family: "LXGW WenKai Screen R";
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
