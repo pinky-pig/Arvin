@@ -40,7 +40,7 @@ onMounted(() => {
     class="
       h-180px
       flex flex-col justify-between items-center
-      md:flex-row md:h-64px
+      md:flex-row
     "
   >
     <img
@@ -85,7 +85,7 @@ onMounted(() => {
 
 <style scoped>
 #nav-bg {
-  padding: 0 1.5rem;
+  padding: 0 3.5vw;
   position: fixed;
   z-index: 2;
   top: 0;
@@ -106,7 +106,7 @@ onMounted(() => {
 
 @media (min-width: 768px) {
   #nav-bg {
-    height: 70px;
+    height: 136px;
   }
 }
 .nav-filter{
