@@ -14,6 +14,10 @@ html.dark{
   --dockbar-bg              : #262626;
   --dockbar-placeholder-bg  : #404040;
   --dockbar-text            : #FAFAFA;
+
+  --nav-bg                  : transparent;
+  --nav-text                : rgb(240, 242, 248);
+  --nav-placeholder-bg      : rgb(48, 54, 61);
 }
 
 html{
@@ -32,4 +36,8 @@ html{
   --dockbar-bg              : #FFFEFE;
   --dockbar-placeholder-bg  : #EEEEEE;
   --dockbar-text            : #858585;
+
+  --nav-bg                  : #EDE9E9;
+  --nav-text                : #000;
+  --nav-placeholder-bg      : rgb(255, 255, 255);
 }
