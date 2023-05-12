@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const navFilter = [
   { label: '项目', route: '/' },
-  { label: '路由', route: '/' },
-  { label: '归档', route: '/' },
+  { label: '文章', route: '/blog' },
+  { label: '归档', route: '/archives' },
 ]
 
-const currentItem = ref<typeof navFilter[0] | null>()
+const route = useRoute()
+
+const currentItem = ref<typeof navFilter[0] | null>(null)
 const currentItemBgRef = ref<HTMLElement>()
 // 选中当前选项卡
 function handleActiveTab(item: typeof navFilter[0], index: number) {
@@ -15,6 +17,21 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
   currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
   animateDom.classList.add('animate-jello')
 }
+
+onMounted(() => {
+  let defaultItem: { item: typeof navFilter[0]; index: number } | null = null
+  navFilter.forEach((item, index) => {
+    if (item.route === route.fullPath)
+      defaultItem = { item, index }
+  })
+
+  if (defaultItem) {
+    handleActiveTab(
+      (defaultItem as { item: typeof navFilter[0]; index: number }).item,
+      (defaultItem as { item: typeof navFilter[0]; index: number }).index,
+    )
+  }
+})
 </script>
 
 <template>
@@ -25,19 +42,20 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
     <img class="w-56px h-56px" src="/logo.svg" alt="">
 
     <div class="nav-filter">
-      <div
+      <NuxtLink
         v-for="item, index in navFilter"
         :key="item.label"
+        :to="item.route"
         class="filter-option "
         @click="handleActiveTab(item, index)"
       >
         {{ item.label }}
-      </div>
+      </NuxtLink>
 
       <div
         ref="currentItemBgRef"
         class="
-          w-70px h-32px
+          w-70px h-28px
           absolute top-0 left-0 z-0
           pointer-events-none
           transition-transform
@@ -100,8 +118,8 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
 }
 .filter-option{
   width: 80px;
-  height: 32px;
-  line-height: 32px;
+  height: 28px;
+  line-height: 28px;
   cursor: pointer;
   border-radius: 50px;
   -webkit-box-align: center;
