@@ -37,7 +37,11 @@ onMounted(() => {
 <template>
   <div
     id="nav-bg"
-    class="flex flex-row justify-between items-center"
+    class="
+      h-120px
+      flex flex-col justify-between items-center
+      md:flex-row md:h-64px
+    "
   >
     <img class="w-56px h-56px" src="/logo.svg" alt="">
 
@@ -71,7 +75,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="w-40px h-40px" />
+    <div class="w-40px h-0px md:h-40px" />
   </div>
 </template>
 
@@ -83,7 +87,6 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 64px;
   will-change: opacity,transform;
   backdrop-filter: saturate(50%) blur(8px);
   -webkit-backdrop-filter: saturate(50%) blur(8px);

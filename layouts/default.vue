@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-24 md:pt-28 pb-20 px-5 text-center overflow-x-hidden min-h-screen">
+  <main class="pt-32 md:pt-28 pb-20 px-5 text-center overflow-x-hidden min-h-screen">
     <Header />
     <slot />
     <Footer />
