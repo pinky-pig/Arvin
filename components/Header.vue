@@ -38,12 +38,16 @@ onMounted(() => {
   <div
     id="nav-bg"
     class="
-      h-120px
+      h-180px
       flex flex-col justify-between items-center
       md:flex-row md:h-64px
     "
   >
-    <img class="w-56px h-56px" src="/logo.svg" alt="">
+    <img
+      class="w-72px h-72px mt-18px md:w-56px md:h-56px md:mt-0"
+      src="/logo.svg"
+      alt=""
+    >
 
     <div class="nav-filter">
       <NuxtLink
