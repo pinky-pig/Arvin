@@ -39,11 +39,22 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
     console.log('截图已打印')
 
     return {
-      url: 'screenshots/previewSite.jpeg',
-      base64String: `data:image/previewSite.jpeg;base64,${base64String}`,
+      status: 200,
+      info: '截图已打印',
+      data: {
+        url: 'screenshots/previewSite.jpeg',
+        base64String: `data:image/previewSite.jpeg;base64,${base64String}`,
+      },
     }
   }
   catch (error) {
-    console.error(error)
+    return {
+      status: 500,
+      info: error,
+      data: {
+        url: '',
+        base64String: '',
+      },
+    }
   }
 }

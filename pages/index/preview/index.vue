@@ -19,7 +19,11 @@ function toHome() {
 const imageUrl = ref('')
 async function test() {
   const { data } = await useFetch('/api/previewSite')
-  imageUrl.value = data.value?.base64String || ''
+
+  if (data.value?.status === 200)
+    imageUrl.value = data.value?.data.base64String || ''
+  else if (data.value?.status === 500)
+    console.error(data.value?.info)
 }
 </script>
 
