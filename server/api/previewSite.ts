@@ -1,0 +1,49 @@
+import fs from 'node:fs'
+import { Buffer } from 'node:buffer'
+import { chromium } from 'playwright'
+
+export default defineEventHandler(async () => {
+  const res = await takeScreenshot()
+  return res || {
+    url: '',
+    base64String: '',
+  }
+})
+
+async function takeScreenshot(site = 'https://www.baidu.com') {
+  try {
+    // 启动 Chromium 浏览器
+    // 第一步：启动浏览器并打开新页面
+    const browser = await chromium.launch()
+    const page = await browser.newPage()
+
+    // 第二步：加载网页并等待 DOM 准备就绪
+    await page.goto(site)
+    await page.waitForLoadState('domcontentloaded')
+
+    // 第三步：将整个页面截图并保存为文件。png 格式比较清楚，但是文件比较大
+    await page.screenshot({
+      path: 'screenshots/previewSite.jpeg',
+      quality: 10, // 并将质量设置为 50%，只适用于 jpeg 格式
+    })
+
+    // 第四步：关闭浏览器
+    await browser.close()
+
+    const imageBuffer = fs.readFileSync('screenshots/previewSite.jpeg')
+
+    // 第五步，转成 base64
+    const base64String = Buffer.from(imageBuffer).toString('base64')
+
+    // eslint-disable-next-line no-console
+    console.log('截图已打印')
+
+    return {
+      url: 'screenshots/previewSite.jpeg',
+      base64String: `data:image/previewSite.jpeg;base64,${base64String}`,
+    }
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
