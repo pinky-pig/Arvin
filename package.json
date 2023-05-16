@@ -13,11 +13,10 @@
   },
   "dependencies": {
     "@types/three": "^0.150.2",
-    "chrome-aws-lambda": "^10.1.0",
     "mapbox-gl": "^2.13.0",
     "nuxt-ssr-lit": "1.5.0-beta.5",
     "playwright-core": "^1.33.0",
-    "puppeteer-core": "^10.1.0",
+    "simplebar-vue": "^2.3.3",
     "three": "^0.151.3"
   },
   "devDependencies": {
