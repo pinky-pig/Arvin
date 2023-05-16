@@ -22,7 +22,7 @@ specifiers:
   nuxt: ^3.4.0
   nuxt-ssr-lit: 1.5.0-beta.5
   pinia: ^2.0.34
-  playwright: ^1.33.0
+  playwright-core: ^1.33.0
   three: ^0.151.3
   typescript: ^5.0.4
   v3-bento: 0.0.2-alpha.5.7
@@ -52,7 +52,7 @@ devDependencies:
   fs: 0.0.1-security
   nuxt: 3.4.0_jingtke3bjmsszial2q4kyedxi
   pinia: 2.0.34_typescript@5.0.4
-  playwright: 1.33.0
+  playwright-core: 1.33.0
   typescript: 5.0.4
   v3-bento: 0.0.2-alpha.5.7
 
@@ -7422,15 +7422,6 @@ packages:
     resolution: {integrity: sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: true
-
-  /playwright/1.33.0:
-    resolution: {integrity: sha512-+zzU3V2TslRX2ETBRgQKsKytYBkJeLZ2xzUj4JohnZnxQnivoUvOvNbRBYWSYykQTO0Y4zb8NwZTYFUO+EpPBQ==}
-    engines: {node: '>=14'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      playwright-core: 1.33.0
     dev: true
 
   /pluralize/8.0.0:

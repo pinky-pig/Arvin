@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import { Buffer } from 'node:buffer'
-import { chromium } from 'playwright'
+import { chromium } from 'playwright-core'
 
 export default defineEventHandler(async () => {
   const res = await takeScreenshot()
