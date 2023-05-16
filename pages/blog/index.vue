@@ -14,7 +14,7 @@ const page = ref({
 <template>
   <div
     style=" background-color: var(--blog-bg); border: 3px solid var(--blog--border ); "
-    class=" max-w-960px mx-auto px-36px text-start rounded-xl"
+    class=" max-w-960px mx-auto px-20px text-start rounded-xl md:px-36px"
   >
     <Title title="全部文章" />
     <List />
