@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import { Buffer } from 'node:buffer'
-import { chromium } from 'playwright-core'
+import playwright from 'playwright-core'
 
 export default defineEventHandler(async () => {
   const res = await takeScreenshot()
@@ -14,7 +14,9 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
   try {
     // 启动 Chromium 浏览器
     // 第一步：启动浏览器并打开新页面
-    const browser = await chromium.launch()
+    const browser = await playwright.chromium.launch()
+
+    // const browser = await chromium.launch()
     const page = await browser.newPage()
 
     // 第二步：加载网页并等待 DOM 准备就绪
