@@ -34,7 +34,8 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
 
     // 第五步，转成 base64
     const base64String = Buffer.from(imageBuffer).toString('base64')
-
+    // const blob = new Blob([imageBuffer], { type: 'image/jpeg' })
+    // const blobUrl = URL.createObjectURL(blob)
     // eslint-disable-next-line no-console
     console.log('截图已打印')
 
@@ -44,13 +45,14 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
       data: {
         url: 'screenshots/previewSite.jpeg',
         base64String: `data:image/previewSite.jpeg;base64,${base64String}`,
+        // blobUrl,
       },
     }
   }
   catch (error) {
     return {
       status: 500,
-      info: error,
+      info: (error as any).toString(),
       data: {
         url: '',
         base64String: '',
