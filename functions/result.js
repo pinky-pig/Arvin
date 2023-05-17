@@ -12,17 +12,8 @@ exports.handler = async function (event, context) {
 
   await page.goto('https://spacejelly.dev/')
 
-  await page.focus('#search-query')
-  await page.keyboard.type('api')
-
-  const results = await page.$$eval('#search-query + div a', (links) => {
-    return links.map((link) => {
-      return {
-        text: link.innerText,
-        href: link.href,
-      }
-    })
-  })
+  const title = await page.title()
+  const description = await page.$eval('meta[name="description"]', element => element.content)
 
   await browser.close()
 
@@ -30,7 +21,10 @@ exports.handler = async function (event, context) {
     statusCode: 200,
     body: JSON.stringify({
       status: 'Ok',
-      results,
+      page: {
+        title,
+        description,
+      },
     }),
   }
 }
