@@ -4,6 +4,9 @@
 [build]
   publish = "dist"
   command = "pnpm run build"
+  
+[functions.render]
+  external_node_modules = ["chrome-aws-lambda"]
 
 [[redirects]]
   from = "/*"
