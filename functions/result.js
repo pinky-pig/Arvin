@@ -1,18 +1,8 @@
 import chromium from 'chrome-aws-lambda'
-
-const puppeteer = require('puppeteer-core')
-
-exports.handler = async function (event, context) {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      status: 'Ok',
-    }),
-  }
-}
+import playwright from 'playwright-core'
 
 exports.handler = async function (event, context) {
-  const browser = await puppeteer.launch({
+  const browser = await playwright.chromium.launch({
     args: chromium.args,
     executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
     headless: true,
