@@ -19,8 +19,6 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
   try {
     // 启动 Chromium 浏览器
     // 第一步：启动浏览器并打开新页面
-    const path = await chromium.executablePath
-
     const browser = await playwright.chromium.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath || process.env.CHROME_EXECUTABLE_PATH,
