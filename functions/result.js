@@ -1,30 +1,35 @@
 const chromium = require('chrome-aws-lambda')
-const playwright = require('playwright-core')
 
-exports.handler = async function (event, context) {
-  const browser = await playwright.chromium.launch({
+exports.handler = async (event, context) => {
+  const pageToScreenshot = JSON.parse(event.body).pageToScreenshot
+
+  if (!pageToScreenshot) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Page URL not defined' }),
+    }
+  }
+
+  const browser = await chromium.puppeteer.launch({
     args: chromium.args,
-    executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
-    headless: true,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless,
   })
 
   const page = await browser.newPage()
 
-  await page.goto('https://spacejelly.dev/')
+  await page.goto(pageToScreenshot, { waitUntil: 'networkidle2' })
 
-  const title = await page.title()
-  const description = await page.$eval('meta[name="description"]', element => element.content)
+  const screenshot = await page.screenshot({ encoding: 'binary' })
 
   await browser.close()
 
   return {
     statusCode: 200,
     body: JSON.stringify({
-      status: 'Ok',
-      page: {
-        title,
-        description,
-      },
+      message: `Complete screenshot of ${pageToScreenshot}`,
+      buffer: screenshot,
     }),
   }
 }
