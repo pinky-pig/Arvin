@@ -17,6 +17,7 @@
     "mapbox-gl": "^2.13.0",
     "nuxt-ssr-lit": "1.5.0-beta.5",
     "playwright-core": "^1.33.0",
+    "puppeteer-core": "^2.0.0",
     "simplebar-vue": "^2.3.3",
     "three": "^0.151.3"
   },
@@ -39,6 +40,7 @@
     "fs": "0.0.1-security",
     "nuxt": "^3.4.0",
     "pinia": "^2.0.34",
+    "puppeteer": "^2.0.0",
     "typescript": "^5.0.4",
     "v3-bento": "0.0.2-alpha.5.7"
   }

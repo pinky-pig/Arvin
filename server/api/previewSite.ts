@@ -1,4 +1,3 @@
-import playwright from 'playwright-core'
 import chromium from 'chrome-aws-lambda'
 
 export default defineEventHandler(async () => {
@@ -13,14 +12,29 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
   const path = await chromium.executablePath
 
   try {
-    const browser = await playwright.chromium.launch({
+    const browser = await chromium.puppeteer.launch({
       args: chromium.args,
-      executablePath: path,
-      // executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
       headless: chromium.headless,
     })
 
+    const page = await browser.newPage()
+
+    await page.goto('https://www.baidu.com', { waitUntil: 'networkidle2' })
+
+    const screenshot = await page.screenshot({ encoding: 'binary' })
+
     await browser.close()
+
+    return {
+      status: 500,
+      info: path.toString() + (screenshot as any).toString(),
+      data: {
+        url: '',
+        base64String: '',
+      },
+    }
   }
   catch (error) {
     return {
@@ -33,14 +47,14 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
     }
   }
 
-  return {
-    status: 500,
-    info: path.toString(),
-    data: {
-      url: '',
-      base64String: '',
-    },
-  }
+  // return {
+  //   status: 500,
+  //   info: path.toString(),
+  //   data: {
+  //     url: '',
+  //     base64String: '',
+  //   },
+  // }
 
   // try {
   //   // 启动 Chromium 浏览器
