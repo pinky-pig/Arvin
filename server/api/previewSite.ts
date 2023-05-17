@@ -24,7 +24,7 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
     const browser = await playwright.chromium.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath || process.env.CHROME_EXECUTABLE_PATH,
-      headless: chromium.headless,
+      headless: true,
     })
 
     // const browser = await chromium.launch()
