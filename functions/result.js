@@ -1,18 +1,19 @@
 const chromium = require('chrome-aws-lambda')
+const playwright = require('playwright-core')
 
-exports.handler = async (event, context) => {
-  const browser = await chromium.puppeteer.launch({
+exports.handler = async function (event, context) {
+  const browser = await playwright.chromium.launch({
     args: chromium.args,
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath,
-    headless: chromium.headless,
+    executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
+    headless: true,
   })
 
   const page = await browser.newPage()
 
-  await page.goto('https://spacejelly.dev/', { waitUntil: 'networkidle2' })
+  await page.goto('https://spacejelly.dev/')
 
-  const screenshot = await page.screenshot({ encoding: 'binary' })
+  const title = await page.title()
+  const description = await page.$eval('meta[name="description"]', element => element.content)
 
   await browser.close()
 
@@ -21,8 +22,8 @@ exports.handler = async (event, context) => {
     body: JSON.stringify({
       status: 'Ok',
       page: {
-        title: '66',
-        description: '77',
+        title,
+        description,
       },
     }),
   }
