@@ -1,5 +1,4 @@
-import chromium from 'chrome-aws-lambda'
-
+const chromium = require('chrome-aws-lambda')
 const playwright = require('playwright-core')
 
 exports.handler = async function (event, context) {
