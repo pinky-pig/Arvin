@@ -29,7 +29,7 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
     await browser.close()
 
     return {
-      status: 500,
+      status: 200,
       info: screenshot,
       data: {
         url: '',
@@ -41,7 +41,7 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
   catch (error) {
     return {
       status: 500,
-      info: JSON.stringify(error),
+      info: (error as any).toString(),
       data: {
         url: '',
         base64String: '',
