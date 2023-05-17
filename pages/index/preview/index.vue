@@ -27,13 +27,10 @@ function bufferToImageUrl(buffer: ArrayBuffer) {
 async function test() {
   const { data } = await useFetch('/api/previewSite')
 
-  if (data.value?.status === 200) {
-    // imageUrl.value = data.value?.data.base64String || ''
-    imageUrl.value = bufferToImageUrl(data.value?.data!.buffer as any) || ''
-  }
-  else if (data.value?.status === 500) {
-    console.error(data.value?.info)
-  }
+  if (data.value?.status === 200)
+    imageUrl.value = data.value?.data.base64String || ''
+  else if (data.value?.status === 500)
+    console.error(data.value.info)
 }
 </script>
 
