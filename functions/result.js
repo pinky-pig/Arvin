@@ -1,15 +1,6 @@
 const chromium = require('chrome-aws-lambda')
 
 exports.handler = async (event, context) => {
-  const pageToScreenshot = JSON.parse(event.body).pageToScreenshot
-
-  if (!pageToScreenshot) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Page URL not defined' }),
-    }
-  }
-
   const browser = await chromium.puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
@@ -19,7 +10,7 @@ exports.handler = async (event, context) => {
 
   const page = await browser.newPage()
 
-  await page.goto(pageToScreenshot, { waitUntil: 'networkidle2' })
+  await page.goto('https://spacejelly.dev/', { waitUntil: 'networkidle2' })
 
   const screenshot = await page.screenshot({ encoding: 'binary' })
 
@@ -27,6 +18,12 @@ exports.handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    body: screenshot.toString(),
+    body: JSON.stringify({
+      status: 'Ok',
+      page: {
+        title: '66',
+        description: '77',
+      },
+    }),
   }
 }
