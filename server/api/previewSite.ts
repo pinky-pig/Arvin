@@ -5,6 +5,7 @@ export default defineEventHandler(async () => {
   return res || {
     url: '',
     base64String: '',
+    buffer: [],
   }
 })
 
@@ -29,20 +30,22 @@ async function takeScreenshot(site = 'https://www.baidu.com') {
 
     return {
       status: 500,
-      info: path.toString() + (screenshot as any).toString(),
+      info: screenshot,
       data: {
         url: '',
         base64String: '',
+        buffer: screenshot,
       },
     }
   }
   catch (error) {
     return {
       status: 500,
-      info: path.toString() + (error as any).toString(),
+      info: JSON.stringify(error),
       data: {
         url: '',
         base64String: '',
+        buffer: [],
       },
     }
   }
