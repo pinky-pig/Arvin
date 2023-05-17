@@ -40,7 +40,6 @@
     "fs": "0.0.1-security",
     "nuxt": "^3.4.0",
     "pinia": "^2.0.34",
-    "puppeteer": "^10.1.0",
     "typescript": "^5.0.4",
     "v3-bento": "0.0.2-alpha.5.7"
   }
