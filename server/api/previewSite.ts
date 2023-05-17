@@ -1,3 +1,4 @@
+import playwright from 'playwright-core'
 import chromium from 'chrome-aws-lambda'
 
 export default defineEventHandler(async () => {
@@ -10,6 +11,27 @@ export default defineEventHandler(async () => {
 
 async function takeScreenshot(site = 'https://www.baidu.com') {
   const path = await chromium.executablePath
+
+  try {
+    const browser = await playwright.chromium.launch({
+      args: chromium.args,
+      executablePath: path,
+      // executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+      headless: chromium.headless,
+    })
+
+    await browser.close()
+  }
+  catch (error) {
+    return {
+      status: 500,
+      info: path.toString() + (error as any).toString(),
+      data: {
+        url: '',
+        base64String: '',
+      },
+    }
+  }
 
   return {
     status: 500,
