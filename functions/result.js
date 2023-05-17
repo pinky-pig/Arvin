@@ -1,5 +1,6 @@
 import chromium from 'chrome-aws-lambda'
-import playwright from 'playwright-core'
+
+const playwright = require('playwright-core')
 
 exports.handler = async function (event, context) {
   const browser = await playwright.chromium.launch({
