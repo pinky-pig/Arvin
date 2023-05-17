@@ -3,9 +3,10 @@ const playwright = require('playwright-core')
 
 exports.handler = async function (event, context) {
   const browser = await playwright.chromium.launch({
-    args: chromium.args,
+    // args: chromium.args,
     executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
     headless: true,
+    ignoreDefaultArgs: ['--disable-extensions'],
   })
 
   const page = await browser.newPage()
