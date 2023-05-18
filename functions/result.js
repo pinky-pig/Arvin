@@ -1,11 +1,11 @@
 const chromium = require('chrome-aws-lambda')
-const playwright = require('playwright-aws-lambda')
+const playwright = require('playwright-core')
 
 exports.handler = async function (event, context) {
-  const browser = await playwright.launchChromium({
-    headless: true,
-    ignoreDefaultArgs: ['--disable-extensions'],
+  const browser = await playwright.chromium.launch({
+    args: chromium.args,
     executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
+    headless: true,
   })
 
   const page = await browser.newPage()
