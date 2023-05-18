@@ -2,12 +2,11 @@ const chromium = require('chrome-aws-lambda')
 const playwright = require('playwright-core')
 
 exports.handler = async function (event, context) {
-  const browser = await playwright.chromium.launch({
-    args: chromium.args,
-    executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath,
-    headless: true,
-  })
+  const path = await chromium.executablePath
+  // eslint-disable-next-line no-console
+  console.log(path, 'executablePath')
 
+  const browser = await playwright.chromium.launch()
   const page = await browser.newPage()
 
   await page.goto('https://spacejelly.dev/')
