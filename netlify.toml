@@ -3,10 +3,10 @@
 
 [build]
   publish = "dist"
-  command = "npx playwright install && pnpm run build"
+  command = "pnpm run build"
 
 [functions]
-  directory = "functions"
+  directory = "netlify/functions/"
 
 [[redirects]]
   from = "/*"
