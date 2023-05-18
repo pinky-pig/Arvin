@@ -23,6 +23,7 @@ specifiers:
   nuxt: ^3.4.0
   nuxt-ssr-lit: 1.5.0-beta.5
   pinia: ^2.0.34
+  playwright-aws-lambda: ^0.10.0
   playwright-core: ^1.33.0
   simplebar-vue: ^2.3.3
   three: ^0.151.3
@@ -34,6 +35,7 @@ dependencies:
   chrome-aws-lambda: 10.1.0
   mapbox-gl: 2.13.0
   nuxt-ssr-lit: 1.5.0-beta.5
+  playwright-aws-lambda: 0.10.0_playwright-core@1.33.0
   playwright-core: 1.33.0
   simplebar-vue: 2.3.3
   three: 0.151.3
@@ -7455,6 +7457,16 @@ packages:
       jsonc-parser: 3.2.0
       mlly: 1.2.0
       pathe: 1.1.0
+
+  /playwright-aws-lambda/0.10.0_playwright-core@1.33.0:
+    resolution: {integrity: sha512-osGbx0Nwco6E9JZK/2Uq3lrQ5rmjLEQ9Iw0286wQZ93s+8Ok8IwOmzP765JGTRDvjd/5woE5qwICnhw9iPisOQ==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      playwright-core: ^1
+    dependencies:
+      lambdafs: 2.1.1
+      playwright-core: 1.33.0
+    dev: false
 
   /playwright-core/1.33.0:
     resolution: {integrity: sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==}
