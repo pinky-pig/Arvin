@@ -8,8 +8,8 @@
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
-    "generate": "nuxi generate",
-    "start:generate": "npx serve .output/public"
+    "generate": "npx playwright install && nuxi generate",
+    "start:generate": "npx playwright install && npx serve .output/public"
   },
   "dependencies": {
     "@types/three": "^0.150.2",
