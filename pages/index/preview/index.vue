@@ -16,21 +16,23 @@ function toHome() {
   }, 600)
 }
 
+const website = ref('https://mmeme.me/')
 const imageUrl = ref('')
-function bufferToImageUrl(buffer: ArrayBuffer) {
-  const arrayBufferView = new Uint8Array(buffer)
-  const blob = new Blob([arrayBufferView], { type: 'image/jpeg' })
-  const urlCreator = window.URL || window.webkitURL
-  const imageUrl = urlCreator.createObjectURL(blob)
-  return imageUrl
-}
-async function test() {
-  const { data } = await useFetch('/api/previewSite')
+const title = ref('')
 
-  if (data.value?.status === 200)
-    imageUrl.value = data.value?.data.base64String || ''
-  else if (data.value?.status === 500)
-    console.error(data.value.info)
+async function test() {
+  const { data, pending, error, refresh }
+    = await useFetch(
+      'https://dev.mmeme.me/preview/site',
+      // 'http://localhost:3200/preview/site',
+      { query: { url: website.value || 'https://mmeme.me/' } },
+    )
+
+  if (data.value) {
+    const response = JSON.parse((data.value as any).body)
+    title.value = response?.page?.title
+    imageUrl.value = response.page.base64String || ''
+  }
 }
 </script>
 
@@ -59,6 +61,11 @@ async function test() {
         "
     >
       <div>
+        <input
+          v-model="website"
+          class="text-black w-300px"
+          type="text"
+        >
         <button class="btn" @click="test">
           preview
         </button>
