@@ -5,11 +5,11 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
-    "start": "npx playwright install && node .output/server/index.mjs",
+    "start": "node .output/server/index.mjs",
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
-    "generate": "npx playwright install && nuxi generate",
-    "start:generate": "npx playwright install && npx serve .output/public"
+    "generate": "nuxi generate",
+    "start:generate": "npx serve .output/public"
   },
   "dependencies": {
     "@types/three": "^0.150.2",

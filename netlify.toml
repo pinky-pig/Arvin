@@ -3,8 +3,10 @@
 
 [build]
   publish = "dist"
-  command = "pnpm run build"
-  functions = "functions"
+  command = "npx playwright install && pnpm run build"
+
+[functions]
+  directory = "functions"
 
 [[redirects]]
   from = "/*"
