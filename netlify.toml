@@ -6,7 +6,6 @@
   command = "pnpm run build"
   functions = "functions"
 
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
