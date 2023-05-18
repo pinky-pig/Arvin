@@ -6,10 +6,11 @@
     py-5
     justify-center
     gap-3
+    pointer-events-none
   >
-    <NuxtLink i-carbon-campsite to="/" />
-    <a i-carbon-logo-github href="https://github.com/pinky-pig" target="_blank" />
-    <DarkToggle />
+    <NuxtLink i-carbon-campsite to="/" pointer-events-auto />
+    <a i-carbon-logo-github href="https://github.com/pinky-pig" target="_blank" pointer-events-auto />
+    <DarkToggle pointer-events-auto />
   </div>
 </template>
 
