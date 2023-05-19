@@ -16,22 +16,27 @@ function toHome() {
   }, 600)
 }
 
-const website = ref('https://mmeme.me/')
+const website = ref('https://www.mmeme.me/')
 const imageUrl = ref('')
 const title = ref('')
+const showImage = ref(true)
 
 async function test() {
   const { data, pending, error, refresh }
     = await useFetch(
       'https://dev.mmeme.me/preview/site',
       // 'http://localhost:3200/preview/site',
-      { query: { url: website.value || 'https://mmeme.me/' } },
+      { query: { url: website.value || 'https://www.mmeme.me/' } },
     )
 
   if (data.value) {
     const response = JSON.parse((data.value as any).body)
     title.value = response?.page?.title
-    imageUrl.value = response.page.base64String || ''
+    showImage.value = false
+    nextTick(() => {
+      imageUrl.value = response.page.path || ''
+      showImage.value = true
+    })
   }
 }
 </script>
@@ -70,7 +75,12 @@ async function test() {
           preview
         </button>
 
-        <img :src="imageUrl" alt="Preview Image">
+        <div v-if="showImage ">
+          <img
+            :src="imageUrl"
+            alt="Preview Image"
+          >
+        </div>
       </div>
     </div>
   </BubbleCard>
