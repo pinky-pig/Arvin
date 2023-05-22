@@ -66,13 +66,13 @@ async function handleLoadImage() {
       class="
         mapbox-container
         bg-[var(--card--placeholder-bg)]
-        w-full h-full
+        w-full h-full overflow-hidden
         flex items-center flex-col gap-40px
         rounded-3xl
-        pt-100px px-40px
+        pt-100px p-40px
       "
     >
-      <div class="flex flex-row px-20px">
+      <div class="flex flex-row px-20px ">
         <input
           v-model="website"
           type="text"
@@ -94,7 +94,7 @@ async function handleLoadImage() {
           Preview
         </LoadingButton>
       </div>
-      <div v-if="showImage">
+      <div v-if="showImage" class=" max-w-800px">
         <img
           class="rounded-lg"
           :src="imageUrl"
