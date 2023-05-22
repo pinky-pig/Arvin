@@ -21,7 +21,7 @@ const props = defineProps({
       min-w-fit min-h-fit
       relative
       text-center
-      bg-[var(--primary-color)]
+      bg-[var(--input-primary-color)]
       rounded-md overflow-hidden
       cursor-pointer select-none
       hover:scale-105
@@ -58,8 +58,8 @@ const props = defineProps({
 .activated{
   background: linear-gradient(
       135deg,
-      var(--primary-color) 0%, var(--primary-color) 20%, var(--second-color) 20%, var(--second-color) 45%, var(--primary-color) 45%,
-      var(--primary-color) 70%, var(--second-color) 70%, var(--second-color) 95%, var(--primary-color) 95%, var(--primary-color) 100%
+      var(--input-primary-color) 0%, var(--input-primary-color) 20%, var(--input-second-color) 20%, var(--input-second-color) 45%, var(--input-primary-color) 45%,
+      var(--input-primary-color) 70%, var(--input-second-color) 70%, var(--input-second-color) 95%, var(--input-primary-color) 95%, var(--input-primary-color) 100%
   );
   background-size: 30px 30px;
   background-position: 0 0;

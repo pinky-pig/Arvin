@@ -79,7 +79,7 @@ async function handleLoadImage() {
           class="
             max-w-300px h-10 px-3
             relative
-            text-sm font-semibold leading-normal bg-[var(--second-color)]
+            text-sm font-semibold leading-normal bg-[var(--input-second-color)]
             rounded rounded-r-none
             focus:outline-none
           "
@@ -101,7 +101,7 @@ async function handleLoadImage() {
           alt="Preview Image"
         >
       </div>
-      <div v-else class="max-w-650px w-full h-350px bg-[var(--second-color)] rounded-lg flex justify-center items-center">
+      <div v-else class="max-w-650px w-full h-350px bg-[var(--input-second-color)] rounded-lg flex justify-center items-center">
         ...
       </div>
     </div>
