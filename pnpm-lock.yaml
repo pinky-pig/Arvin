@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': ^0.39.1
-  '@headlessui/vue': ^1.7.13
   '@iconify-json/carbon': ^1.1.16
   '@iconify-json/twemoji': ^1.1.11
   '@nuxt/devtools': ^0.5.0
@@ -32,7 +31,6 @@ specifiers:
   v3-bento: 0.0.2-alpha.5.7
 
 dependencies:
-  '@headlessui/vue': 1.7.13
   '@types/three': 0.152.0
   chrome-aws-lambda: 10.1.0
   mapbox-gl: 2.14.1
@@ -1639,13 +1637,6 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
     dev: true
-
-  /@headlessui/vue/1.7.13:
-    resolution: {integrity: sha512-obG5TdPdBDfs+jiA1mY29LPFqyJl93Q90EL86ontfRe1B6XvbjPkx+x1aAC5DA18bXbb0Juni1ayDbXo0w1u0A==}
-    engines: {node: '>=10'}
-    peerDependencies:
-      vue: ^3.2.0
-    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
