@@ -69,12 +69,12 @@ async function handleLoadImage() {
         pt-100px px-40px
       "
     >
-      <div class="flex flex-row">
+      <div class="flex flex-row px-20px">
         <input
           v-model="website"
           type="text"
           class="
-            w-300px h-10 px-3
+            max-w-300px h-10 px-3
             relative
             text-sm font-semibold leading-normal bg-[var(--second-color)]
             rounded rounded-r-none
@@ -98,10 +98,8 @@ async function handleLoadImage() {
           alt="Preview Image"
         >
       </div>
-      <div v-else>
-        <div class=" w-650px h-350px bg-[var(--second-color)] rounded-lg flex justify-center items-center">
-          ...
-        </div>
+      <div v-else class="max-w-650px w-full h-350px bg-[var(--second-color)] rounded-lg flex justify-center items-center">
+        ...
       </div>
     </div>
   </BubbleCard>
