@@ -19,12 +19,14 @@ function toHome() {
 const website = ref('https://www.mmeme.me/')
 const imageUrl = ref('')
 const title = ref('')
-const showImage = ref(true)
+const showImage = ref(false)
+const loadingImage = ref(false)
 
-async function test() {
-  const { data, pending, error, refresh }
+async function handleLoadImage() {
+  loadingImage.value = true
+  const { data, pending, error, refresh, execute }
     = await useFetch(
-      'https://dev.mmeme.me/preview/site',
+      'https://dev.mmeme.me/api/preview/site',
       // 'http://localhost:3200/preview/site',
       { query: { url: website.value || 'https://www.mmeme.me/' } },
     )
@@ -36,6 +38,7 @@ async function test() {
     nextTick(() => {
       imageUrl.value = response.page.path || ''
       showImage.value = true
+      loadingImage.value = false
     })
   }
 }
@@ -61,25 +64,43 @@ async function test() {
         mapbox-container
         bg-[var(--card--placeholder-bg)]
         w-full h-full
-        flex justify-center items-center
+        flex items-center flex-col gap-40px
         rounded-3xl
-        "
+        pt-100px px-40px
+      "
     >
-      <div>
+      <div class="flex flex-row">
         <input
           v-model="website"
-          class="text-black w-300px"
           type="text"
+          class="
+            w-300px h-10 px-3
+            relative
+            text-sm font-semibold leading-normal bg-[var(--second-color)]
+            rounded rounded-r-none
+            focus:outline-none
+          "
+          placeholder="https://www.mmeme.me/"
         >
-        <button class="btn" @click="test">
-          preview
-        </button>
-
-        <div v-if="showImage ">
-          <img
-            :src="imageUrl"
-            alt="Preview Image"
-          >
+        <LoadingButton
+          class="w-100px h-40px rounded-l-0"
+          normal-text="Preview"
+          :has-animation="loadingImage"
+          @click="handleLoadImage"
+        >
+          Preview
+        </LoadingButton>
+      </div>
+      <div v-if="showImage">
+        <img
+          class="rounded-lg"
+          :src="imageUrl"
+          alt="Preview Image"
+        >
+      </div>
+      <div v-else>
+        <div class=" w-650px h-350px bg-[var(--second-color)] rounded-lg flex justify-center items-center">
+          ...
         </div>
       </div>
     </div>

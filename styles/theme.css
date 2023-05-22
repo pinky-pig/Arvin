@@ -3,6 +3,9 @@ html.dark{
   --bg-color     : #231f20;
   --text-color   : rgb(240, 242, 248);
 
+  --primary-color         : #0D1117;
+  --second-color          : #30363D;
+
   --card--bg              : #0D1117;
   --card--border          : #30363D;
   --card--placeholder-bg  : #1c2025;
@@ -28,6 +31,9 @@ html{
   --background   : rgb(247, 242, 242);
   --bg-color     : #ede9e9;
   --text-color   : rgb(13, 17, 23);
+
+  --primary-color         : #ffffff;
+  --second-color          : #ede9e9;
 
   --card--bg              : #ffffff;
   --card--border          : #ede9e9;
