@@ -6,7 +6,9 @@ function toPreview() {
 </script>
 
 <template>
-  <div class="parent-rain-node relative select-none bg-[var(--card--bg)] overflow-hidden">
+  <div
+    class="parent-rain-node relative select-none bg-[var(--card--bg)] overflow-hidden"
+  >
     <div class="overflow-hidden pointer-events-none">
       <div>preview</div>
     </div>
