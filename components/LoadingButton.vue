@@ -23,7 +23,7 @@ const props = defineProps({
       text-center
       bg-[var(--primary-color)]
       rounded-md overflow-hidden
-      cursor-pointer
+      cursor-pointer select-none
       hover:scale-105
       transition-all duration-300
     "
@@ -40,6 +40,7 @@ const props = defineProps({
       v-show="props.hasAnimation"
       class="
         activated
+        cursor-wait
         w-full h-full
         text-[#fff]
         absolute top-0 left-0 z-2

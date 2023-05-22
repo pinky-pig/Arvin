@@ -23,11 +23,14 @@ const showImage = ref(false)
 const loadingImage = ref(false)
 
 async function handleLoadImage() {
+  // 正在加载中，就不要重复点击了
+  if (loadingImage.value)
+    return
+
   loadingImage.value = true
   const { data, pending, error, refresh, execute }
     = await useFetch(
       'https://dev.mmeme.me/api/preview/site',
-      // 'http://localhost:3200/preview/site',
       { query: { url: website.value || 'https://www.mmeme.me/' } },
     )
 
