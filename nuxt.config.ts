@@ -1,3 +1,5 @@
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import { pwa } from './config/pwa'
 import { appDescription } from './constants/index'
 
@@ -15,8 +17,7 @@ export default defineNuxtConfig({
     '@nuxt/devtools',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
@@ -62,6 +63,19 @@ export default defineNuxtConfig({
       ],
     },
     // layoutTransition: { name: 'slide', mode: 'out-in' },
+  },
+  vite: {
+    plugins: [
+      Components({
+        resolvers: [NaiveUiResolver()], // Automatically register all components in the `components` directory
+      }),
+    ],
+    // @ ts-expect-error: Missing ssr key
+    ssr: {
+      noExternal: ['moment', 'naive-ui', '@juggle/resize-observer', '@css-render/vue3-ssr'],
+    },
+    envDir: '~/env', // 指定env文件夹
+    optimizeDeps: {},
   },
   pwa,
 })

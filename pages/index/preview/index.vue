@@ -72,7 +72,7 @@ async function handleLoadImage() {
         pt-100px p-40px
       "
     >
-      <div class="flex flex-row px-20px ">
+      <div class="flex flex-row px-20px max-w-650px">
         <input
           v-model="website"
           type="text"
