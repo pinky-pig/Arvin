@@ -12,6 +12,7 @@
     "start:generate": "npx serve .output/public"
   },
   "dependencies": {
+    "@nuxt/content": "^2.6.0",
     "@types/three": "^0.152.0",
     "mapbox-gl": "^2.14.1",
     "nuxt-ssr-lit": "1.5.2",

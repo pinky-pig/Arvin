@@ -1,14 +1,29 @@
 <script setup lang="ts">
-const articles = ref([
-  {
-    index: 0,
-    title: '01-首次记录',
-    subtitle: '开始第一次个人周刊记录，希望能够一直坚持下去',
-    date: '2023-03-13',
-    tags: ['Life'],
-    url: '/blog/01-首次记录',
-  },
-])
+import type { IBlog } from '~/config/types'
+
+const articles = ref<IBlog[]>()
+
+async function parseList() {
+  const blogs = await queryContent('/').find()
+
+  if (blogs.length) {
+    articles.value = blogs.map((blog) => {
+      const index = getIndex(blog._file as string)
+      const title = parseTitle(blog._file as string)
+      const link = parseLinkToRoute(blog._file as string)
+      const { desc, date, tags } = blog
+      return {
+        index,
+        title,
+        desc: desc as string,
+        date: date as string,
+        tags: tags as string[],
+        link,
+      }
+    })
+  }
+}
+parseList()
 </script>
 
 <template>
@@ -23,14 +38,14 @@ const articles = ref([
           itemprop="headline"
           class="text-6 hover:underline focus-visible:underline focus:underline"
         >
-          <a :href="item.url">
+          <a :href="item.link">
             {{ item.title }}
           </a>
         </h2>
 
         <div itemprop="articleBody" class="my-4 text-opacity-82 text-sm text-neutral-600 dark:text-neutral-300">
-          <a :href="item.url">
-            {{ item.subtitle }}
+          <a :href="item.link">
+            {{ item.desc }}
           </a>
         </div>
 
@@ -51,7 +66,7 @@ const articles = ref([
               href="/tags/Develop"
               class="inline-block text-xs motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in hover:underline"
             >
-              #{{ tag }}
+              {{ tag }}
             </a>
           </div>
         </div>
