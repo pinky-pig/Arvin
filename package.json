@@ -13,11 +13,8 @@
   },
   "dependencies": {
     "@types/three": "^0.152.0",
-    "chrome-aws-lambda": "^10.1.0",
     "mapbox-gl": "^2.14.1",
     "nuxt-ssr-lit": "1.5.2",
-    "playwright": "^1.34.0",
-    "playwright-core": "^1.34.0",
     "simplebar-vue": "^2.3.3",
     "three": "^0.152.2"
   },
