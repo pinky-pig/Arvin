@@ -52,9 +52,8 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/logo.svg', sizes: 'any' },
         { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-
+        // { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        // { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

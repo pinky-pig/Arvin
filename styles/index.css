@@ -1,6 +1,5 @@
-@import url('https://gw.alipayobjects.com/os/k/font/lxgwwenkaiscreenr.css');
 @import 'mapbox-gl/dist/mapbox-gl.css';
-@import url('./fonts/index.css');
+@import url('./fonts.css');
 
 /* https://etceteratype.co/gluten 字体 */
 /* @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
