@@ -9,7 +9,7 @@ const props = defineProps({
 const scrollColor1 = ref(props.scrollColor[0])
 const scrollColor2 = ref(props.scrollColor[1])
 
-watch(props.scrollColor, () => {
+watch(() => props.scrollColor, () => {
   scrollColor1.value = props.scrollColor[0]
   scrollColor2.value = props.scrollColor[1]
 })
