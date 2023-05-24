@@ -10,7 +10,14 @@ if (route.query.blog)
 </script>
 
 <template>
-  <div class="">
-    <ContentDoc class=" text-start" :path="blog" />
+  <div class="layout">
+    <ContentDoc class="heti" :path="blog" />
   </div>
 </template>
+
+<style scoped>
+.layout {
+  padding: 1rem;
+  max-width: 50rem;
+}
+</style>

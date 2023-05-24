@@ -61,6 +61,10 @@ export default defineNuxtConfig({
         { name: 'description', content: appDescription },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
+      script: [
+        // { src: 'https://gw.alipayobjects.com/os/k/h3/heti-addon.min.js', body: true },
+        // { src: 'https://gw.alipayobjects.com/os/k/3j/lozad.min.js', body: true },
+      ],
     },
     // layoutTransition: { name: 'slide', mode: 'out-in' },
   },
