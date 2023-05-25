@@ -2,24 +2,31 @@
 definePageMeta({
   layout: 'none',
 })
+
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const route = useRoute()
 const currentBlog = reactive({
   index: 0,
-  title: '第11期 - 贴玻璃膜',
-  desc: '贴玻璃膜',
-  date: '2021-10-01',
-  tags: ['Develop'],
-  link: '/blog/01',
-  path: '/01',
+  title: '',
+  desc: '',
+  date: '',
+  tags: [],
+  link: '',
+  path: '',
   prevPath: '',
   nextPath: '',
 })
-if (route.query.blog) {
-  currentBlog.path = `/${route.query.blog}` as string
-  const blogs = await queryContent(currentBlog.path).find()
-  blogs.length && parseCurrentBlog(blogs[0])
+
+initCurrentBlog(route.query.blog as string)
+
+async function initCurrentBlog(blog: string) {
+  scrollToTop()
+  if (blog) {
+    currentBlog.path = blog.includes('/') ? blog : `/${blog}`
+    const blogs = await queryContent(currentBlog.path).find()
+    blogs.length && parseCurrentBlog(blogs[0])
+  }
 }
 
 function parseCurrentBlog(blog: any) {
@@ -36,10 +43,15 @@ function parseCurrentBlog(blog: any) {
 
 function parsePreAndNextLink(allBlogs: any[], currentBlog: any) {
   const index = allBlogs.findIndex(blog => blog._path === currentBlog.path)
+
   return {
-    prevPath: index - 1 >= 0 ? allBlogs[index - 1]?._path : '',
-    nextPath: index + 1 < allBlogs.length ? allBlogs[index + 1]?._path : '',
+    prevPath: index - 1 >= 0 ? allBlogs[index - 1]._path : '',
+    nextPath: index + 1 < allBlogs.length ? allBlogs[index + 1]._path : '',
   }
+}
+
+function paginationJump(path: string) {
+  initCurrentBlog(path)
 }
 </script>
 
@@ -57,13 +69,13 @@ function parsePreAndNextLink(allBlogs: any[], currentBlog: any) {
 
       <hr>
 
-      <div class="flex justify-between md:flex-row flex-col mt-2 post-footer">
+      <div class="flex justify-between items-center md:flex-row flex-col mt-2 post-footer">
         <div class="flex-1">
           发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ currentBlog.date }}</a>
         </div>
         <div class="md:mt-0 mt-4 flex-1 text-right">
-          <a v-if="currentBlog.prevPath" href="https://github.com/">上一篇 |</a>
-          <a v-if="currentBlog.nextPath" href="https://github.com/">下一篇 |</a>
+          <a v-if="currentBlog.prevPath" @click="paginationJump(currentBlog.prevPath)">上一篇 |</a>
+          <a v-if="currentBlog.nextPath" @click="paginationJump(currentBlog.nextPath)">下一篇 |</a>
           <a href="/">去首页 |</a>
           <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
           <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
