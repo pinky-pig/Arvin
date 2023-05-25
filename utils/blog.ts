@@ -31,3 +31,28 @@ export function sortPosts(allPosts: any) {
     )
   })
 }
+
+// 转化所有的文章的列表
+export async function parseList() {
+  const blogs = await queryContent('/').find()
+
+  if (blogs.length) {
+    return blogs.map((blog) => {
+      const index = getIndex(blog._file as string)
+      const title = parseTitle(blog._file as string)
+      const link = parseLinkToRoute(blog._file as string)
+      const { desc, date, tags } = blog
+      return {
+        index,
+        title,
+        desc: desc as string,
+        date: date as string,
+        tags: tags as string[],
+        link,
+      }
+    })
+  }
+  else {
+    return []
+  }
+}

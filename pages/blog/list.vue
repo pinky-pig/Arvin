@@ -2,28 +2,7 @@
 import type { IBlog } from '~/config/types'
 
 const articles = ref<IBlog[]>()
-
-async function parseList() {
-  const blogs = await queryContent('/').find()
-
-  if (blogs.length) {
-    articles.value = blogs.map((blog) => {
-      const index = getIndex(blog._file as string)
-      const title = parseTitle(blog._file as string)
-      const link = parseLinkToRoute(blog._file as string)
-      const { desc, date, tags } = blog
-      return {
-        index,
-        title,
-        desc: desc as string,
-        date: date as string,
-        tags: tags as string[],
-        link,
-      }
-    })
-  }
-}
-parseList()
+articles.value = await parseList()
 </script>
 
 <template>
@@ -74,7 +53,3 @@ parseList()
     </li>
   </ul>
 </template>
-
-<style scoped>
-
-</style>
