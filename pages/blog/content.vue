@@ -21,7 +21,6 @@ const currentBlog = reactive({
 initCurrentBlog(route.query.blog as string)
 
 async function initCurrentBlog(blog: string) {
-  scrollToTop()
   if (blog) {
     currentBlog.path = blog.includes('/') ? blog : `/${blog}`
     const blogs = await queryContent(currentBlog.path).find()
