@@ -18,36 +18,22 @@ const size = ref(180)
 const gap = ref(10)
 const containerRef = ref(null)
 
-// 默认是 Desktop 端
-const { width } = useWindowSize()
-const isMobileRef = ref(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+const isMobileRef = ref(document.body.clientWidth <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
 const disabled = ref(isMobileRef.value)
-const bentoCells = ref(bentoCellsInDesktop)
+const bentoCells = ref(isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop)
+
 if (isMobileRef.value) {
   // 如果是移动端
   maximumCells.value = 2
-  size.value = (width.value - 50) / 2
+  size.value = (document.body.clientWidth - 50) / 2
 }
 else {
   // 如果是桌面端
   maximumCells.value = 4
 }
 
-// 如果是移动端 或者 尺寸改变
+const { width } = useWindowSize()
 watch(width, () => {
-  isMobileRef.value = width.value <= 768 && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-  disabled.value = isMobileRef.value
-  bentoCells.value = isMobileRef.value ? bentoCellsInMobile : bentoCellsInDesktop
-  if (isMobileRef.value) {
-  // 如果是移动端
-    maximumCells.value = 2
-    size.value = (width.value - 50) / 2
-  }
-  else {
-  // 如果是桌面端
-    maximumCells.value = 4
-  }
-
   // 这里有点小闪动，是因为整体 mediaQuery 的原因
   if (width.value < 380) {
     size.value = Math.max(width.value / 2 - gap.value, 100)
