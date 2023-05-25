@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import List from './list.vue'
 import Title from './title.vue'
-import Pagination from './pagination.vue'
-
-const page = ref({
-  prev: '',
-  next: '',
-  total: 5,
-  current: 1,
-})
 </script>
 
 <template>
@@ -18,7 +10,6 @@ const page = ref({
   >
     <Title title="全部文章" />
     <List />
-    <Pagination :page="page" />
   </div>
 </template>
 

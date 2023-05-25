@@ -1,13 +1,37 @@
 <script setup lang="ts">
 import type { IBlog } from '~/config/types'
 
-const articles = ref<IBlog[]>()
-articles.value = await parseList()
+const allBlogs = ref<IBlog[]>()
+allBlogs.value = await parseList()
+
+const pageOption = reactive({
+  pageSize: 5,
+  currentPage: 1,
+  total: allBlogs.value.length,
+})
+
+const renderBlogs = computed(() => {
+  const { pageSize, currentPage } = pageOption
+  const start = (currentPage - 1) * pageSize
+  const end = currentPage * pageSize
+  return allBlogs.value!.slice(start, end)
+})
+
+const hasPrev = computed(() => pageOption.currentPage > 1)
+const hasNext = computed(() => pageOption.currentPage < Math.ceil(pageOption.total / pageOption.pageSize))
+function jumpPrevPage(page: number) {
+  if (hasPrev.value)
+    pageOption.currentPage = page
+}
+function jumpNextPage(page: number) {
+  if (hasNext.value)
+    pageOption.currentPage = page
+}
 </script>
 
 <template>
   <ul>
-    <li v-for="(item, index) in articles" :key="index" class="group">
+    <li v-for="(item, index) in renderBlogs" :key="index" class="group">
       <article
         itemscope
         itemtype="http://schema.org/BlogPosting"
@@ -52,4 +76,30 @@ articles.value = await parseList()
       </article>
     </li>
   </ul>
+
+  <div class="pt-6 pb-8 text-sm">
+    <nav class="flex justify-between">
+      <a
+        aria-label="Prev page"
+        class="flex items-center cursor-pointer"
+        :class="!!hasPrev ? 'hover:underline' : 'op-30'"
+        @click="jumpPrevPage(pageOption.currentPage - 1)"
+      >
+        <div class="i-ri:arrow-left-double-line" />
+        <span>Prev</span>
+      </a>
+      <span>
+        {{ pageOption.currentPage }}/{{ Math.ceil(pageOption.total / pageOption.pageSize) }}
+      </span>
+      <a
+        aria-label="Next page"
+        class="flex items-center cursor-pointer"
+        :class="!!hasNext ? 'hover:underline' : 'op-30'"
+        @click="jumpNextPage(pageOption.currentPage + 1)"
+      >
+        <span>Next</span>
+        <div class="i-ri:arrow-right-double-line" />
+      </a>
+    </nav>
+  </div>
 </template>
