@@ -9,17 +9,10 @@ function toPreview() {
   <div
     class="relative select-none bg-[var(--card--bg)] overflow-hidden "
   >
-    <div class="absolute top-1/3 left-1/2 -translate-1/2 h-40px pointer-events-auto ">
-      <n-space>
-        <n-popover :width="300" trigger="hover" :show-arrow="false">
-          <template #trigger>
-            <span class="underline underline-light-50 underline-offset-8px cursor-pointer hover:text-#fff">
-              预览网站
-            </span>
-          </template>
-          <img src="https://dev.mmeme.me/static/screenshots/previewSite.jpeg" alt="">
-        </n-popover>
-      </n-space>
+    <div class="w-6rem absolute top-1/3 left-1/2 -translate-1/2 h-40px pointer-events-auto ">
+      <span class="underline underline-light-50 underline-offset-8px cursor-pointer hover:text-#fff">
+        预览网站
+      </span>
     </div>
 
     <button class="detail-arrow" @click="toPreview">
