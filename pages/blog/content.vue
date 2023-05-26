@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LeftSidebar from './sidebar.vue'
+
 definePageMeta({
   layout: 'none',
 })
@@ -55,11 +57,16 @@ function paginationJump(path: string) {
 </script>
 
 <template>
-  <main>
-    <div class="doc-container pb-20 heti">
+  <main class="grid">
+    <aside class="h-screen grid-cols-1">
+      <LeftSidebar />
+    </aside>
+
+    <div class="doc-container pb-20 heti grid-cols-2">
       <h1 class="content-title flex align-middle ">
         {{ currentBlog.title }}
       </h1>
+
       <ContentDoc :path="currentBlog.path">
         <template #not-found>
           <h1>Document not found</h1>
@@ -88,7 +95,6 @@ function paginationJump(path: string) {
 main{
   display: flex;
   justify-content: center;
-  align-items: center;
   padding: 1.5rem;
 }
 .doc-container{
