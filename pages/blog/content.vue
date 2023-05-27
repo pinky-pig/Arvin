@@ -57,7 +57,7 @@ function paginationJump(path: string) {
 </script>
 
 <template>
-  <main class="relative flex justify-center p-4">
+  <main class="relative flex p-4">
     <aside class="hidden md:block flex-shrink-0 flex-grow-0">
       <LeftSidebar
         :current-blog="currentBlog"
