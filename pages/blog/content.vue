@@ -20,7 +20,7 @@ const currentBlog = reactive({
   nextPath: '',
 })
 
-initCurrentBlog(route.query.blog as string)
+initCurrentBlog(route.query.url as string)
 
 async function initCurrentBlog(blog: string) {
   if (blog) {
@@ -57,12 +57,16 @@ function paginationJump(path: string) {
 </script>
 
 <template>
-  <main class="grid">
-    <aside class="h-screen grid-cols-1">
-      <LeftSidebar />
+  <main class="relative flex justify-center p-4">
+    <aside class="hidden md:block flex-shrink-0 flex-grow-0">
+      <LeftSidebar
+        :current-blog="currentBlog"
+        class="fixed"
+        @blogJump="paginationJump"
+      />
     </aside>
 
-    <div class="doc-container pb-20 heti grid-cols-2">
+    <div class="heti max-w-50rem pb-20 p-0 md:ml-300px md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
       <h1 class="content-title flex align-middle ">
         {{ currentBlog.title }}
       </h1>
@@ -92,14 +96,6 @@ function paginationJump(path: string) {
 </template>
 
 <style scoped>
-main{
-  display: flex;
-  justify-content: center;
-  padding: 1.5rem;
-}
-.doc-container{
-  max-width: 50rem;
-}
 .heti h1.content-title:first-child {
   margin-block-start: 8px !important;
   margin-bottom: 2rem;

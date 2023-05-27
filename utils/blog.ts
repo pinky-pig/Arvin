@@ -13,7 +13,7 @@ export function parseTitle(oldTitle: string) {
 export function parseLinkToRoute(oldTitle: string) {
   const index = parseInt(oldTitle.split('-')[0])
   const linkNum = index > 9 ? `${index}` : `0${index}`
-  const path = `blog/content/?blog=${linkNum}`
+  const path = `/${linkNum}`
   return path
 }
 

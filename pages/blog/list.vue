@@ -27,6 +27,11 @@ function jumpNextPage(page: number) {
   if (hasNext.value)
     pageOption.currentPage = page
 }
+const router = useRouter()
+
+function jumpCurrentBlog(item: IBlog) {
+  router.push(`/blog/content?url=${item.link}`)
+}
 </script>
 
 <template>
@@ -41,9 +46,9 @@ function jumpNextPage(page: number) {
           itemprop="headline"
           class="text-6 hover:underline focus-visible:underline focus:underline"
         >
-          <a :href="item.link">
+          <span @click="jumpCurrentBlog(item)">
             {{ item.title }}
-          </a>
+          </span>
         </h2>
 
         <div itemprop="articleBody" class="my-4 text-opacity-82 text-sm text-neutral-600 dark:text-neutral-300">
