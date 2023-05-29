@@ -5,9 +5,9 @@ definePageMeta({
   layout: 'none',
 })
 
-registerGiscus()
-
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+
+const { root: giscusRoot } = registerGiscus()
 
 const route = useRoute()
 const router = useRouter()
@@ -95,6 +95,10 @@ function paginationJump(path: string) {
           <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
         </div>
       </div>
+
+      <hr>
+
+      <div ref="giscusRoot" />
     </div>
   </main>
 </template>
