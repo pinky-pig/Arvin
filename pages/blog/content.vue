@@ -5,6 +5,8 @@ definePageMeta({
   layout: 'none',
 })
 
+registerGiscus()
+
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const route = useRoute()

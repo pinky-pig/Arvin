@@ -5,27 +5,8 @@ import '~~/components/lit-components'
 useHead({
   title: appName,
 })
-
-// 字体间距优化
-useScriptTag(
-  'https://gw.alipayobjects.com/os/k/h3/heti-addon.min.js',
-  (el: HTMLScriptElement) => {
-    const heti = new (window as any).Heti('.heti')
-    heti.autoSpacing()
-  },
-)
-// 图片懒加载
-useScriptTag(
-  'https://gw.alipayobjects.com/os/k/3j/lozad.min.js',
-  (el: HTMLScriptElement) => {
-    const observer = (window as any).lozad('.lozad', {
-      loaded(el: { alt: any; getAttribute: (arg0: string) => any }) {
-        el.alt = el.getAttribute('data-alt')
-      },
-    })
-    observer.observe()
-  },
-)
+registerLozad()
+registerHeti()
 </script>
 
 <template>
