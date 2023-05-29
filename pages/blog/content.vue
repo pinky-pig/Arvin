@@ -8,6 +8,7 @@ definePageMeta({
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const route = useRoute()
+const router = useRouter()
 const currentBlog = reactive({
   index: 0,
   title: '',
@@ -52,43 +53,46 @@ function parsePreAndNextLink(allBlogs: any[], currentBlog: any) {
 }
 
 function paginationJump(path: string) {
+  router.replace({ query: { url: path } })
   initCurrentBlog(path)
 }
 </script>
 
 <template>
-  <main class="relative flex p-4">
-    <aside class="hidden md:block flex-shrink-0 flex-grow-0">
-      <LeftSidebar
-        :current-blog="currentBlog"
-        class="fixed"
-        @blogJump="paginationJump"
-      />
-    </aside>
+  <main class="flex p-4 justify-center items-center">
+    <div class="relative">
+      <aside class="hidden md:block flex-shrink-0 flex-grow-0">
+        <LeftSidebar
+          :current-blog="currentBlog"
+          class="fixed"
+          @blogJump="paginationJump"
+        />
+      </aside>
 
-    <div class="heti max-w-50rem pb-20 p-0 md:ml-300px md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
-      <h1 class="content-title flex align-middle ">
-        {{ currentBlog.title }}
-      </h1>
+      <div class="heti max-w-50rem w-50rem pb-20 p-0 md:ml-300px md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
+        <h1 class="content-title flex align-middle ">
+          {{ currentBlog.title }}
+        </h1>
 
-      <ContentDoc :path="currentBlog.path">
-        <template #not-found>
-          <h1>Document not found</h1>
-        </template>
-      </ContentDoc>
+        <ContentDoc :path="currentBlog.path">
+          <template #not-found>
+            <h1>Document not found</h1>
+          </template>
+        </ContentDoc>
 
-      <hr>
+        <hr>
 
-      <div class="flex justify-between items-center md:flex-row flex-col mt-2 post-footer">
-        <div class="flex-1">
-          发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ currentBlog.date }}</a>
-        </div>
-        <div class="md:mt-0 mt-4 flex-1 text-right">
-          <a v-if="currentBlog.prevPath" @click="paginationJump(currentBlog.prevPath)">上一篇 |</a>
-          <a v-if="currentBlog.nextPath" @click="paginationJump(currentBlog.nextPath)">下一篇 |</a>
-          <a href="/">去首页 |</a>
-          <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
-          <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
+        <div class="flex justify-between items-center md:flex-row flex-col mt-2 post-footer">
+          <div class="flex-1">
+            发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ currentBlog.date }}</a>
+          </div>
+          <div class="md:mt-0 mt-4 flex-1 text-right">
+            <a v-if="currentBlog.prevPath" @click="paginationJump(currentBlog.prevPath)">上一篇 |</a>
+            <a v-if="currentBlog.nextPath" @click="paginationJump(currentBlog.nextPath)">下一篇 |</a>
+            <a href="/">去首页 |</a>
+            <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
+            <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
+          </div>
         </div>
       </div>
     </div>
