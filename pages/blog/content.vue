@@ -89,7 +89,7 @@ function paginationJump(path: string) {
           <div class="md:mt-0 mt-4 flex-1 text-right">
             <a v-if="currentBlog.prevPath" @click="paginationJump(currentBlog.prevPath)">上一篇 |</a>
             <a v-if="currentBlog.nextPath" @click="paginationJump(currentBlog.nextPath)">下一篇 |</a>
-            <a href="/">去首页 |</a>
+            <a @click="router.push(`/blog`)">去首页 |</a>
             <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
             <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
           </div>
