@@ -27,10 +27,13 @@ function jumpNextPage(page: number) {
   if (hasNext.value)
     pageOption.currentPage = page
 }
-const router = useRouter()
 
+const router = useRouter()
 function jumpCurrentBlog(item: IBlog) {
   router.push(`/blog/content?url=${item.link}`)
+}
+function jumpArchives(tag: string, item: IBlog) {
+  router.push(`/archives?tags=${tag}`)
 }
 </script>
 
@@ -43,8 +46,7 @@ function jumpCurrentBlog(item: IBlog) {
         class="flex border-t border-black dark:border-white border-opacity-8 dark:border-opacity-8 flex-col py-4 relative"
       >
         <h2
-          itemprop="headline"
-          class="text-6 hover:underline focus-visible:underline focus:underline"
+          class="text-6 cursor-pointer hover:underline focus-visible:underline focus:underline"
         >
           <span @click="jumpCurrentBlog(item)">
             {{ item.title }}
@@ -52,9 +54,9 @@ function jumpCurrentBlog(item: IBlog) {
         </h2>
 
         <div itemprop="articleBody" class="my-4 text-opacity-82 text-sm text-neutral-600 dark:text-neutral-300">
-          <a :href="item.link">
+          <span @click="jumpCurrentBlog(item)">
             {{ item.desc }}
-          </a>
+          </span>
         </div>
 
         <div class="flex items-center text-neutral-600 dark:text-neutral-300">
@@ -71,8 +73,8 @@ function jumpCurrentBlog(item: IBlog) {
               v-for="tag in item.tags"
               :key="tag"
               :title="tag"
-              href="/tags/Develop"
               class="inline-block text-xs motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in hover:underline"
+              @click="jumpArchives(tag, item)"
             >
               {{ tag }}
             </a>

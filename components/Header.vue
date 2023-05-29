@@ -32,7 +32,7 @@ watch(
 function initActiveTab() {
   let defaultItem: { item: typeof navFilter[0]; index: number } | null = null
   navFilter.forEach((item, index) => {
-    if (item.route === route.fullPath)
+    if (item.route === route.path)
       defaultItem = { item, index }
   })
 
