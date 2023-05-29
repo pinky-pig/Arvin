@@ -19,6 +19,17 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
 }
 
 onMounted(() => {
+  initActiveTab()
+})
+
+watch(
+  () => route.fullPath,
+  () => {
+    initActiveTab()
+  },
+)
+
+function initActiveTab() {
   let defaultItem: { item: typeof navFilter[0]; index: number } | null = null
   navFilter.forEach((item, index) => {
     if (item.route === route.fullPath)
@@ -31,7 +42,7 @@ onMounted(() => {
       (defaultItem as { item: typeof navFilter[0]; index: number }).index,
     )
   }
-})
+}
 </script>
 
 <template>

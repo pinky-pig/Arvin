@@ -8,8 +8,9 @@ const props = defineProps({
     required: true,
   },
 })
-
 const emit = defineEmits(['blogJump'])
+
+const router = useRouter()
 
 const allBlogs = ref<IBlog[]>()
 allBlogs.value = await parseList()
@@ -18,8 +19,8 @@ allBlogs.value = await parseList()
 <template>
   <nav class="w-300px h-full pl-4 ">
     <div class="flex flex-row leading-40px text-2rem font-bold gap-2 my-2 pt-10px">
-      <img class="w-40px h-40px" :src="SITE.icon" alt="">
-      <h1 class="">
+      <img class="w-40px h-40px cursor-pointer" :src="SITE.icon" alt="" @click="router.push(`/blog`)">
+      <h1 class="cursor-pointer" @click="router.push(`/blog`)">
         {{ SITE.title }}
       </h1>
     </div>
