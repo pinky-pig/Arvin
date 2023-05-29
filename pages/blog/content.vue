@@ -69,7 +69,7 @@ function paginationJump(path: string) {
         />
       </aside>
 
-      <div class="heti max-w-50rem w-50rem pb-20 p-0 md:ml-300px md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
+      <div class="heti max-w-50rem pb-20 p-0 md:ml-300px md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
         <h1 class="content-title flex align-middle ">
           {{ currentBlog.title }}
         </h1>
