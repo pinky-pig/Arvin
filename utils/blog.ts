@@ -58,7 +58,7 @@ export async function parseList() {
 }
 
 // 回到顶部
-export function scrollToTop() {
+export function scrollToBlogTop() {
   scrollTo({
     top: 0,
     left: 0,

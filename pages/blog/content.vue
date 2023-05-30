@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LeftSidebar from './sidebar.vue'
+import { scrollToBlogTop } from '~/utils/blog'
 
 definePageMeta({
   layout: 'none',
@@ -31,7 +32,7 @@ async function initCurrentBlog(blog: string) {
     const blogs = await queryContent(currentBlog.path).find()
     blogs.length && parseCurrentBlog(blogs[0])
   }
-  scrollToTop()
+  scrollToBlogTop()
 }
 
 function parseCurrentBlog(blog: any) {
