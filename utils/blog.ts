@@ -59,20 +59,13 @@ export async function parseList() {
 
 // 回到顶部
 export function scrollToTop() {
-  // onMounted(() => {
-  //   const currentPosition = window.pageYOffset || document.documentElement.scrollTop
-  //   const distance = currentPosition
-  //   const duration = 500 // 滚动时间
-  //   const step = distance / duration * 16.7 // 步长，每秒 60 帧
-
-  //   function scroll() {
-  //     if (window.pageYOffset <= 0)
-  //       return
-
-  //     window.scrollTo(0, window.pageYOffset - step)
-  //     window.requestAnimationFrame(scroll)
-  //   }
-
-  //   window.requestAnimationFrame(scroll)
-  // })
+  scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  })
+  // const el = ref<HTMLElement | null>(null)
+  // const { x, y } = useScroll(el, { behavior: 'smooth' })
+  // x.value = 0
+  // return { el, x, y }
 }
