@@ -55,13 +55,13 @@ function parsePreAndNextLink(allBlogs: any[], currentBlog: any) {
 }
 
 function paginationJump(path: string) {
-  router.replace({ query: { url: path } })
+  router.replace({ query: { blog: path } })
   initCurrentBlog(path)
 }
 </script>
 
 <template>
-  <main class="layout flex justify-center p-4">
+  <main class="layout flex justify-center p-2 md:p-4">
     <aside id="grid-left" class="grid-sidebar hidden md:block flex-shrink-0 flex-grow-0">
       <LeftSidebar
         :current-blog="currentBlog"
@@ -70,7 +70,7 @@ function paginationJump(path: string) {
       />
     </aside>
 
-    <div id="grid-main" class="heti max-w-50rem pb-20 p-0 md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
+    <div id="grid-main" class="heti max-w-50rem pb-20 p-0 w-100% md:w-unset md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
       <h1 class="content-title flex align-middle ">
         {{ currentBlog.title }}
       </h1>

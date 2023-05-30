@@ -30,7 +30,7 @@ function jumpNextPage(page: number) {
 
 const router = useRouter()
 function jumpCurrentBlog(item: IBlog) {
-  router.push(`/blog/content?url=${item.link}`)
+  router.push(`/blog/content?blog=${item.link}`)
 }
 function jumpArchives(tag: string, item: IBlog) {
   router.push(`/archives?tags=${tag}`)

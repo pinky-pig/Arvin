@@ -43,7 +43,3 @@ allBlogs.value = await parseList()
     </ul>
   </nav>
 </template>
-
-<style scoped>
-
-</style>
