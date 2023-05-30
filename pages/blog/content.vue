@@ -57,6 +57,12 @@ function parsePreAndNextLink(allBlogs: any[], currentBlog: any) {
 function paginationJump(path: string) {
   router.replace({ query: { blog: path } })
   initCurrentBlog(path)
+  updateGiscusConfig({
+    setConfig: {
+      reactionsEnabled: false,
+      term: path.slice(1) || '01',
+    },
+  })
 }
 </script>
 
