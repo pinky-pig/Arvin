@@ -23,7 +23,7 @@ const currentBlog = reactive({
   nextPath: '',
 })
 
-initCurrentBlog(route.query.url as string)
+initCurrentBlog(route.query.blog as string)
 
 async function initCurrentBlog(blog: string) {
   if (blog) {
@@ -70,7 +70,7 @@ function paginationJump(path: string) {
       />
     </aside>
 
-    <div id="grid-main" class="heti max-w-50rem pb-20 p-0 w-100% md:w-unset md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
+    <div id="grid-main" class="heti max-w-50rem pb-20 p-0 w-[calc(100vw-0.8rem)] md:w-unset md:p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
       <h1 class="content-title flex align-middle ">
         {{ currentBlog.title }}
       </h1>
