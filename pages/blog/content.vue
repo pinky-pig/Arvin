@@ -31,6 +31,7 @@ async function initCurrentBlog(blog: string) {
     const blogs = await queryContent(currentBlog.path).find()
     blogs.length && parseCurrentBlog(blogs[0])
   }
+  scrollToTop()
 }
 
 function parseCurrentBlog(blog: any) {
