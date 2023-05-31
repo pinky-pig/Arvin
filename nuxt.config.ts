@@ -1,5 +1,4 @@
-import { pwa } from './config/pwa'
-import { appDescription } from './constants/index'
+import { appDescription, pwa } from './config'
 
 export default defineNuxtConfig({
   devtools: {

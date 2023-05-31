@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SITE } from '~/config/param'
-import type { IBlog } from '~/config/types'
+import { SITE } from '~/config'
+import type { IBlog } from '~/config'
 
 const props = defineProps({
   currentBlog: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IBlog } from '~/config/types'
+import type { IBlog } from '~/config'
 
 const allBlogs = ref<IBlog[]>()
 allBlogs.value = await parseList()

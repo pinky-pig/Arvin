@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import type { IBlog } from '~/config/types'
+import type { IBlog } from '~/config'
 
 export const useBlogStore = defineStore('blog', async () => {
   const allBlog = ref<IBlog[]>([])

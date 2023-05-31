@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { appName } from '~/constants'
+import { appName } from '~/config'
 import '~~/components/lit-components'
 
 useHead({
