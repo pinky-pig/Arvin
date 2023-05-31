@@ -71,7 +71,7 @@ export function updateGiscusTheme() {
 
 function getTheme(color: string) {
   if (color === 'dark')
-    return 'https://giscus.app/themes/custom_example.css'
+    return `http://${window.location.host}/styles/giscus/dark-comment.css`
   else
-    return 'https://gw.alipayobjects.com/os/k/font7/comment.css'
+    return `http://${window.location.host}/styles/giscus/light-comment.css`
 }
