@@ -5,12 +5,18 @@ definePageMeta({
   layout: 'none',
 })
 
+const route = useRoute()
+const router = useRouter()
+const { appHeadTitle, setAppHeadTitle } = useAppHead()
+setAppHeadTitle(route.query.blog as string)
+useHead({
+  title: appHeadTitle,
+})
+
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const { root: giscusRoot } = registerGiscus()
 
-const route = useRoute()
-const router = useRouter()
 const currentBlog = reactive({
   index: 0,
   title: '',
