@@ -6,6 +6,11 @@ const navFilter = [
 ]
 
 const route = useRoute()
+const { appHeadTitle, setAppHeadTitle } = useAppHead()
+
+useHead({
+  title: appHeadTitle,
+})
 
 const currentItem = ref<typeof navFilter[0] | null>(null)
 const currentItemBgRef = ref<HTMLElement>()
@@ -16,6 +21,7 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
   currentItem.value = item
   currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
   animateDom.classList.add('animate-jello')
+  setAppHeadTitle(item.label)
 }
 
 onMounted(() => {
