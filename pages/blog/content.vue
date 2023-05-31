@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import LeftSidebar from './sidebar.vue'
-import { scrollToBlogTop } from '~/utils/blog'
 
 definePageMeta({
   layout: 'none',

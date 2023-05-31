@@ -17,6 +17,14 @@ interface ISetConfigMessage {
   }
 }
 
+function getTheme() {
+  const color = useColorMode()
+  if (color.value === 'dark')
+    return 'https://giscus.app/themes/custom_example.css'
+  else
+    return 'https://gw.alipayobjects.com/os/k/font7/comment.css'
+}
+
 export function registerGiscus() {
   const root = ref<HTMLElement | null>()
   onMounted(() => {
@@ -36,7 +44,7 @@ export function registerGiscus() {
       script.setAttribute('data-reactions-enabled', '1')
       script.setAttribute('data-emit-metadata', '0')
       script.setAttribute('data-input-position', 'bottom')
-      script.setAttribute('data-theme', 'https://gw.alipayobjects.com/os/k/font7/comment.css')
+      script.setAttribute('data-theme', getTheme())
       script.setAttribute('data-lang', 'zh-CN')
       script.setAttribute('data-loading', 'lazy')
       script.setAttribute('crossorigin', 'anonymous')
@@ -44,6 +52,7 @@ export function registerGiscus() {
       root.value!.appendChild(script)
     }
   })
+  updateGiscusTheme()
   return { root }
 }
 
@@ -52,4 +61,25 @@ export function updateGiscusConfig(message: ISetConfigMessage) {
   if (!iframe)
     return
   iframe.contentWindow!.postMessage({ giscus: message }, 'https://giscus.app')
+}
+
+export function updateGiscusTheme() {
+  const color = useColorMode()
+
+  watch(color, (newVal, oldVal) => {
+    if (color.value === 'dark') {
+      updateGiscusConfig({
+        setConfig: {
+          theme: 'https://giscus.app/themes/custom_example.css',
+        },
+      })
+    }
+    else {
+      updateGiscusConfig({
+        setConfig: {
+          theme: 'https://gw.alipayobjects.com/os/k/font7/comment.css',
+        },
+      })
+    }
+  })
 }
