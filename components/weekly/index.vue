@@ -6,14 +6,16 @@ const color = useColorMode()
 <template>
   <div class="relative select-none bg-[var(--card--bg)] overflow-hidden">
     <img
-      class=" object-fill select-none pointer-events-none"
+      class="lozad w-370px h-180px object-fill select-none pointer-events-none"
       :style="{ opacity: color.value === 'dark' ? 0 : 1 }"
       src="/wrap-bg.svg"
       alt=""
     >
     <img
       class="
-        w-full
+        lozad
+        w-370px
+        h-180px
         h-auto
         object-fill
         select-none
@@ -22,7 +24,7 @@ const color = useColorMode()
         left-0
         top-0
       "
-      src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230406143158.png"
+      src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/imagesweekly.webp"
       style="transform: rotate(330deg) translate3d(100px, 10px, 10px);"
       alt=""
     >
