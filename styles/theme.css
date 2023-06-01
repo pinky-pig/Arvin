@@ -1,7 +1,7 @@
 html.dark{
   --background   : #090C10;
   --bg-color     : #231f20;
-  --text-color   : rgb(240, 242, 248);
+  --text-color   : #f0f2f8;
 
   --input-primary-color         : #0D1117;
   --input-second-color          : #30363D;
@@ -11,7 +11,7 @@ html.dark{
   --card--placeholder-bg        : #1c2025;
 
   --header-avatar-bg            : #6A89A790;
-  --header-avatar-shadow        : 0 0 transparent, 0 0 transparent, 0 -1px 0 hsla(0,0%,100%,.1) inset;
+  --header-avatar-shadow        : 0 0 transparent, 0 0 transparent, 0 -1px 0 #ffffff1a inset;
   --header-avatar-shadow-1      : 0 0 0 11px #6A89A750, 0 0 0 24px #6A89A730;
 
   --dockbar-bg                  : #262626;
@@ -19,18 +19,18 @@ html.dark{
   --dockbar-text                : #FAFAFA;
 
   --nav-bg                      : transparent;
-  --nav-text                    : rgb(240, 242, 248);
-  --nav-placeholder-bg          : rgb(48, 54, 61);
+  --nav-text                    : #f0f2f8;
+  --nav-placeholder-bg          : #30363d;
 
-  --blog-bg                     : #0D111790;
+  --blog-bg                     : #0D1117;
   --blog--border                : #30363D;
   --blog-text                   : #FAFAFA;
 }
 
 html{
-  --background   : rgb(247, 242, 242);
+  --background   : #f7f2f2;
   --bg-color     : #ede9e9;
-  --text-color   : rgb(13, 17, 23);
+  --text-color   : #0d1117;
 
   --input-primary-color         : #ffffff;
   --input-second-color          : #F7F2F2;
@@ -40,7 +40,7 @@ html{
   --card--placeholder-bg        : #ede9e9;
 
   --header-avatar-bg            : #f2f2f290;
-  --header-avatar-shadow        : 0 2px 4px rgba(0,0,0,.02),0 1px 0 rgba(0,0,0,.06);
+  --header-avatar-shadow        : 0 2px 4px #00000005,0 1px 0 #0000000f;
   --header-avatar-shadow-1      : 0 0 0 11px #f2f2f290, 0 0 0 24px #fafafa80;
 
   --dockbar-bg                   : #FFFEFE;
@@ -49,9 +49,9 @@ html{
 
   --nav-bg                       : #EDE9E9;
   --nav-text                     : #000;
-  --nav-placeholder-bg           : rgb(255, 255, 255);
+  --nav-placeholder-bg           : #ffffff;
 
-  --blog-bg                      : rgba(247, 242, 242,0.5);
+  --blog-bg                      : #f7f2f2;
   --blog--border                 : #ede9e9;
   --blog-text                    : #ede9e9;
 }
