@@ -34,8 +34,9 @@ export function sortPosts(allPosts: any) {
 
 // 转化所有的文章的列表
 export async function parseList() {
-  const blogs = await queryContent('/').find()
-
+  const blogs = await queryContent('/')
+    .only(['_file', 'title', 'desc', 'date', 'tags'])
+    .find()
   if (blogs.length) {
     return blogs.map((blog) => {
       const index = getIndex(blog._file as string)
