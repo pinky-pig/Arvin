@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     enabled: false,
     vscode: {},
   },
+
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
@@ -15,8 +16,18 @@ export default defineNuxtConfig({
     '@nuxt/content',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
+  routeRules: {
+    '/**': { headers: { 'Access-Control-Allow-Origin': '*' } },
+  },
   vite: {
     server: {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+  },
+  webpack: {
+    devMiddleware: {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
