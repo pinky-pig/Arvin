@@ -71,7 +71,7 @@ export function updateGiscusTheme() {
 
 function getTheme(color: string) {
   if (color === 'dark')
-    return `http://${window.location.host}/styles/giscus/dark-comment.css`
+    return `${window.location.protocol}//${window.location.host}/styles/giscus/dark-comment.css`
   else
-    return `http://${window.location.host}/styles/giscus/light-comment.css`
+    return `${window.location.protocol}//${window.location.host}/styles/giscus/light-comment.css`
 }
