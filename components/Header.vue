@@ -16,12 +16,14 @@ const currentItem = ref<typeof navFilter[0] | null>(null)
 const currentItemBgRef = ref<HTMLElement>()
 // 选中当前选项卡
 function handleActiveTab(item: typeof navFilter[0], index: number) {
-  const animateDom = document.querySelectorAll('.animate-dom')[0] as HTMLElement
-  animateDom.classList.remove('animate-jello')
-  currentItem.value = item
-  currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
-  animateDom.classList.add('animate-jello')
-  setAppHeadTitle(item.label)
+  const animateDom = document.querySelectorAll('.animate-dom')[0]
+  if (animateDom instanceof HTMLElement) {
+    animateDom?.classList?.remove('animate-jello')
+    currentItem.value = item
+    currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
+    animateDom?.classList?.add('animate-jello')
+    setAppHeadTitle(item.label)
+  }
 }
 
 onMounted(() => {
@@ -31,7 +33,9 @@ onMounted(() => {
 watch(
   () => route.fullPath,
   () => {
-    initActiveTab()
+    nextTick(() => {
+      initActiveTab()
+    })
   },
 )
 
