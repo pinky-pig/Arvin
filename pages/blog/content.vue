@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import LeftSidebar from './sidebar.vue'
 
-definePageMeta({
-  layout: 'none',
-})
-
 const route = useRoute()
 const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 setAppHeadTitle(route.query.blog as string)
 useHead({
   title: appHeadTitle,
+})
+
+onActivated(() => {
+  // eslint-disable-next-line no-console
+  console.log(' blog 内容 ')
 })
 
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
