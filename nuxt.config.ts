@@ -17,7 +17,18 @@ export default defineNuxtConfig({
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
   routeRules: {
-    '/**': { headers: { 'Access-Control-Allow-Origin': '*' } },
+    '/**': {
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    },
+    '/styles/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+    },
+    '/rain/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+    },
+    '/fonts/**': {
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+    },
   },
   vite: {
     server: {
