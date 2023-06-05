@@ -89,12 +89,13 @@ function paginationJump(path: string) {
       <h1 class="content-title flex align-middle ">
         {{ currentBlog.title }}
       </h1>
-
-      <ContentDoc :path="currentBlog.path">
-        <template #not-found>
-          <h1>Document not found</h1>
-        </template>
-      </ContentDoc>
+      <ClientOnly>
+        <ContentDoc :path="currentBlog.path">
+          <template #not-found>
+            <h1>Document not found</h1>
+          </template>
+        </ContentDoc>
+      </ClientOnly>
 
       <hr>
 
