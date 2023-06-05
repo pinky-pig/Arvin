@@ -14,6 +14,12 @@ onActivated(() => {
   console.log(' blog 内容 ')
 })
 
+// definePageMeta({
+//   hasHeader: false,
+//   hasFooter: false,
+//   hasMain: false,
+// })
+
 const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
 
 const { root: giscusRoot } = registerGiscus()
