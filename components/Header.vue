@@ -1,30 +1,13 @@
 <script setup lang="ts">
-const navFilter = [
-  { label: '项目', route: '/' },
-  { label: '文章', route: '/blog' },
-  { label: '归档', route: '/archives' },
-]
+import { navFilter } from '~/config'
 
 const route = useRoute()
+const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 
 useHead({
   title: appHeadTitle,
 })
-
-const currentItem = ref<typeof navFilter[0] | null>(null)
-const currentItemBgRef = ref<HTMLElement>()
-// 选中当前选项卡
-function handleActiveTab(item: typeof navFilter[0], index: number) {
-  const animateDom = document.querySelectorAll('.animate-dom')[0]
-  if (animateDom instanceof HTMLElement) {
-    animateDom?.classList?.remove('animate-jello')
-    currentItem.value = item
-    currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
-    animateDom?.classList?.add('animate-jello')
-    setAppHeadTitle(item.label)
-  }
-}
 
 onMounted(() => {
   initActiveTab()
@@ -38,6 +21,25 @@ watch(
     })
   },
 )
+
+const currentItemBgRef = ref<HTMLElement>()
+const animateDom = computed(() => {
+  if (currentItemBgRef.value && currentItemBgRef.value?.children && currentItemBgRef.value?.children[0])
+    return currentItemBgRef.value?.children[0]
+  else
+    return null
+})
+
+// 选中当前选项卡
+function handleActiveTab(item: typeof navFilter[0], index: number) {
+  if (animateDom.value instanceof HTMLElement) {
+    animateDom.value?.classList?.remove('animate-jello')
+    currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
+    animateDom.value?.classList?.add('animate-jello')
+    setAppHeadTitle(item.label)
+    router.replace(item.route)
+  }
+}
 
 function initActiveTab() {
   let defaultItem: { item: typeof navFilter[0]; index: number } | null = null
@@ -71,15 +73,15 @@ function initActiveTab() {
     >
 
     <div class="nav-filter">
-      <NuxtLink
+      <div
         v-for="item, index in navFilter"
         :key="item.label"
         :to="item.route"
-        class="filter-option "
+        class="filter-option"
         @click="handleActiveTab(item, index)"
       >
         {{ item.label }}
-      </NuxtLink>
+      </div>
 
       <div
         ref="currentItemBgRef"

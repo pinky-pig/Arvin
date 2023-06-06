@@ -13,6 +13,12 @@ export const SITE = {
   notion: 'https://hail-manatee-fc5.notion.site/a3d8b723782e48a3b3570980e83c70ae?v=0c510fa996e2492b943e7746c1bd9974',
 }
 
+export const navFilter = [
+  { label: '项目', route: '/' },
+  { label: '文章', route: '/blog' },
+  { label: '归档', route: '/archives' },
+]
+
 export enum UnsplashSetting {
   ApplicationName = 'what-is-my-new-tab',
   AccessKey = 'KM1kMtcaYX2SZQR1m_o-pwg4RJZUVivPZgfJsbw5h2o',
