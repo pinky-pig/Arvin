@@ -60,7 +60,7 @@ export async function parseList() {
 
 // 回到顶部
 export function scrollToBlogTop() {
-  scrollTo({
+  window && window.scrollTo({
     top: 0,
     left: 0,
     behavior: 'smooth',
