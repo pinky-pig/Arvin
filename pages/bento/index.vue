@@ -43,6 +43,8 @@ watch(width, () => {
     maximumCells.value = Math.floor(width.value / (size.value + gap.value))
   }
   else { maximumCells.value = 6 }
+}, {
+  immediate: true,
 })
 </script>
 
