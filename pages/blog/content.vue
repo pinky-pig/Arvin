@@ -25,7 +25,12 @@ const currentBlog = reactive({
   nextPath: '',
 })
 
-initCurrentBlog(route.query.blog as string)
+onActivated(() => {
+  initCurrentBlog(route.query.blog as string)
+})
+onMounted(() => {
+  initCurrentBlog(route.query.blog as string)
+})
 
 async function initCurrentBlog(blog: string) {
   if (blog) {
@@ -89,7 +94,7 @@ function paginationJump(path: string) {
       <ClientOnly>
         <ContentDoc :path="currentBlog.path">
           <template #not-found>
-            <h1>Document not found</h1>
+            <h1>Loading</h1>
           </template>
         </ContentDoc>
       </ClientOnly>
