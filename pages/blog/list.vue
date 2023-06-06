@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import type { IBlog } from '~/config'
 
-onActivated(() => {
-  // eslint-disable-next-line no-console
-  console.log(' blog 列表')
-})
 const allBlogs = ref<IBlog[]>()
 allBlogs.value = await parseList()
 

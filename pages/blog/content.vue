@@ -9,18 +9,7 @@ useHead({
   title: appHeadTitle,
 })
 
-onActivated(() => {
-  // eslint-disable-next-line no-console
-  console.log(' blog 内容 ')
-})
-
-// definePageMeta({
-//   hasHeader: false,
-//   hasFooter: false,
-//   hasMain: false,
-// })
-
-const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
+const navigation = await queryContent('/').only(['_file', 'title', 'desc', 'date', 'tags']).find()
 
 const { root: giscusRoot } = registerGiscus()
 
@@ -54,7 +43,7 @@ function parseCurrentBlog(blog: any) {
   currentBlog.desc = blog.desc
   currentBlog.date = blog.date
   currentBlog.tags = blog.tags
-  const { prevPath, nextPath } = parsePreAndNextLink(navigation.value as any[], currentBlog)
+  const { prevPath, nextPath } = parsePreAndNextLink(navigation as any[], currentBlog)
   currentBlog.prevPath = prevPath
   currentBlog.nextPath = nextPath
 }
