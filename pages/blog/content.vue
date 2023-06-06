@@ -94,8 +94,9 @@ function paginationJump(path: string) {
 
     <div id="grid-main" class="heti max-w-50rem pb-20  w-[calc(100vw-0.8rem)] md:w-unset p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
       <h1 class="content-title flex align-middle ">
-        {{ currentBlog.title }}
+        {{ currentBlog.title || ' ' }}
       </h1>
+
       <ClientOnly>
         <ContentDoc :path="currentBlog.path">
           <template #not-found>
