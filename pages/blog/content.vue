@@ -9,7 +9,7 @@ useHead({
   title: appHeadTitle,
 })
 
-const navigation = await queryContent('/').only(['_file', 'title', 'desc', 'date', 'tags']).find()
+const navigation = await queryContent('/').only(['_file', 'title', 'desc', 'date', 'tags', '_path']).find()
 
 const { root: giscusRoot } = registerGiscus()
 
