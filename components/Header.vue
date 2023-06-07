@@ -113,7 +113,7 @@ function initActiveTab() {
   will-change: opacity,transform;
   backdrop-filter: saturate(50%) blur(8px);
   -webkit-backdrop-filter: saturate(50%) blur(8px);
-  /* box-shadow: 0 0 transparent, 0 0 transparent, var(--header-avatar-shadow); */
+  box-shadow: 0 0 transparent, 0 0 transparent, var(--header-avatar-shadow);
 
   /* 下面这个是上下渐变 */
   background: linear-gradient(to bottom,var(--background),transparent);
