@@ -61,13 +61,15 @@ function initActiveTab() {
   <div
     id="nav-bg"
     class="
-      h-180px
+      w-full h-fit md:h-180px
+      px-3.5vw py-18px
+      fixed top-0 left-0 z-2
       flex flex-col justify-between items-center
       md:flex-row
     "
   >
     <img
-      class="w-72px h-72px mt-18px md:w-56px md:h-56px md:mt-0"
+      class="w-72px h-72px mt-0px md:w-56px md:h-56px md:mt-0 hidden md:block"
       src="/logo.svg"
       alt=""
     >
@@ -108,12 +110,6 @@ function initActiveTab() {
 
 <style scoped>
 #nav-bg {
-  padding: 0 3.5vw;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 100%;
   will-change: opacity,transform;
   backdrop-filter: saturate(50%) blur(8px);
   -webkit-backdrop-filter: saturate(50%) blur(8px);

@@ -76,7 +76,7 @@ function paginationJump(path: string) {
 
 <template>
   <main
-    class="layout w-full h-screen flex justify-center p-2 md:p-4 bg-[var(--blog-bg)]"
+    class="layout w-full h-screen flex justify-center pt-84px px-2 md:p-4 bg-[var(--blog-bg)]"
   >
     <aside id="grid-left" class="grid-sidebar hidden md:block flex-shrink-0 flex-grow-0">
       <LeftSidebar
