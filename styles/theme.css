@@ -1,7 +1,9 @@
 html.dark{
-  --background   : #090C10;
-  --bg-color     : #231f20;
-  --text-color   : #f0f2f8;
+  --background                  : #090C10;
+  --bg-color                    : #231f20;
+  --text-color                  : #f0f2f8;
+  --bg-main-color               : transparent;
+  --scrollbar-color             : #30363d;
 
   --input-primary-color         : #0D1117;
   --input-second-color          : #30363D;
@@ -20,6 +22,7 @@ html.dark{
 
   --nav-bg                      : transparent;
   --nav-text                    : #f0f2f8;
+  --nav-border                  : #30363d;
   --nav-placeholder-bg          : #30363d;
 
   --blog-bg                     : #0D1117;
@@ -28,30 +31,34 @@ html.dark{
 }
 
 html{
-  --background   : #f7f2f2;
-  --bg-color     : #ede9e9;
-  --text-color   : #0d1117;
+  --background                  : #ffffff;
+  --bg-color                    : #ffffff;
+  --text-color                  : #000000;
+  --bg-main-color               : #F3F3F3;
+  --scrollbar-color             : #9C9C9C;
+
 
   --input-primary-color         : #ffffff;
-  --input-second-color          : #F7F2F2;
+  --input-second-color          : #ffffff;
 
-  --card--bg                    : #ffffff;
-  --card--border                : #ede9e9;
-  --card--placeholder-bg        : #ede9e9;
+  --card--bg                    : #F3F3F3;
+  --card--border                : #FFFFFF;
+  --card--placeholder-bg        : #F6F6F6;
 
-  --header-avatar-bg            : #f2f2f290;
+  --header-avatar-bg            : #ffffff90;
   --header-avatar-shadow        : 0 2px 4px #00000005,0 1px 0 #0000000f;
   --header-avatar-shadow-1      : 0 0 0 11px #f2f2f290, 0 0 0 24px #fafafa80;
 
-  --dockbar-bg                   : #FFFEFE;
-  --dockbar-placeholder-bg       : #EEEEEE;
-  --dockbar-text                 : #858585;
+  --dockbar-bg                   : #ffffff;
+  --dockbar-placeholder-bg       : #ffffff;
+  --dockbar-text                 : #000000;
 
-  --nav-bg                       : #EDE9E9;
-  --nav-text                     : #000;
-  --nav-placeholder-bg           : #ffffff;
+  --nav-bg                       : #ffffff;
+  --nav-text                     : #ffffff;
+  --nav-border                   : #F3F3F3;
+  --nav-placeholder-bg           : #000000;
 
-  --blog-bg                      : #f7f2f2;
-  --blog--border                 : #ede9e9;
-  --blog-text                    : #ede9e9;
+  --blog-bg                      : #ffffff;
+  --blog--border                 : #ffffff;
+  --blog-text                    : #ffffff;
 }

@@ -9,11 +9,8 @@ const isLargeScreen = useMediaQuery('(min-width: 720px)')
 
 <template>
   <main
-    :class="
-      isNoneLayout
-        ? ''
-        : 'pt-84px md:pt-180px pb-20 px-5 overflow-x-hidden min-h-screen md:pt-136px'
-    "
+    class="bg-[var(--bg-main-color)]"
+    :class=" isNoneLayout ? '' : 'pt-100px md:pt-100px pb-20 px-10px md:px-5 overflow-x-hidden min-h-screen md:pt-112px ' "
   >
     <Header v-show="!isLargeScreen || !isNoneLayout" />
     <slot />

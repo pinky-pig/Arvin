@@ -5,6 +5,9 @@ const route = useRoute()
 const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 
+const color = useColorMode()
+const navFilterOptionBgMode = computed(() => color.value === 'light' ? 'difference' : 'unset')
+
 useHead({
   title: appHeadTitle,
 })
@@ -22,6 +25,7 @@ watch(
   },
 )
 
+const currentItem = ref<typeof navFilter[0] | null>(navFilter[0])
 const currentItemBgRef = ref<HTMLElement>()
 const animateDom = computed(() => {
   if (currentItemBgRef.value && currentItemBgRef.value?.children && currentItemBgRef.value?.children[0])
@@ -37,6 +41,7 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
     currentItemBgRef.value!.style.transform = `translate(${(document.querySelectorAll('.filter-option')[index] as HTMLElement).offsetLeft + 5}px, 5px)`
     animateDom.value?.classList?.add('animate-jello')
     setAppHeadTitle(item.label)
+    currentItem.value = item
     router.replace(item.route)
   }
 }
@@ -61,11 +66,10 @@ function initActiveTab() {
   <div
     id="nav-bg"
     class="
-      w-full h-fit md:h-180px
-      px-3.5vw py-18px
+      w-full h-fit md:h-80px
+      px-3.5vw py-18px md:py-unset
       fixed top-0 left-0 z-2
-      flex flex-col justify-between items-center
-      md:flex-row
+      flex flex-col md:flex-row justify-between items-center
     "
   >
     <img
@@ -125,13 +129,13 @@ function initActiveTab() {
 
 @media (min-width: 768px) {
   #nav-bg {
-    height: 136px;
+    height: 80px;
   }
 }
 .nav-filter{
   position: relative;
-  background: transparent;
-  border: 2px solid var(--nav-placeholder-bg);
+  background: var(--nav-bg);
+  border: 2px solid var(--nav-border);
   border-radius: 23px;
   display: flex;
   font-family: "Silka Medium";
@@ -151,18 +155,24 @@ function initActiveTab() {
   -webkit-box-align: center;
   padding: 0px 16px;
   transition: opacity 0.3s ease 0s;
-  color: var(--nav-text);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   z-index: 1;
   user-select: none;
+  color: var(--nav-text);
+  mix-blend-mode: v-bind(navFilterOptionBgMode);
+}
+
+@media (prefers-color-scheme: dark) {
+  .filter-option {
+    background-color: red;
+  }
 }
 .animate-dom{
   border-radius: 50px;
   background-color: var(--nav-placeholder-bg);
-  color: var(--nav-text);
 }
 .animate-jello {
   animation: jello-horizontal 0.9s both;

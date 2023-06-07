@@ -29,12 +29,14 @@ main {
   height:24px;
   background: rgba(214, 212, 212,.3);
   border-radius: 8px;
+  border: 1px solid var(--scrollbar-color); 
 }
 ::-webkit-scrollbar-thumb:horizontal{
   width:24px;
   height:24px;
   background: rgba(214, 212, 212,.3);
   border-radius: 8px;
+  border: 1px solid var(--scrollbar-color); 
 }
 ::-webkit-scrollbar-button{
   display:none;

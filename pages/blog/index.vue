@@ -5,8 +5,8 @@ import Title from './title.vue'
 
 <template>
   <div
-    style=" background-color: var(--blog-bg); border: 3px solid var(--blog--border ); "
-    class=" max-w-960px mx-auto px-20px text-start rounded-xl md:px-36px"
+    style=" background-color: var(--blog-bg); border: 1px solid var(--blog--border ); "
+    class=" max-w-960px mx-auto px-10px text-start rounded-xl md:px-36px"
   >
     <Title title="全部文章" />
     <List />
