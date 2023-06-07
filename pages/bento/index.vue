@@ -3,16 +3,10 @@ import { ref } from 'vue'
 import V3bento from 'v3-bento'
 import { bentoCellsInDesktop, bentoCellsInMobile } from './bento'
 
-definePageMeta({
-  layout: 'home',
-  key: route => route.fullPath,
-  keepalive: true,
-})
-
 function print(val: string, e: any) {
-
   // console.log(val, e)
 }
+
 const maximumCells = ref(4)
 const size = ref(180)
 const gap = ref(10)
