@@ -13,7 +13,8 @@
     "start:generate": "npx serve .output/public"
   },
   "dependencies": {
-    "@nuxt/content": "^2.6.0"
+    "@nuxt/content": "^2.6.0",
+    "v3-bento": "0.0.2-alpha.5.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.0",

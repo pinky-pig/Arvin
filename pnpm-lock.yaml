@@ -17,10 +17,12 @@ specifiers:
   nuxt: ^3.5.0
   pinia: ^2.1.3
   typescript: ^5.0.4
+  v3-bento: 0.0.2-alpha.5.7
   vue-tsc: ^1.6.5
 
 dependencies:
   '@nuxt/content': 2.6.0
+  v3-bento: 0.0.2-alpha.5.7
 
 devDependencies:
   '@antfu/eslint-config': 0.39.5_tizxnkcvjrb4cldxgwq5h3lj5u
@@ -10194,6 +10196,10 @@ packages:
       diff: 5.1.0
       kleur: 4.1.5
       sade: 1.8.1
+    dev: false
+
+  /v3-bento/0.0.2-alpha.5.7:
+    resolution: {integrity: sha512-BJ9zfdCccfJN9gnM0yeu51Ha93Y1Uo3BGOX7e3TrMqa6XnIdKPxKA23HKKqPYb0oDGmieLq8w4l7jR4PaLRQRA==}
     dev: false
 
   /validate-npm-package-license/3.0.4:
