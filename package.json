@@ -12,6 +12,9 @@
     "generate": "nuxi generate",
     "start:generate": "npx serve .output/public"
   },
+  "dependencies": {
+    "@nuxt/content": "^2.6.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.0",
     "@iconify-json/carbon": "^1.1.16",

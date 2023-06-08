@@ -1,11 +1,19 @@
-<template>
-  <main class="px-10 py-20 text-center">
-    <Header />
+<script setup lang="ts">
+const route = useRoute()
 
+const whitelist = ['/blog/content']
+const isNoneLayout = computed(() => whitelist.includes(route.path))
+
+const isLargeScreen = useMediaQuery('(min-width: 720px)')
+</script>
+
+<template>
+  <main
+    class="bg-[var(--bg-main-color)]"
+    :class=" isNoneLayout ? '' : 'pt-100px md:pt-100px pb-20 px-10px md:px-5 overflow-x-hidden min-h-screen md:pt-112px ' "
+  >
+    <Header v-show="!isLargeScreen || !isNoneLayout" />
     <slot />
     <Footer />
-    <div class="mx-auto mt-5 text-center text-sm opacity-25">
-      [Default Layout]
-    </div>
   </main>
 </template>

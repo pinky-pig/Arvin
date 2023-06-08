@@ -1,0 +1,64 @@
+html.dark{
+  --background                  : #090C10;
+  --bg-color                    : #231f20;
+  --text-color                  : #f0f2f8;
+  --bg-main-color               : transparent;
+  --scrollbar-color             : #30363d;
+
+  --input-primary-color         : #0D1117;
+  --input-second-color          : #30363D;
+
+  --card--bg                    : #0D1117;
+  --card--border                : #30363D;
+  --card--placeholder-bg        : #1c2025;
+
+  --header-avatar-bg            : #6A89A790;
+  --header-avatar-shadow        : 0 0 transparent, 0 0 transparent, 0 -1px 0 #ffffff1a inset;
+  --header-avatar-shadow-1      : 0 0 0 11px #6A89A750, 0 0 0 24px #6A89A730;
+
+  --dockbar-bg                  : #262626;
+  --dockbar-placeholder-bg      : #404040;
+  --dockbar-text                : #FAFAFA;
+
+  --nav-bg                      : transparent;
+  --nav-text                    : #f0f2f8;
+  --nav-border                  : #30363d;
+  --nav-placeholder-bg          : #30363d;
+
+  --blog-bg                     : #0D1117;
+  --blog--border                : #30363D;
+  --blog-text                   : #FAFAFA;
+}
+
+html{
+  --background                  : #ffffff;
+  --bg-color                    : #ffffff;
+  --text-color                  : #000000;
+  --bg-main-color               : #F3F3F3;
+  --scrollbar-color             : #9C9C9C;
+
+
+  --input-primary-color         : #ffffff;
+  --input-second-color          : #ffffff;
+
+  --card--bg                    : #F3F3F3;
+  --card--border                : #FFFFFF;
+  --card--placeholder-bg        : #F6F6F6;
+
+  --header-avatar-bg            : #ffffff90;
+  --header-avatar-shadow        : 0 2px 4px #00000005,0 1px 0 #0000000f;
+  --header-avatar-shadow-1      : 0 0 0 11px #f2f2f290, 0 0 0 24px #fafafa80;
+
+  --dockbar-bg                   : #ffffff;
+  --dockbar-placeholder-bg       : #ffffff;
+  --dockbar-text                 : #000000;
+
+  --nav-bg                       : #ffffff;
+  --nav-text                     : #ffffff;
+  --nav-border                   : #F3F3F3;
+  --nav-placeholder-bg           : #000000;
+
+  --blog-bg                      : #ffffff;
+  --blog--border                 : #ffffff;
+  --blog-text                    : #ffffff;
+}
