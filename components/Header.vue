@@ -6,7 +6,12 @@ const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 
 const color = useColorMode()
-const navFilterOptionBgMode = computed(() => color.value === 'light' ? 'difference' : 'unset')
+const navFilterOptionBgMode = computed(() => {
+  if (color.value === 'dark')
+    return 'unset'
+
+  return 'difference'
+})
 
 useHead({
   title: appHeadTitle,
