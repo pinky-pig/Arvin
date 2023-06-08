@@ -165,11 +165,6 @@ function initActiveTab() {
   mix-blend-mode: v-bind(navFilterOptionBgMode);
 }
 
-@media (prefers-color-scheme: dark) {
-  .filter-option {
-    background-color: red;
-  }
-}
 .animate-dom{
   border-radius: 50px;
   background-color: var(--nav-placeholder-bg);
