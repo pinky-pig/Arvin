@@ -21,7 +21,6 @@ button {
   border-radius: 4px;
   position: relative;
   cursor: pointer;
-  font-family: monospace;
   font-weight: bold;
   border: 0;
   background: transparent;

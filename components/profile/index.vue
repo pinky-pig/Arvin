@@ -32,15 +32,15 @@ function clearAllSetTimeout() {
 
 <template>
   <Card>
-    <div class="p-10 relative pointer-events-none">
-      <div class="relative w-96px h-96px mb-30px">
-        <img ref="avatarImgRef" class="avatar-img w-96px h-96px mb-8 dark:bg-[var(--header-avatar-bg)] rounded-full absolute top-0 left-0 z-20" src="/logo.png" alt="">
+    <div class="pointer-events-none relative p-10">
+      <div class="relative mb-30px h-96px w-96px">
+        <img ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]" src="/logo.png" alt="">
         <div ref="avatarBgRef" class="avatar-bg" />
       </div>
 
       <p style="z-index:1" class="intro-text">
         我是
-        <span style="font-family:LXGW WenKai Screen R;font-size:40px">王文博</span>
+        <span style="font-size:40px">王文博</span>
         , 目前生活在南京的前端开发者。我很热衷 Vue、Nuxt、Lit、WebGIS。
       </p>
 
@@ -73,7 +73,6 @@ function clearAllSetTimeout() {
   margin-top: 60px;
   text-align: start;
   font-size: 15px;
-  font-family: "LXGW WenKai Screen R";
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;
@@ -113,7 +112,6 @@ function clearAllSetTimeout() {
 .switch-btn .text{
   line-height: normal;
   font-size: 14px;
-  font-family: "LXGW WenKai Screen R";
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;

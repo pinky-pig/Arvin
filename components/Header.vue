@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAppHead } from '~/composables/app';
+import { useAppHead } from '~/composables/app'
 import { navFilter } from '~/config'
 
 const route = useRoute()
@@ -71,15 +71,10 @@ function initActiveTab() {
 <template>
   <div
     id="nav-bg"
-    class="
-      w-full h-fit md:h-80px
-      px-3.5vw py-18px md:py-unset
-      fixed top-0 left-0 z-2
-      flex flex-col md:flex-row justify-between items-center
-    "
+    class="fixed left-0 top-0 z-2 h-fit w-full flex flex-col items-center justify-between px-3.5vw py-18px md:h-80px md:flex-row md:py-unset"
   >
     <img
-      class="w-72px h-72px mt-0px md:w-56px md:h-56px md:mt-0 hidden md:block"
+      class="mt-0px hidden h-72px w-72px md:mt-0 md:block md:h-56px md:w-56px"
       src="/logo.svg"
       alt=""
     >
@@ -97,24 +92,14 @@ function initActiveTab() {
 
       <div
         ref="currentItemBgRef"
-        class="
-          w-70px h-28px
-          absolute top-0 left-0 z-0
-          pointer-events-none
-          transition-transform
-          duration-300
-          ease-in-out
-          translate-x-8px
-          translate-y-5px
-          -z-1
-        "
+        class="pointer-events-none absolute left-0 top-0 z-0 h-28px w-70px translate-x-8px translate-y-5px transition-transform duration-300 ease-in-out -z-1"
       >
-        <div class="animate-dom animate-jello w-full h-full">
+        <div class="animate-dom h-full w-full animate-jello">
           &nbsp;
         </div>
       </div>
     </div>
-    <div class="w-40px h-0px md:h-40px" />
+    <div class="h-0px w-40px md:h-40px" />
   </div>
 </template>
 
@@ -144,7 +129,6 @@ function initActiveTab() {
   border: 2px solid var(--nav-border);
   border-radius: 23px;
   display: flex;
-  font-family: "Silka Medium";
   font-size: 14px;
   padding: 5px;
   display: flex;
