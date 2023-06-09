@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const whitelist = ['/blog/content']
+const whitelist = ['/blog/content-sidebar']
 const isNoneLayout = computed(() => whitelist.includes(route.path))
 
 const isLargeScreen = useMediaQuery('(min-width: 720px)')

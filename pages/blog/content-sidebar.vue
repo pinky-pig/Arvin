@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LeftSidebar from './sidebar.vue'
+
 const route = useRoute()
 const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
@@ -74,10 +76,18 @@ function paginationJump(path: string) {
 
 <template>
   <main
-    class="mx-auto max-w-872px w-full flex rounded-xl bg-[var(--blog-bg)] px-2 pt-10px text-start md:p-4 md:px-36px"
+    class="layout w-full h-screen flex justify-center pt-84px px-2 md:p-4 bg-[var(--blog-bg)]"
   >
-    <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
-      <h1 class="content-title flex align-middle">
+    <aside id="grid-left" class="grid-sidebar hidden md:block flex-shrink-0 flex-grow-0">
+      <LeftSidebar
+        :current-blog="currentBlog"
+        class="fixed"
+        @blogJump="paginationJump"
+      />
+    </aside>
+
+    <div id="grid-main" class="heti max-w-50rem pb-20  w-[calc(100vw-0.8rem)] md:w-unset p-[0.8rem,2rem,4rem] flex-shrink-0 flex-grow-0">
+      <h1 class="content-title flex align-middle ">
         {{ currentBlog.title || ' ' }}
       </h1>
 
@@ -91,16 +101,16 @@ function paginationJump(path: string) {
 
       <hr>
 
-      <div class="post-footer mt-2 flex flex-col items-center justify-between md:flex-row">
+      <div class="flex justify-between items-center md:flex-row flex-col mt-2 post-footer">
         <div class="flex-1">
           发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ currentBlog.date }}</a>
         </div>
-        <div class="mt-4 flex-1 text-right md:mt-0">
+        <div class="md:mt-0 mt-4 flex-1 text-right">
           <a v-if="currentBlog.prevPath" @click="paginationJump(currentBlog.prevPath)">上一篇 |</a>
           <a v-if="currentBlog.nextPath" @click="paginationJump(currentBlog.nextPath)">下一篇 |</a>
           <a @click="router.push(`/blog`)">去首页 |</a>
           <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
-          <a href="https://github.com/" title="Star" target="_blank" class="hidden lg:inline-block"> | Github</a>
+          <a href="https://github.com/" title="Star" target="_blank" class="lg:inline-block hidden"> | Github</a>
         </div>
       </div>
 
@@ -122,6 +132,51 @@ function paginationJump(path: string) {
   .heti h1.content-title:first-child {
     margin-bottom: 2.3rem;
     font-size: 1.8rem;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: hidden;
+}
+
+.grid-sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 0;
+  margin-left: -5px;
+}
+#grid-left {
+  position: fixed;
+  z-index: 10;
+  display: none;
+}
+#grid-main {
+  padding: 0.8rem 0.5rem 4rem 0.5rem;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (min-width: 50em) {
+  .layout {
+    overflow: initial;
+    grid-template-columns: 18rem minmax(0, 54em);
+    gap: 0;
+  }
+
+  #grid-main {
+    padding: 0.8rem 2rem 4rem 2rem;
+  }
+
+  #grid-left {
+    display: flex;
+    padding-left: 2rem;
+    position: sticky;
+    grid-column: 1;
   }
 }
 </style>
