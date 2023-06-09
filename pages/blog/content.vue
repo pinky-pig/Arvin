@@ -74,7 +74,7 @@ function paginationJump(path: string) {
 
 <template>
   <main
-    class="mx-auto max-w-872px w-full flex rounded-xl bg-transparent px-2 pt-10px text-start md:bg-[var(--blog-bg)] md:p-4 md:px-36px"
+    class="mx-auto max-w-872px w-full flex rounded-xl border-unset bg-transparent px-2 pt-10px text-start md:border md:border-[var(--blog--border)] md:border-solid md:bg-[var(--blog-bg)] md:p-4 md:px-36px"
   >
     <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
       <h1 class="content-title flex align-middle">
