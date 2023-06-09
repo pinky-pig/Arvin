@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import type { LngLatLike } from 'mapbox-gl'
 import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
 import { MapboxSetting } from '~~/config'

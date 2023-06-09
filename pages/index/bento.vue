@@ -51,11 +51,8 @@ watch(width, () => {
   >
     <div
       ref="containerRef"
-      w-full
-      mx-auto
-      grid
-      place-items-center
-      select-none
+
+      grid mx-auto w-full select-none place-items-center
     >
       <V3bento
         class="bento-container"

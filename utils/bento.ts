@@ -1,10 +1,12 @@
 import { markRaw } from 'vue'
 import Profile from '~/components/profile/index.vue'
 import Weekly from '~/components/weekly/index.vue'
+
 // import Mapbox from '~/components/mapbox/index.vue'
 import CountDown from '~/components/countdown/index.vue'
 import Dark from '~/components/dark/Dark.vue'
 import Notion from '~/components/notion/index.vue'
+
 // import Rain from '~/components/rain/index.vue'
 import Preview from '~/components/preview/index.vue'
 
