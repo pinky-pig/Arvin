@@ -11,7 +11,7 @@ export function parseTitle(oldTitle: string) {
 
 // 转化文章路由地址
 export function parseLinkToRoute(oldTitle: string) {
-  const index = parseInt(oldTitle.split('-')[0])
+  const index = Number.parseInt(oldTitle.split('-')[0])
   const linkNum = index > 9 ? `${index}` : `0${index}`
   const path = `/${linkNum}`
   return path
@@ -19,15 +19,15 @@ export function parseLinkToRoute(oldTitle: string) {
 
 // 获取当前文章的序号
 export function getIndex(oldTitle: string) {
-  return parseInt(oldTitle.split('-')[0])
+  return Number.parseInt(oldTitle.split('-')[0])
 }
 
 // 排序所有的文章
 export function sortPosts(allPosts: any) {
   return allPosts.sort((a: { url: string }, b: { url: string }) => {
     return (
-      parseInt(b.url.split('/posts/')[1].split('-')[0])
-      - parseInt(a.url.split('/posts/')[1].split('-')[0])
+      Number.parseInt(b.url.split('/posts/')[1].split('-')[0])
+      - Number.parseInt(a.url.split('/posts/')[1].split('-')[0])
     )
   })
 }
