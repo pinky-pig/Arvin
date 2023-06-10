@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    // keepalive: true,
+    keepalive: true,
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
