@@ -1,7 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
   <div
     class="blog-container mx-auto max-w-960px gap-10px rounded-xl px-5px text-start md:px-25px"
@@ -19,7 +15,7 @@
         >
           <!-- 配图 -->
           <img
-            src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images团建.jpg?x-oss-process=image/resize,w_640/format,webp"
+            :src="article.cover"
             class="lozad block h-200px w-full object-cover md:h-160px"
           >
           <!-- 标题 -->
