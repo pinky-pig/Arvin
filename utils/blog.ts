@@ -1,3 +1,7 @@
+export function parseTitleFromContentList(oldTitle: string) {
+  return `第${oldTitle.split(' ')[0]}期 - ${oldTitle.split(' ')[1]}`
+}
+
 // 转化成标题
 export function parseTitle(oldTitle: string) {
   let title = `第${oldTitle.split('-')[0]}期 - ${oldTitle.split('-')[1]}`
