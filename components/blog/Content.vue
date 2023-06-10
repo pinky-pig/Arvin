@@ -34,12 +34,6 @@ const { root: giscusRoot } = registerGiscus()
                 发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ doc.date }}</a>
               </div>
               <div class="mt-4 flex-1 text-right md:mt-0">
-                <NuxtLink
-                  tag="a"
-                  to="/blog"
-                >
-                  去首页 |
-                </NuxtLink>
                 <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
                 <a href="https://github.com/" title="Star" target="_blank" class="hidden lg:inline-block"> | Github</a>
               </div>
