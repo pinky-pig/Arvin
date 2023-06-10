@@ -1,8 +1,11 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-  <div>
-    archives
-  </div>
+  content
 </template>
+
+<style scoped>
+
+</style>

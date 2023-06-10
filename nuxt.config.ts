@@ -66,13 +66,13 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  content: {
-    documentDriven: true,
-    markdown: {
-      mdc: true,
-    },
-    highlight: {
-      theme: 'github-dark',
-    },
-  },
+  // content: {
+  //   documentDriven: true,
+  //   markdown: {
+  //     mdc: true,
+  //   },
+  //   highlight: {
+  //     theme: 'github-dark',
+  //   },
+  // },
 })
