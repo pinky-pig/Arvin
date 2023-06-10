@@ -1,14 +1,19 @@
 <script setup lang="ts">
+function parseTitleFromContentList(oldTitle: string) {
+  return `第${oldTitle.split(' ')[0]}期 - ${oldTitle.split(' ')[1]}`
+}
 </script>
 
 <template>
   <div
-    class="blog-container mx-auto max-w-960px gap-10px rounded-xl px-10px text-start md:px-5px"
+    class="blog-container mx-auto max-w-960px cursor-default gap-10px rounded-xl px-5px text-start md:px-25px"
   >
     <ContentList v-slot="{ list }" path="/post">
       <div
         v-for="article in list"
-        :key="article._path" class="flex flex-col justify-center overflow-hidden border-[var(--blog-card-border)] rounded-12px border-solid bg-[var(--blog-card-bg)] pb-10px shadow-md"
+        :key="article._path"
+        style="border: 5px solid var(--blog-card-border);"
+        class="flex flex-col justify-center overflow-hidden border-[var(--blog-card-border)] rounded-12px border-solid bg-[var(--blog-card-bg)] pb-10px shadow-md"
       >
         <!-- 配图 -->
         <img
@@ -18,7 +23,7 @@
         <!-- 标题 -->
         <div class="w-full flex items-center justify-between pl-3 pr-3 pt-4 leading-tight">
           <div class="text-gray-800">
-            {{ article.title }}
+            {{ parseTitleFromContentList(article.title) }}
           </div>
           <div class="text-grey-darker text-sm text-gray-600">
             {{ article.date }}
@@ -36,6 +41,6 @@
 <style scoped>
 .blog-container{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 </style>
