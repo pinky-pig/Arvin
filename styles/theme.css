@@ -31,6 +31,7 @@ html.dark{
   --blog-text                   : #FAFAFA;
 
   --blog-card-bg                 : #0D1117;
+  --blog-card-text               : #ffffff;
   --blog-card-border             : #30363D;
 }
 
@@ -68,5 +69,6 @@ html{
   --blog-text                    : #ffffff;
 
   --blog-card-bg                 : #F3F3F3;
+  --blog-card-text               : #000000;
   --blog-card-border             : #ffffff;
 }
