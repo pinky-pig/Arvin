@@ -1,11 +1,14 @@
 <template>
   <div
     id="nav-bg"
-    class="fixed left-0 top-0 z-2 h-fit w-full flex flex-col items-center justify-between px-3.5vw py-18px md:h-80px md:flex-row md:py-unset"
+    class="fixed left-0 top-0 z-2 h-fit w-full flex flex-row items-center justify-between px-3.5vw py-18px md:h-80px md:py-unset"
   >
     <HeaderLogo />
     <HeaderNav />
-    <div class="h-0px w-40px md:h-40px" />
+
+    <div class="grid h-40px w-40px place-items-center">
+      <DarkToggle />
+    </div>
   </div>
 </template>
 
