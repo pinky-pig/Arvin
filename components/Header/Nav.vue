@@ -95,7 +95,7 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
     <!-- bg 外层移动，内层动画 -->
     <div
       :style="currentItemBgStyles"
-      class="pointer-events-none absolute left-0 top-0 transition-transform duration-300 ease-in-out -z-1"
+      class="pointer-events-none absolute left-0 top-0 transition-transform duration-300 ease-in-out"
     >
       <div
         :class="currentItemBgAnimateClass"
