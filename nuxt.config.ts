@@ -12,6 +12,15 @@ export default defineNuxtConfig({
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
 
+  routeRules: {
+    '/styles/**': {
+      headers: {
+        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Access-Control-Allow-Origin': '*',
+      },
+    },
+  },
+
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed
