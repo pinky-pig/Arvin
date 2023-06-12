@@ -71,7 +71,7 @@ function setNavFromRoute() {
 function handleActiveTab(item: typeof navFilter[0], index: number) {
   currentItemIndex.value = index
   setAppHeadTitle(item.label)
-  router.replace(item.route)
+  // router.replace(item.route)
   currentItemBgAnimateClass.value = ''
   setTimeout(() => {
     currentItemBgAnimateClass.value = 'custom-animate-jello'
@@ -82,16 +82,17 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
 <template>
   <div class="nav-container">
     <!-- item -->
-    <div
+    <NuxtLink
       v-for="item, index in navFilter"
       :key="item.label"
       :to="item.route"
+      :prefetch="true"
       class="nav-item"
       :style="{ height: `${navItemOptions.height}px`, width: `${navItemOptions.width}px` }"
       @click="handleActiveTab(item, index)"
     >
       {{ item.label }}
-    </div>
+    </NuxtLink>
     <!-- bg 外层移动，内层动画 -->
     <div
       :style="currentItemBgStyles"
