@@ -34,7 +34,7 @@ watch(() => color.value, () => {
   map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
 function toMapbox() {
-  router.push('/mapbox')
+  router.push('/bento/mapbox')
 }
 </script>
 
