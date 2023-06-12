@@ -9,13 +9,15 @@ onActivated(() => {
 
 function closeAndToHome() {
   isOpen.value = false
-  router.push('/')
+  setTimeout(() => {
+    router.push('/')
+  }, 600)
 }
 </script>
 
 <template>
   <div
-    :class="isOpen ? 'bubbleCardUp' : ''"
+    :class="isOpen ? 'bubbleCardUp' : 'bubbleCardDown'"
     class="fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col"
   >
     <nav class="bg-[var(--card--placeholder-bg)] px-4 py-3 font-medium md:px-8">
@@ -79,9 +81,11 @@ function closeAndToHome() {
 @keyframes slide-down {
   0% {
     transform: translateY(0%);
+    opacity: 1;
   }
   100% {
     transform: translateY(100vh);
+    opacity: 0;
   }
 }
 </style>

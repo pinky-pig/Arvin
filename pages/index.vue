@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Bento from './bento/index.vue'
+import Bento from './bento.vue'
 
 const online = useOnline()
 </script>

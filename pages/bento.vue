@@ -65,6 +65,7 @@ watch(width, () => {
         @drag-end="print('drag-end', $event)"
       />
     </div>
+    <NuxtPage />
   </div>
 </template>
 

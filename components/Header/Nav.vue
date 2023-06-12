@@ -48,22 +48,27 @@ watch(
   },
 )
 function setNavFromRoute() {
-  switch (true) {
-    case route.path === '/':
-      currentItemIndex.value = 0
-      break
-    case route.path === '/blog':
-      currentItemIndex.value = 1
-      break
-    case route.path === '/archives':
-      currentItemIndex.value = 2
-      break
+  // 如果这个值不存在，说明是隐藏的页面，不需要设置
+  if (route.meta.notDisappearHearderNav) {
+    return null
+  }
+  else {
+    currentItemBgAnimateClass.value = 'normal-jello'
+    switch (true) {
+      case route.path === '/':
+        currentItemIndex.value = 0
+        break
+      case route.path === '/blog':
+        currentItemIndex.value = 1
+        break
+      case route.path === '/archives':
+        currentItemIndex.value = 2
+        break
 
-    default:
-      currentItemBgAnimateClass.value = 'animate-jello-hidden'
-
-      // currentItemIndex.value = -2
-      break
+      default:
+        currentItemBgAnimateClass.value = 'animate-jello-hidden'
+        break
+    }
   }
 }
 
@@ -137,6 +142,9 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
   mix-blend-mode: v-bind(navFilterOptionBgMode);
 }
 
+.normal-jello {
+  transform: scale3d(1, 1, 1);
+}
 .custom-animate-jello {
   animation: jello-horizontal 0.9s both;
 }

@@ -1,3 +1,9 @@
+<script setup lang="ts">
+definePageMeta({
+  notDisappearHearderNav: true,
+})
+</script>
+
 <template>
   <BentoWrapperPage>
     <template #title>
@@ -11,6 +17,3 @@
     </div>
   </BentoWrapperPage>
 </template>
-
-<style scoped>
-</style>
