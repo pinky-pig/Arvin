@@ -2,8 +2,15 @@
 const isOpen = ref(true)
 const router = useRouter()
 
-isOpen.value = true
+onMounted(() => {
+  document.body.style.overflow = 'hidden'
+  isOpen.value = true
+})
+onUnmounted(() => {
+  document.body.style.overflow = 'auto'
+})
 onActivated(() => {
+  document.body.style.overflow = 'hidden'
   isOpen.value = true
 })
 
