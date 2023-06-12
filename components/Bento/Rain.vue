@@ -80,13 +80,13 @@ function toRain() {
 </script>
 
 <template>
-  <div class="parent-rain-node relative select-none bg-[var(--card--bg)] overflow-hidden">
-    <div class="overflow-hidden pointer-events-none">
+  <div class="parent-rain-node relative select-none overflow-hidden bg-[var(--card--bg)]">
+    <div class="pointer-events-none overflow-hidden">
       <div id="rain-container-component" />
     </div>
 
     <button class="detail-arrow" @click="toRain">
-      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+      <div class="h-16px w-16px" i-carbon-arrow-up-right />
     </button>
   </div>
 </template>

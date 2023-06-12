@@ -7,16 +7,16 @@ function toPreview() {
 
 <template>
   <div
-    class="relative select-none bg-[var(--card--bg)] overflow-hidden "
+    class="relative select-none overflow-hidden bg-[var(--card--bg)]"
   >
-    <div class="w-6rem absolute top-1/3 left-1/2 -translate-1/2 h-40px pointer-events-auto ">
-      <span class="underline underline-light-50 underline-offset-8px cursor-pointer hover:text-#fff">
+    <div class="pointer-events-auto absolute left-1/2 top-1/3 h-40px w-6rem -translate-1/2">
+      <span class="cursor-pointer underline underline-light-50 underline-offset-8px hover:text-#fff">
         预览网站
       </span>
     </div>
 
     <button class="detail-arrow" @click="toPreview">
-      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+      <div class="h-16px w-16px" i-carbon-arrow-up-right />
     </button>
   </div>
 </template>

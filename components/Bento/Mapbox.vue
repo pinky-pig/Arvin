@@ -43,7 +43,7 @@ function toMapbox() {
     <div ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
 
     <button class="detail-arrow" @click="toMapbox">
-      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+      <div class="h-16px w-16px" i-carbon-arrow-up-right />
     </button>
   </Card>
 </template>

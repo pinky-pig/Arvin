@@ -4,33 +4,22 @@ const color = useColorMode()
 </script>
 
 <template>
-  <div class="relative select-none bg-[var(--card--bg)] overflow-hidden">
+  <div class="relative select-none overflow-hidden bg-[var(--card--bg)]">
     <img
-      class="lozad w-370px h-180px object-fill select-none pointer-events-none"
+      class="lozad pointer-events-none h-180px w-370px select-none object-fill"
       :style="{ opacity: color.value === 'dark' ? 0 : 1 }"
       src="/wrap-bg.svg"
       alt=""
     >
     <img
-      class="
-        lozad
-        w-370px
-        h-180px
-        h-auto
-        object-fill
-        select-none
-        pointer-events-none
-        absolute
-        left-0
-        top-0
-      "
+      class="lozad pointer-events-none absolute left-0 top-0 h-180px h-auto w-370px select-none object-fill"
       src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/imagesweekly.webp"
       style="transform: rotate(330deg) translate3d(100px, 10px, 10px);"
       alt=""
     >
 
     <a class="detail-arrow" href="https://weekly.mmeme.me/" target="_blank">
-      <div class="w-16px h-16px" i-carbon-arrow-up-right />
+      <div class="h-16px w-16px" i-carbon-arrow-up-right />
     </a>
   </div>
 </template>

@@ -14,7 +14,7 @@ export const SITE = {
 }
 
 export const navFilter = [
-  { label: '项目', route: '/' },
+  { label: '组件', route: '/' },
   { label: '文章', route: '/blog' },
   { label: '归档', route: '/archives' },
 ]
