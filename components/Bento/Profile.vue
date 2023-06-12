@@ -31,7 +31,7 @@ function clearAllSetTimeout() {
 </script>
 
 <template>
-  <Card>
+  <BentoWrapperCard>
     <div class="pointer-events-none relative p-10">
       <div class="relative mb-30px h-96px w-96px">
         <img ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]" src="/logo.png" alt="">
@@ -65,7 +65,7 @@ function clearAllSetTimeout() {
         </p>
       </button>
     </div>
-  </Card>
+  </BentoWrapperCard>
 </template>
 
 <style scoped>

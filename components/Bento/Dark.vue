@@ -23,12 +23,12 @@ function toggleDark(e: MouseEvent) {
 </script>
 
 <template>
-  <Card>
+  <BentoWrapperCard>
     <label class="switch">
       <input ref="checkboxRef" type="checkbox" @click="toggleDark">
       <span class="slider" />
     </label>
-  </Card>
+  </BentoWrapperCard>
 </template>
 
 <style scoped>

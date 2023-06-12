@@ -39,13 +39,13 @@ function toMapbox() {
 </script>
 
 <template>
-  <Card>
+  <BentoWrapperCard>
     <div ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
 
     <button class="detail-arrow" @click="toMapbox">
       <div class="h-16px w-16px" i-carbon-arrow-up-right />
     </button>
-  </Card>
+  </BentoWrapperCard>
 </template>
 
 <style scoped>

@@ -42,7 +42,7 @@ function countdownTime() {
 </script>
 
 <template>
-  <Card>{{ time }}</Card>
+  <BentoWrapperCard>{{ time }}</BentoWrapperCard>
 </template>
 
 <style scoped>

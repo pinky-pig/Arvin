@@ -42,21 +42,21 @@ function bubble(type: number, div = (detailBox.value as HTMLElement)) {
 </script>
 
 <template>
-  <div ref="detailBox" :class="hasAnimation ? 'bubbleCardUp' : ''" class=" fixed top-0 left-0 bottom-0 right-0 z-50 flex flex-col">
-    <nav class="py-3 px-4 md:px-8 bg-[var(--card--placeholder-bg)] font-medium">
-      <div class="flex gap-2 items-center justify-between">
-        <div class="flex gap-4 items-center">
+  <div ref="detailBox" :class="hasAnimation ? 'bubbleCardUp' : ''" class="fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col">
+    <nav class="bg-[var(--card--placeholder-bg)] px-4 py-3 font-medium md:px-8">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-4">
           <slot name="icon" />
           <span>
             <slot name="title" />
           </span>
         </div>
-        <div class="flex gap-2 items-center justify-end">
+        <div class="flex items-center justify-end gap-2">
           <slot name="operate-button" />
         </div>
       </div>
     </nav>
-    <main class="p-4 flex-grow-2 bg-[var(--background)] flex-1 overflow-hidden">
+    <main class="flex-1 flex-grow-2 overflow-hidden bg-[var(--background)] p-4">
       <slot />
     </main>
     <div class="bg-[var(--background)]">
