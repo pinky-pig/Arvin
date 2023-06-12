@@ -17,35 +17,32 @@ interface ISetConfigMessage {
   }
 }
 
-export function registerGiscus() {
+export function registerGiscus(root: HTMLElement) {
   const color = useColorMode()
 
-  const root = ref<HTMLElement | null>()
-  onMounted(() => {
-    const giscusFrame = document.getElementById('giscus-frame')
-    if (giscusFrame) {
-      return null
-    }
-    else {
-      const script = document.createElement('script')
-      script.src = 'https://giscus.app/client.js'
-      script.setAttribute('data-repo', 'pinky-pig/Arvin')
-      script.setAttribute('data-repo-id', 'R_kgDOJI00wg')
-      script.setAttribute('data-category', 'General')
-      script.setAttribute('data-category-id', 'DIC_kwDOJI00ws4CWzuK')
-      script.setAttribute('data-mapping', 'title')
-      script.setAttribute('data-strict', '0')
-      script.setAttribute('data-reactions-enabled', '1')
-      script.setAttribute('data-emit-metadata', '0')
-      script.setAttribute('data-input-position', 'bottom')
-      script.setAttribute('data-theme', getTheme(color.value))
-      script.setAttribute('data-lang', 'zh-CN')
-      script.setAttribute('data-loading', 'lazy')
-      script.setAttribute('crossorigin', 'anonymous')
-      script.setAttribute('async', '')
-      root.value!.appendChild(script)
-    }
-  })
+  const giscusFrame = document.getElementById('giscus-frame')
+  if (giscusFrame) {
+    return null
+  }
+  else {
+    const script = document.createElement('script')
+    script.src = 'https://giscus.app/client.js'
+    script.setAttribute('data-repo', 'pinky-pig/Arvin')
+    script.setAttribute('data-repo-id', 'R_kgDOJI00wg')
+    script.setAttribute('data-category', 'General')
+    script.setAttribute('data-category-id', 'DIC_kwDOJI00ws4CWzuK')
+    script.setAttribute('data-mapping', 'title')
+    script.setAttribute('data-strict', '0')
+    script.setAttribute('data-reactions-enabled', '1')
+    script.setAttribute('data-emit-metadata', '0')
+    script.setAttribute('data-input-position', 'bottom')
+    script.setAttribute('data-theme', getTheme(color.value))
+    script.setAttribute('data-lang', 'zh-CN')
+    script.setAttribute('data-loading', 'lazy')
+    script.setAttribute('crossorigin', 'anonymous')
+    script.setAttribute('async', '')
+    root.appendChild(script)
+  }
   updateGiscusTheme()
   return { root }
 }

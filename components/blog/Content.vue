@@ -11,47 +11,53 @@ const props = defineProps({
   },
 })
 
-const { root: giscusRoot } = registerGiscus()
+const giscusRoot = ref<HTMLElement | null> (null)
+watch(giscusRoot, (root) => {
+  if (root && root instanceof HTMLElement)
+    registerGiscus(root)
+})
 </script>
 
 <template>
   <div>
-    <ContentDoc :path="path">
-      <template #default="{ doc }">
-        <main class="mx-auto max-w-872px w-full flex rounded-xl border-unset bg-transparent px-2 pt-10px text-start md:border md:border-[var(--blog--border)] md:border-solid md:bg-[var(--blog-bg)] md:p-4 md:px-36px">
-          <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
-            <!-- title -->
-            <h1 class="content-title flex align-middle">
-              {{ doc.title || ' ' }}
-            </h1>
-            <!-- body -->
-            <ContentRenderer :value="doc" />
-            <hr>
+    <ClientOnly>
+      <ContentDoc :path="path">
+        <template #default="{ doc }">
+          <main class="mx-auto max-w-872px w-full flex rounded-xl border-unset bg-transparent px-2 pt-10px text-start md:border md:border-[var(--blog--border)] md:border-solid md:bg-[var(--blog-bg)] md:p-4 md:px-36px">
+            <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
+              <!-- title -->
+              <h1 class="content-title flex align-middle">
+                {{ doc.title || ' ' }}
+              </h1>
+              <!-- body -->
+              <ContentRenderer :value="doc" />
+              <hr>
 
-            <!-- foot -->
-            <div class="post-footer mb-50px mt-2 flex flex-col items-center justify-between md:flex-row">
-              <div class="flex-1">
-                发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ doc.date }}</a>
+              <!-- foot -->
+              <div class="post-footer mb-50px mt-2 flex flex-col items-center justify-between md:flex-row">
+                <div class="flex-1">
+                  发布日期：<a href="https://github.com/" target="_blank" title="Edit">{{ doc.date }}</a>
+                </div>
+                <div class="mt-4 flex-1 text-right md:mt-0">
+                  <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
+                  <a href="https://github.com/" title="Star" target="_blank" class="hidden lg:inline-block"> | Github</a>
+                </div>
               </div>
-              <div class="mt-4 flex-1 text-right md:mt-0">
-                <a href="https://github.com/" target="_blank" title="Follow">Twitter</a>
-                <a href="https://github.com/" title="Star" target="_blank" class="hidden lg:inline-block"> | Github</a>
-              </div>
+
+              <!-- comment -->
+              <div ref="giscusRoot" />
             </div>
+          </main>
+        </template>
 
-            <!-- comment -->
-            <div ref="giscusRoot" />
-          </div>
-        </main>
-      </template>
-
-      <template #not-found>
-        <h1>404</h1>
-      </template>
-      <template #empty>
-        <h1>{{ emptyTip }}</h1>
-      </template>
-    </ContentDoc>
+        <template #not-found>
+          <h1>404</h1>
+        </template>
+        <template #empty>
+          <h1>{{ emptyTip }}</h1>
+        </template>
+      </ContentDoc>
+    </ClientOnly>
   </div>
 </template>
 
