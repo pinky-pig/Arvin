@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { parseTitleFromContentList } from '~/utils/blog'
+
 const props = defineProps({
   emptyTip: {
     type: String,
@@ -27,7 +29,7 @@ watch(giscusRoot, (root) => {
             <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
               <!-- title -->
               <h1 class="content-title flex align-middle">
-                {{ doc.title || ' ' }}
+                {{ parseTitleFromContentList(doc.title || ' ') }}
               </h1>
               <!-- body -->
               <ContentRenderer :value="doc" />
