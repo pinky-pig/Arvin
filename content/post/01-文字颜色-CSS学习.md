@@ -1,0 +1,19 @@
+---
+date: 2023/06/13
+desc: 在做头部 Nav 切换的时候，想要文字颜色跟着背景色变化，以至于文字能够一直显示，于是便学习了一下 CSS 的 `mix-blend-mode` 属性。
+tags: ['#CSS']
+cover: https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/imagesmix-blend-mode1.gif
+---
+
+<img loading="lazy" alt="mix-blend-mode1" decoding="async" data-nimg="fill" src="https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/imagesmix-blend-mode1.gif" width=800/>  
+
+<small>在做头部 Nav 切换的时候，想要文字颜色跟着背景色变化，以至于文字能够一直显示，于是便学习了一下 CSS 的 `mix-blend-mode` 属性。</small>  
+
+**原因**
+
+在设置黑白背景色的时候，切换过于僵硬，因为背景跳过来有个动画，所以文字颜色变化就显得有点呆，于是便想到了这个属性。
+
+**实现**
+
+- CSS `mix-blend-mode` 属性
+
