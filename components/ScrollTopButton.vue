@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { x, y } = useWindowScroll()
 
+const isLargeScreen = useMediaQuery('(min-width: 540px)')
 const isShow = computed(() => {
   return y.value > 200
 })
@@ -16,7 +17,7 @@ function scrollToTop() {
 <template>
   <div
     class="top-btn"
-    :class="isShow ? 'opacity-100' : 'opacity-0'"
+    :class="(isLargeScreen && isShow) ? 'opacity-100' : 'opacity-0'"
     @click="scrollToTop"
   >
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path fill="currentColor" d="M56 297.365V336h120v160h160V336h120v-38.626l-199.8-200ZM304 304v160h-96V304H94.639l161.535-161.37L417.384 304ZM56 16.002h400v32H56z" /></svg>
