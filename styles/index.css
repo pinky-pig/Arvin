@@ -13,6 +13,12 @@ main {
   letter-spacing: 0.6px;
 }
 
+/* 文字选中颜色 */
+::selection {
+  background-color: var(--global-text-selection-bg);
+  color: var(--global-text-selection-text);
+}
+
 /* 滚动条样式 */
 ::-webkit-scrollbar{
   width:6px;

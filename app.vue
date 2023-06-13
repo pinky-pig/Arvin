@@ -7,6 +7,7 @@ useHead({
 
 registerLozad()
 registerHeti()
+consoleDefaultText()
 </script>
 
 <template>

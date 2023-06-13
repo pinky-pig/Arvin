@@ -5,6 +5,8 @@ html.dark{
   --text-color                  : #f0f2f8;
   --bg-main-color               : transparent;
   --scrollbar-color             : #30363d;
+  --global-text-selection-bg    : #7C90DB;
+  --global-text-selection-text  : #000000;
 
   --input-primary-color         : #0D1117;
   --input-second-color          : #30363D;
@@ -42,6 +44,9 @@ html{
   --text-color                  : #000000;
   --bg-main-color               : #F3F3F3;
   --scrollbar-color             : #9C9C9C;
+  --global-text-selection-bg    : #30363d;
+  --global-text-selection-text  : #ffffff;
+
 
 
   --input-primary-color         : #ffffff;

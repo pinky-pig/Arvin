@@ -11,6 +11,7 @@ export const SITE = {
   githubId: 'pinky-pig',
   repo: 'pinky-pig/what-is-my-astro-blog',
   notion: 'https://hail-manatee-fc5.notion.site/a3d8b723782e48a3b3570980e83c70ae?v=0c510fa996e2492b943e7746c1bd9974',
+  consoleColorFulOutput: '%cDon\'t ignore your dreams \nDon\'t work too much \nsay what you think \ncultivate friendships \nbe happy~ ',
 }
 
 export const navFilter = [
