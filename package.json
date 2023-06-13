@@ -5,7 +5,7 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
-    "start": "node .output/server/index.mjs",
+    "preview": "node .output/server/index.mjs",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
