@@ -63,6 +63,8 @@ export function updateGiscusTheme() {
         theme: getTheme(color.value),
       },
     })
+  }, {
+    immediate: true,
   })
 }
 
