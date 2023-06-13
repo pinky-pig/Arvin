@@ -35,6 +35,8 @@ html.dark{
   --blog-card-bg                 : #0D1117;
   --blog-card-text               : #ffffff;
   --blog-card-border             : #30363D;
+  
+  --blog-btn-shadow              : #ffffff90;
 }
 
 html{
@@ -76,4 +78,6 @@ html{
   --blog-card-bg                 : #F3F3F3;
   --blog-card-text               : #000000;
   --blog-card-border             : #ffffff;
+
+  --blog-btn-shadow              : #00000090;
 }

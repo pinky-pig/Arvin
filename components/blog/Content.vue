@@ -48,6 +48,9 @@ watch(giscusRoot, (root) => {
 
               <!-- comment -->
               <div ref="giscusRoot" />
+
+              <!-- scrollTop -->
+              <ScrollTopButton />
             </div>
           </main>
         </template>
