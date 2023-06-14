@@ -7,7 +7,10 @@ useHead({
 
 registerLozad()
 registerHeti()
-consoleDefaultText()
+
+onMounted(() => {
+  consoleDefaultText()
+})
 </script>
 
 <template>
