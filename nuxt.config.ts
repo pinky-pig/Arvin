@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     '@nuxthq/ui',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
-
+  ssr: true,
   routeRules: {
     '/styles/**': {
       headers: {
@@ -48,6 +48,10 @@ export default defineNuxtConfig({
       crawlLinks: false,
       routes: ['/'],
       ignore: ['/hi'],
+    },
+    routeRules: {
+      '/blog': { swr: true },
+      '/blog/**': { swr: true },
     },
   },
 

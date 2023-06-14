@@ -3,7 +3,6 @@ import { useAppHead } from '~/composables/app'
 import { navFilter } from '~/config'
 
 const route = useRoute()
-const router = useRouter()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 
 const color = useColorMode()
@@ -43,9 +42,7 @@ watch(
   () => {
     setNavFromRoute()
   },
-  {
-    immediate: true,
-  },
+  { immediate: true },
 )
 function setNavFromRoute() {
   // 如果这个值不存在，说明是隐藏的页面，不需要设置
@@ -73,7 +70,7 @@ function setNavFromRoute() {
 }
 
 // 2. 设置当前选中的 item 的背景
-function handleActiveTab(item: typeof navFilter[0], index: number) {
+function refreshActiveTab(item: typeof navFilter[0], index: number) {
   currentItemIndex.value = index
   setAppHeadTitle(item.label)
   // router.replace(item.route)
@@ -85,30 +82,32 @@ function handleActiveTab(item: typeof navFilter[0], index: number) {
 </script>
 
 <template>
-  <div class="nav-container">
-    <!-- item -->
-    <NuxtLink
-      v-for="item, index in navFilter"
-      :key="item.label"
-      :to="item.route"
-      :prefetch="true"
-      class="nav-item"
-      :style="{ height: `${navItemOptions.height}px`, width: `${navItemOptions.width}px` }"
-      @click="handleActiveTab(item, index)"
-    >
-      {{ item.label }}
-    </NuxtLink>
-    <!-- bg 外层移动，内层动画 -->
-    <div
-      :style="currentItemBgStyles"
-      class="pointer-events-none absolute left-0 top-0 transition-transform duration-300 ease-in-out"
-    >
+  <ClientOnly>
+    <div class="nav-container">
+      <!-- item -->
+      <NuxtLink
+        v-for="item, index in navFilter"
+        :key="item.label"
+        :to="item.route"
+        :prefetch="true"
+        class="nav-item"
+        :style="{ height: `${navItemOptions.height}px`, width: `${navItemOptions.width}px` }"
+        @click="refreshActiveTab(item, index)"
+      >
+        {{ item.label }}
+      </NuxtLink>
+      <!-- bg 外层移动，内层动画 -->
       <div
-        :class="currentItemBgAnimateClass"
-        class="h-full w-full rounded-50px bg-[var(--nav-placeholder-bg)]"
-      />
+        :style="currentItemBgStyles"
+        class="pointer-events-none absolute left-0 top-0 transition-transform duration-300 ease-in-out"
+      >
+        <div
+          :class="currentItemBgAnimateClass"
+          class="h-full w-full rounded-50px bg-[var(--nav-placeholder-bg)]"
+        />
+      </div>
     </div>
-  </div>
+  </ClientOnly>
 </template>
 
 <style scoped>
