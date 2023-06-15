@@ -31,7 +31,7 @@ onUnmounted(() => {
 
 watch(() => color.value, () => {
   // 切换回默认主题
-  map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
+  // map?.setStyle(color.value === 'dark' ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
 })
 function toMapbox() {
   router.push('/mapbox')

@@ -5,7 +5,7 @@ useHead({
   title: appName,
 })
 
-registerLozad()
+// registerLozad()
 registerHeti()
 
 onMounted(() => {

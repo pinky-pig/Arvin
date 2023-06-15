@@ -17,9 +17,9 @@ watch(color, () => {
   checkboxRef.value!.checked = color.value === 'light'
 })
 
-function toggleDark(e: MouseEvent) {
-  color.preference = color.value === 'dark' ? 'light' : 'dark'
-}
+// function toggleDark(e: MouseEvent) {
+//   color.preference = color.value === 'dark' ? 'light' : 'dark'
+// }
 </script>
 
 <template>
