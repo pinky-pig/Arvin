@@ -40,8 +40,8 @@ function clearAllSetTimeout() {
 
       <p style="z-index:1" class="intro-text">
         我是
-        <span style="font-size:40px">王文博</span>
-        , 目前生活在南京的前端开发者。我很热衷 Vue、Nuxt、Lit、WebGIS。
+        <span style="font-size:40px;font-family: cursive;">王文博</span>
+        , 目前生活在南京的开发者。我很喜欢 Vue、Nuxt。目前从事前端开发及 WebGIS 。
       </p>
 
       <button class="switch-btn pointer-events-auto" @click="handleSwitch">
