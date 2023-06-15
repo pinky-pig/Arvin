@@ -6,6 +6,10 @@ export function useAppHead() {
 
   function setAppHeadTitle(title: string) {
     appHeadTitle.value = title
+
+    useHead({
+      title: appHeadTitle,
+    })
   }
   function setAppHeadDescription(description: string) {
     appHeadDescription.value = description

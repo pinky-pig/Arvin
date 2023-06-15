@@ -13,13 +13,6 @@ const props = defineProps({
   },
 })
 
-const route = useRoute()
-const { appHeadTitle, setAppHeadTitle } = useAppHead()
-setAppHeadTitle(route.query.blog as string)
-useHead({
-  title: appHeadTitle,
-})
-
 const giscusRoot = ref<HTMLElement | null> (null)
 
 watchOnce(giscusRoot, (root) => {
