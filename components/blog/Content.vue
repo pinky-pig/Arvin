@@ -33,7 +33,8 @@ watch(giscusRoot, (root) => {
       <ContentDoc :path="path">
         <template #default="{ doc }">
           <main class="mx-auto max-w-872px w-full flex rounded-xl border-unset bg-transparent px-2 pt-10px text-start md:border md:border-[var(--blog--border)] md:border-solid md:bg-[var(--blog-bg)] md:p-4 md:px-36px">
-            <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
+            <!-- <div class="heti max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20"> -->
+            <div class="max-w-50rem w-full flex-shrink-0 flex-grow-0 p-[0.8rem,2rem,4rem] pb-20">
               <!-- title -->
               <h1 class="content-title flex align-middle">
                 {{ parseTitleFromContentList(doc.title || ' ') }}
@@ -74,16 +75,21 @@ watch(giscusRoot, (root) => {
 </template>
 
 <style scoped>
-.heti h1.content-title:first-child {
+h1.content-title:first-child {
   margin-block-start: 8px !important;
   margin-bottom: 2rem;
   letter-spacing: 0.02em;
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 2;
 }
 
 @media (max-width: 50em) {
-  .heti h1.content-title:first-child {
+  h1.content-title:first-child {
     margin-bottom: 2.3rem;
     font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.8;
   }
 }
 </style>
