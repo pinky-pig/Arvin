@@ -81,13 +81,20 @@ export default defineNuxtConfig({
     enabled: true,
   },
 
-  // content: {
-  //   documentDriven: true,
-  //   markdown: {
-  //     mdc: true,
-  //   },
-  //   highlight: {
-  //     theme: 'github-dark',
-  //   },
-  // },
+  content: {
+    markdown: {
+      mdc: true,
+    },
+    highlight: {
+      // OR
+      theme: {
+        // Default theme (same as single string)
+        default: 'github-light',
+        // Theme used if `html.dark`
+        dark: 'github-dark',
+        // Theme used if `html.sepia`
+        sepia: 'monokai',
+      },
+    },
+  },
 })
