@@ -5,9 +5,8 @@ import { navFilter } from '~/config'
 const route = useRoute()
 const { appHeadTitle, setAppHeadTitle } = useAppHead()
 
-const color = useColorMode()
 const navFilterOptionBgMode = computed(() => {
-  if (color.value === 'dark')
+  if (isDark.value)
     return 'unset'
 
   return 'difference'

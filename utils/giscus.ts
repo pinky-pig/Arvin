@@ -18,8 +18,6 @@ interface ISetConfigMessage {
 }
 
 export function registerGiscus(root: HTMLElement) {
-  const color = useColorMode()
-
   const giscusFrame = document.getElementById('giscus-frame')
   if (giscusFrame) {
     return null
@@ -36,7 +34,7 @@ export function registerGiscus(root: HTMLElement) {
     script.setAttribute('data-reactions-enabled', '1')
     script.setAttribute('data-emit-metadata', '0')
     script.setAttribute('data-input-position', 'bottom')
-    script.setAttribute('data-theme', getTheme(color.value))
+    script.setAttribute('data-theme', getTheme(isDark.value ? 'dark' : 'light'))
     script.setAttribute('data-lang', 'zh-CN')
     script.setAttribute('data-loading', 'lazy')
     script.setAttribute('crossorigin', 'anonymous')
@@ -55,16 +53,12 @@ export function updateGiscusConfig(message: ISetConfigMessage) {
 }
 
 export function updateGiscusTheme() {
-  const color = useColorMode()
-
-  watch(color, () => {
+  watch(isDark, () => {
     updateGiscusConfig({
       setConfig: {
-        theme: getTheme(color.value),
+        theme: getTheme(isDark.value ? 'dark' : 'light'),
       },
     })
-  }, {
-    immediate: true,
   })
 }
 

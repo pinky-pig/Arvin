@@ -1,13 +1,11 @@
 <script setup lang="ts">
-const color = useColorMode()
-// https://arvin-weekly.netlify.app/
 </script>
 
 <template>
   <div class="relative select-none overflow-hidden bg-[var(--card--bg)]">
     <img
       class="lozad pointer-events-none h-180px w-370px select-none object-fill"
-      :style="{ opacity: color.value === 'dark' ? 0 : 1 }"
+      :style="{ opacity: isDark ? 0 : 1 }"
       src="/wrap-bg.svg"
       alt=""
     >

@@ -1,25 +1,20 @@
 <script setup lang="ts">
 // https://uiverse.io/alexruix/splendid-liger-23
-const color = useColorMode()
 useHead({
   meta: [{
     id: 'theme-color',
     name: 'theme-color',
-    content: () => color.value === 'dark' ? '#222222' : '#ffffff',
+    content: () => isDark.value ? '#222222' : '#ffffff',
   }],
 })
 
 const checkboxRef = ref(null as HTMLInputElement | null)
 onMounted(() => {
-  checkboxRef.value!.checked = color.value === 'light'
+  checkboxRef.value!.checked = !isDark.value
 })
-watch(color, () => {
-  checkboxRef.value!.checked = color.value === 'light'
+watch(isDark, () => {
+  checkboxRef.value!.checked = !isDark.value
 })
-
-// function toggleDark(e: MouseEvent) {
-//   color.preference = color.value === 'dark' ? 'light' : 'dark'
-// }
 </script>
 
 <template>
