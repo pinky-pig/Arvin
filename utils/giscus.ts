@@ -34,14 +34,14 @@ export function registerGiscus(root: HTMLElement) {
     script.setAttribute('data-reactions-enabled', '1')
     script.setAttribute('data-emit-metadata', '0')
     script.setAttribute('data-input-position', 'bottom')
-    script.setAttribute('data-theme', getTheme(isDark.value ? 'dark' : 'light'))
+    script.setAttribute('data-theme', getCommentTheme(isDark.value ? 'dark' : 'light'))
     script.setAttribute('data-lang', 'zh-CN')
     script.setAttribute('data-loading', 'lazy')
     script.setAttribute('crossorigin', 'anonymous')
     script.setAttribute('async', '')
     root.appendChild(script)
+    updateGiscusTheme()
   }
-  updateGiscusTheme()
   return { root }
 }
 
@@ -56,13 +56,13 @@ export function updateGiscusTheme() {
   watch(isDark, () => {
     updateGiscusConfig({
       setConfig: {
-        theme: getTheme(isDark.value ? 'dark' : 'light'),
+        theme: getCommentTheme(isDark.value ? 'dark' : 'light'),
       },
     })
   })
 }
 
-function getTheme(color: string) {
+export function getCommentTheme(color: string) {
   if (color === 'dark')
     return `${window.location.protocol}//${window.location.host}/styles/giscus/dark-comment.css`
   else

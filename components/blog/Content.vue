@@ -21,9 +21,14 @@ useHead({
 })
 
 const giscusRoot = ref<HTMLElement | null> (null)
-watch(giscusRoot, (root) => {
+
+watchOnce(giscusRoot, (root) => {
   if (root && root instanceof HTMLElement)
     registerGiscus(root)
+})
+onActivated(() => {
+  if (giscusRoot && giscusRoot.value instanceof HTMLElement)
+    registerGiscus(giscusRoot.value)
 })
 </script>
 
@@ -64,7 +69,10 @@ watch(giscusRoot, (root) => {
         </template>
 
         <template #not-found>
-          <h1>404</h1>
+          <h1 class="fixed left-0 mt-1/6 w-full text-center leading-3">
+            <span class="mb-6 block text-6xl font-bold italic">{{ 'Loading' }}</span>
+            <span class="block italic">{{ 'No articles found' }}</span>
+          </h1>
         </template>
         <template #empty>
           <h1>{{ emptyTip }}</h1>
