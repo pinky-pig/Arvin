@@ -33,8 +33,8 @@ const props = defineProps({
   position: relative;
   overflow: hidden;
   background: var(--shadow-block-outer-bg);
-  /* box-shadow: 20px 20px 60px #d5d4d4,
-              -20px -20px 60px #ffffff; */
+  box-shadow: 20px 20px 60px #d5d4d4,
+              -20px -20px 60px #ffffff;
 }
 
 .inner-box-1{
