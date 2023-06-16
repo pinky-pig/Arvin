@@ -4,13 +4,7 @@ import { appName } from '~/constants'
 useHead({
   title: appName,
 })
-
-// registerLozad()
-registerHeti()
-
-onMounted(() => {
-  consoleDefaultText()
-})
+AppSetup()
 </script>
 
 <template>
