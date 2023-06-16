@@ -27,7 +27,6 @@ const props = defineProps({
 <style scoped>
 .out-box{
   position: relative;
-  z-index: 0;
   border-radius: 20px !important;
   padding: 10px;
   position: relative;
