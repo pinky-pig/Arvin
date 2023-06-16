@@ -37,12 +37,17 @@ function countdownTime() {
   // 计算已经过去的百分比
   const percentage = ((daysGone / daysInYear) * 100).toFixed(2)
 
-  return percentage
+  return Number(percentage)
 }
 </script>
 
 <template>
-  <BentoWrapperCard>{{ time }}</BentoWrapperCard>
+  <CustomCardShadowBlock class="h-300px w-400px text-5rem">
+    <div class="relative h-full w-full" style="font-family: Digital">
+      <span class="absolute left-50% top-50% -translate-1/2">{{ time }}</span>
+      <span v-show="time !== 100 && time !== 100.00" class="absolute left-50% top-50% text-[#0000001c] -translate-1/2 dark:text-[#ffffff1c]">00.00</span>
+    </div>
+  </CustomCardShadowBlock>
 </template>
 
 <style scoped>

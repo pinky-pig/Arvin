@@ -35,8 +35,12 @@ html.dark{
   --blog-card-bg                 : #0D1117;
   --blog-card-text               : #ffffff;
   --blog-card-border             : #30363D;
-  
   --blog-btn-shadow              : #ffffff90;
+
+  --shadow-block-outer-bg               : #30363D;
+  --shadow-block-inner-bg               : #000000;
+  --shadow-block-content-bg             : #000000;
+  --shadow-block-content-text           : #D8DAE0;
 }
 
 html{
@@ -78,6 +82,10 @@ html{
   --blog-card-bg                 : #F3F3F3;
   --blog-card-text               : #000000;
   --blog-card-border             : #ffffff;
-
   --blog-btn-shadow              : #00000090;
+
+  --shadow-block-outer-bg               : linear-gradient(145deg, #fefefe, #fff);
+  --shadow-block-inner-bg               : linear-gradient(to bottom, #EFEFEF, #ffffff);
+  --shadow-block-content-bg             : #C2C2C2;
+  --shadow-block-content-text           : #000000;
 }
