@@ -57,7 +57,7 @@ function setNavFromRoute() {
       case route.path === '/blog':
         currentItemIndex.value = 1
         break
-      case route.path === '/archives':
+      case route.path === '/project':
         currentItemIndex.value = 2
         break
 

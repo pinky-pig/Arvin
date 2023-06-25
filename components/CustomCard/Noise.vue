@@ -1,19 +1,24 @@
 <script setup lang="ts">
-
+defineProps({
+  background: {
+    type: String,
+    default: 'radial-gradient(circle at 80% 20%, #C89CBA, #d8d5d1)',
+  },
+})
 </script>
 
 <template>
-  <div class="card" />
+  <div class="card">
+    <slot />
+  </div>
 </template>
 
 <style scoped>
 .card {
-  width: 300px;
-  height: 400px;
   border: 2px solid #000;
   border-radius: 20px;
   position: relative;
-  background: radial-gradient(circle at 80% 20%, #C89CBA, #d8d5d1);
+  background: v-bind(background);
 }
 
 .card::before {

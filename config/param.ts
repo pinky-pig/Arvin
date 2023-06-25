@@ -17,7 +17,17 @@ export const SITE = {
 export const navFilter = [
   { label: '组件', route: '/' },
   { label: '文章', route: '/blog' },
-  { label: '归档', route: '/archives' },
+  { label: '项目', route: '/project' },
+]
+
+export const PROJECTS = [
+  {
+    name: 'What Is My HTML Preview',
+    desc: '使用 Monaco Editor 实现的 HTML 预览',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230620175505.png',
+    demoUrl: 'https://playground.mmeme.me/',
+    repoUrl: 'https://github.com/pinky-pig/what-is-my-html-playground',
+  },
 ]
 
 export enum UnsplashSetting {
