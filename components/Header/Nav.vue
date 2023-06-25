@@ -123,6 +123,7 @@ function refreshActiveTab(item: typeof navFilter[0], index: number) {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  user-select: none;
 }
 .nav-item{
   cursor: pointer;
