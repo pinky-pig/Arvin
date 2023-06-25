@@ -22,6 +22,13 @@ export const navFilter = [
 
 export const PROJECTS = [
   {
+    name: 'Arvin',
+    desc: '个人网站',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230625154539.png',
+    demoUrl: 'https://mmeme.me/',
+    repoUrl: 'https://github.com/pinky-pig/Arvin',
+  },
+  {
     name: 'What Is My HTML Preview',
     desc: '使用 Monaco Editor 实现的 HTML 预览',
     cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230620175505.png',
