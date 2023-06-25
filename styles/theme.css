@@ -13,7 +13,7 @@ html.dark{
 
   --card--bg                    : #0D1117;
   --card--border                : #30363D;
-  --card--placeholder-bg        : #1c2025;
+  --card--placeholder-bg        : #30363De0;
 
   --header-avatar-bg            : #6A89A790;
   --header-avatar-shadow        : 0 0 transparent, 0 0 transparent, 0 -1px 0 #ffffff1a inset;
@@ -60,7 +60,7 @@ html{
 
   --card--bg                    : #F3F3F3;
   --card--border                : #FFFFFF;
-  --card--placeholder-bg        : #F6F6F6;
+  --card--placeholder-bg        : #e3e3e3e0;
 
   --header-avatar-bg            : #ffffff90;
   --header-avatar-shadow        : 0 2px 4px #00000005,0 1px 0 #0000000f;

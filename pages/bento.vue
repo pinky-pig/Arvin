@@ -75,6 +75,6 @@ watch(width, () => {
 }
 :deep(.bento-item-placeholder){
   border-radius: 12px !important;
-  background-color: var(--card--placeholder-bg);
+  background-color: var(--card--placeholder-bg) !important;
 }
 </style>
