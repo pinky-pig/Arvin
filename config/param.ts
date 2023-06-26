@@ -35,6 +35,13 @@ export const PROJECTS = [
     demoUrl: 'https://playground.mmeme.me/',
     repoUrl: 'https://github.com/pinky-pig/what-is-my-html-playground',
   },
+  {
+    name: 'SVG Path Editor',
+    desc: '全部代码是基于 [SvgPathEditor](https://yqnn.github.io/svg-path-editor/) 的 Vue 版本实现，只是纯纯为了学习复刻了一些皮毛，感谢原作者的开源。',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230626175034.png',
+    demoUrl: 'https://svgpath.mmeme.me/',
+    repoUrl: 'https://github.com/pinky-pig/icons-basic-edit',
+  },
 ]
 
 export enum UnsplashSetting {
