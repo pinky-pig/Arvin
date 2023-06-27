@@ -22,7 +22,7 @@ export default defineAppConfig({
       ring: '',
       rounded: 'rounded-lg',
       shadow: 'shadow-xl',
-      width: 'sm:max-w-lg',
+      width: 'sm:max-w-3xl',
       height: '',
       transition: {
         enter: 'ease-out duration-300',
