@@ -31,14 +31,14 @@ export const PROJECTS = [
   {
     name: 'What Is My HTML Preview',
     desc: '使用 Monaco Editor 实现的 HTML 预览',
-    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230620175505.png',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230627103859.png',
     demoUrl: 'https://playground.mmeme.me/',
     repoUrl: 'https://github.com/pinky-pig/what-is-my-html-playground',
   },
   {
     name: 'SVG Path Editor',
     desc: '全部代码是基于 [SvgPathEditor](https://yqnn.github.io/svg-path-editor/) 的 Vue 版本实现，只是纯纯为了学习复刻了一些皮毛，感谢原作者的开源。',
-    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230626175034.png',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230627103811.png',
     demoUrl: 'https://svgpath.mmeme.me/',
     repoUrl: 'https://github.com/pinky-pig/icons-basic-edit',
   },

@@ -41,6 +41,9 @@ html.dark{
   --shadow-block-inner-bg               : #000000;
   --shadow-block-content-bg             : #000000;
   --shadow-block-content-text           : #D8DAE0;
+
+  --project-card-bg                      : #ffffff;
+  --project-card-text                    : #ffffff;
 }
 
 html{
@@ -88,4 +91,7 @@ html{
   --shadow-block-inner-bg               : linear-gradient(to bottom, #EFEFEF, #ffffff);
   --shadow-block-content-bg             : #C2C2C2;
   --shadow-block-content-text           : #000000;
+
+  --project-card-bg                      : #ffffff;
+  --project-card-text                    : #ffffff;
 }
