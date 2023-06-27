@@ -47,6 +47,12 @@ function openModal(item: typeof PROJECTS[0]) {
     <ClientOnly>
       <UModal v-model="isOpen">
         <div v-if="currentProject" class="p-4">
+          <div class="mb-4 flex flex-row items-center justify-between">
+            <h2 class="text-[1.25rem] font-bold">
+              {{ currentProject.name }}
+            </h2>
+            <div class="cursor-pointer hover:opacity-50" i-carbon-close @click="isOpen = false" />
+          </div>
           <img
             :src="currentProject.cover"
             class="pointer-events-none mb-4 block h-full w-full rounded-md object-cover"
