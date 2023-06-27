@@ -44,6 +44,10 @@ html.dark{
 
   --project-card-bg                      : #ffffff;
   --project-card-text                    : #ffffff;
+
+  --modal-overlay-bg                     : #000000a3;
+  --modal-bg                             : #131417;
+  --modal-border                         : #27272A;
 }
 
 html{
@@ -94,4 +98,8 @@ html{
 
   --project-card-bg                      : #ffffff;
   --project-card-text                    : #ffffff;
+
+  --modal-overlay-bg                     : #e4e4e7db;
+  --modal-bg                             : #ffffff;
+  --modal-border                         : #d3d3dd;
 }
