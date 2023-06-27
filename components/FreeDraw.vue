@@ -128,7 +128,11 @@ function loop() {
       @pointermove="handlePointerMove"
       @pointerup="handleUp"
     >
-      <path :d="pathData" :stroke="pathColor" :fill="pathColor" />
+      <path
+        :d="pathData"
+        stroke="currentColor"
+        fill="currentColor"
+      />
 
       <path
         v-for="(item, index) in pathDataHistory"
