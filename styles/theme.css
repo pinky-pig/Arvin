@@ -48,6 +48,18 @@ html.dark{
   --modal-overlay-bg                     : #000000a3;
   --modal-bg                             : #131417;
   --modal-border                         : #27272A;
+
+  --ui-main-bg                           : #0D1117;
+  --ui-main-text                         : #ffffff;
+  --ui-main-border                       : #fffffffa;
+  --ui-main-box-shadow                   : inset 0 -3px 4px -1px rgba(255, 255, 255, .04),
+                                           0 2px 5px rgba(221, 150, 150, .04),
+                                           0 4px 4px rgba(255, 255, 255, .02),
+                                           0 0 0 1px rgba(255, 255, 255, .09);
+  --ui-main-hover-box-shadow             : inset 0 -3px 4px -1px rgba(200, 200, 200, .09),
+                                           0 2px 5px rgba(200, 200, 200, .13),
+                                           0 4px 4px rgba(200, 200, 200, .02),
+                                           0 0 0 1px rgba(200, 200, 200, .09);
 }
 
 html{
@@ -102,4 +114,16 @@ html{
   --modal-overlay-bg                     : #e4e4e7db;
   --modal-bg                             : #ffffff;
   --modal-border                         : #d3d3dd;
+
+  --ui-main-bg                           : #ffffff;
+  --ui-main-text                         : #000000;
+  --ui-main-border                       : #0000000a;
+  --ui-main-box-shadow                   : inset 0 -3px 4px -1px rgba(0, 0, 0, .04),
+                                           0 2px 5px rgba(221, 150, 150, .04),
+                                           0 4px 4px rgba(0, 0, 0, .02),
+                                           0 0 0 1px rgba(0, 0, 0, .09);
+  --ui-main-hover-box-shadow             : inset 0 -3px 4px -1px rgba(0, 0, 0, .09),
+                                           0 2px 5px rgba(0, 0, 0, .13),
+                                           0 4px 4px rgba(0, 0, 0, .02),
+                                           0 0 0 1px rgba(0, 0, 0, .09);
 }
