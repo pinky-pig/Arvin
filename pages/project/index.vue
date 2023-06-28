@@ -46,34 +46,35 @@ function openModal(item: typeof PROJECTS[0]) {
     </div>
 
     <ClientOnly>
-      <UModal v-model="isOpen">
-        <div v-if="currentProject" class="p-4">
-          <div class="mb-4 flex flex-row items-center justify-between">
-            <h2 class="text-[1.25rem] font-bold">
-              {{ currentProject.name }}
-            </h2>
+      <UModal v-model="isOpen" :ui="{ background: 'bg-transparent', rounded: 'rounded-[20px]' }">
+        <UiShadowCard v-if="currentProject" class="p-4">
+          <template #default>
+            <div class="mb-4 flex flex-row items-center justify-between">
+              <h2 class="text-[1.25rem] font-bold">
+                {{ currentProject.name }}
+              </h2>
 
-            <UiShadowButton class="rounded-md">
-              <div class="cursor-pointer" i-carbon-close @click="isOpen = false" />
-            </UiShadowButton>
-          </div>
-          <img
-            :src="currentProject.cover"
-            class="pointer-events-none mb-4 block h-full w-full rounded-md object-cover"
-          >
-          <div class="flex flex-row justify-between">
-            <div class="truncate">
-              {{ currentProject.desc }}
+              <div class="cursor-pointer hover:opacity-50" i-carbon-close @click="isOpen = false" />
             </div>
-            <div class="flex flex-shrink-0 flex-row gap-4">
-              <div>
+            <img
+              :src="currentProject.cover"
+              class="pointer-events-none mb-4 block h-full w-full rounded-md object-cover"
+            >
+          </template>
+
+          <template #footer>
+            <div class="flex flex-row justify-between">
+              <UiShadowButton class="rounded-md">
+                <div class="truncate">
+                  {{ currentProject.desc }}
+                </div>
+              </UiShadowButton>
+              <div class="flex flex-shrink-0 flex-row gap-4">
                 <UiShadowButton class="rounded-md">
-                  <a class="cursor-pointer outline-none" :href="currentProject.repoUrl" target="_blank">
-                    <div class="h-24px w-24px" i="carbon-logo-github" />
+                  <a class="cursor-pointer border-none outline-none" :href="currentProject.repoUrl" target="_blank">
+                    <div class="h-24px w-24px border-none outline-none" i="carbon-logo-github" />
                   </a>
                 </UiShadowButton>
-              </div>
-              <div>
                 <UiShadowButton class="rounded-md">
                   <a class="cursor-pointer outline-none" :href="currentProject.demoUrl" target="_blank">
                     <svg class="z-10" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -84,8 +85,8 @@ function openModal(item: typeof PROJECTS[0]) {
                 </UiShadowButton>
               </div>
             </div>
-          </div>
-        </div>
+          </template>
+        </UiShadowCard>
 
         <div v-else italic op50>
           <span animate-pulse>Loading...</span>

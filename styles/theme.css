@@ -60,6 +60,7 @@ html.dark{
                                            0 2px 5px rgba(200, 200, 200, .13),
                                            0 4px 4px rgba(200, 200, 200, .02),
                                            0 0 0 1px rgba(200, 200, 200, .09);
+  --ui-second-bg                         : #27272A;
 }
 
 html{
@@ -126,4 +127,6 @@ html{
                                            0 2px 5px rgba(0, 0, 0, .13),
                                            0 4px 4px rgba(0, 0, 0, .02),
                                            0 0 0 1px rgba(0, 0, 0, .09);
+
+  --ui-second-bg                         : #f9f9f9;
 }

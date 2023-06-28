@@ -37,7 +37,7 @@ export const PROJECTS = [
   },
   {
     name: 'SVG Path Editor',
-    desc: '全部代码是基于 [SvgPathEditor](https://yqnn.github.io/svg-path-editor/) 的 Vue 版本实现，只是纯纯为了学习复刻了一些皮毛，感谢原作者的开源。',
+    desc: 'VUE 版本实现 SvgPathEditor',
     cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230627103811.png',
     demoUrl: 'https://svgpath.mmeme.me/',
     repoUrl: 'https://github.com/pinky-pig/icons-basic-edit',

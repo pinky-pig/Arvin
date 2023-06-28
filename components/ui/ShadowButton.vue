@@ -13,13 +13,13 @@
   min-width: 30px;
   min-height: 30px;
   color: var(--ui-main-text);
+  background-color: var(--ui-main-bg);
   white-space: nowrap;
   cursor: pointer;
-  background-color: var(--ui-main-bg);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding:0.5em 1em;
   font-size: 1em;
   text-decoration: none;
   transition: all .3s;
