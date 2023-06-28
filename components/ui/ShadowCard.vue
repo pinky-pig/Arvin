@@ -33,6 +33,6 @@
   border-radius: 12px;
   padding: 1.5em;
   transition: all .3s;
-  box-shadow: var(--ui-main-box-shadow);
+  box-shadow: var(--ui-second-box-shadow);
 }
 </style>
