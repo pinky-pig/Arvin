@@ -24,6 +24,7 @@
 
 <style scoped>
 .detail-arrow{
+  pointer-events: auto;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -30,6 +30,7 @@ watch(isDark, () => {
 
 <style scoped>
 .switch {
+  pointer-events: auto;
   font-size: 17px;
   position: relative;
   display: inline-block;
