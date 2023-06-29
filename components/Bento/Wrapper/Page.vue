@@ -27,7 +27,7 @@ function closeAndToHome() {
     :class="isOpen ? 'bubbleCardUp' : 'bubbleCardDown'"
     class="fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col"
   >
-    <nav class="bg-[var(--card--placeholder-bg)] px-4 py-3 font-medium md:px-8">
+    <nav class="bg-[var(--bg-second-color)] px-4 py-3 font-medium md:px-8">
       <div class="flex items-center justify-between gap-2">
         <div class="flex items-center gap-4">
           <div class="return-arrow" @click="closeAndToHome">
