@@ -14,11 +14,11 @@ function openModal(item: typeof PROJECTS[0]) {
   <div>
     <ClientOnly>
       <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] mx-auto max-w-970px justify-center gap-10px rounded-xl px-5px text-start md:grid-cols-[repeat(auto-fill,minmax(240px,300px))] md:px-25px">
-        <div
+        <UiShadowCard
           v-for="project in PROJECTS"
           :key="project.name"
           style="border: 5px solid var(--blog-card-border);"
-          class="box relative flex flex-col cursor-pointer justify-center overflow-hidden border-[var(--blog-card-border)] rounded-12px border-solid bg-[var(--blog-card-bg)] object-cover text-[var(--blog-card-text)] shadow-md hover:opacity-100"
+          class="box relative flex flex-col cursor-pointer justify-center overflow-hidden border-[var(--blog-card-border)] rounded-12px border-solid bg-[var(--blog-card-bg)] object-cover text-[var(--blog-card-text)] shadow-md !p-0px hover:opacity-100"
           @click="openModal(project)"
         >
           <!-- 配图 -->
@@ -45,7 +45,7 @@ function openModal(item: typeof PROJECTS[0]) {
               </a>
             </div>
           </div>
-        </div>
+        </UiShadowCard>
 
         <UModal v-model="isOpen" :ui="{ background: 'bg-transparent', rounded: 'rounded-[10px]' }">
           <UiShadowCard v-if="currentProject" class="p-4">
