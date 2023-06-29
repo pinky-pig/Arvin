@@ -38,7 +38,7 @@ function toMapbox() {
 </script>
 
 <template>
-  <UiShadowCard class="!p-5px">
+  <UiShadowCard class="!p-5px dark:!p-0">
     <div ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
 
     <button class="detail-arrow" @click="toMapbox">
