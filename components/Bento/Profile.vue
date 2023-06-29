@@ -31,8 +31,8 @@ function clearAllSetTimeout() {
 </script>
 
 <template>
-  <BentoWrapperCard>
-    <div class="pointer-events-none relative p-10">
+  <UiShadowCard class="!p-5px">
+    <div class="pointer-events-none relative p-1.5em">
       <div class="relative mb-30px h-96px w-96px">
         <img ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]" src="/logo.png" alt="">
         <div ref="avatarBgRef" class="avatar-bg" />
@@ -65,7 +65,7 @@ function clearAllSetTimeout() {
         </p>
       </button>
     </div>
-  </BentoWrapperCard>
+  </UiShadowCard>
 </template>
 
 <style scoped>

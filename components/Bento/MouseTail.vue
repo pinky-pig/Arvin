@@ -3,8 +3,8 @@ const isOpen = ref(false)
 </script>
 
 <template>
-  <BentoWrapperCard>
-    <div class="grid h-52px w-52px place-items-center text-[--text-color]" @click="isOpen = true">
+  <UiShadowCard class="!p-5px">
+    <div class="grid h-full w-full place-items-center text-[--text-color]" @click="isOpen = true">
       <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor">
         <path
           fill="currentColor"
@@ -17,5 +17,5 @@ const isOpen = ref(false)
         <FreeDraw />
       </UModal>
     </ClientOnly>
-  </BentoWrapperCard>
+  </UiShadowCard>
 </template>

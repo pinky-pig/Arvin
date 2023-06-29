@@ -18,12 +18,14 @@ watch(isDark, () => {
 </script>
 
 <template>
-  <BentoWrapperCard>
-    <label class="switch">
-      <input ref="checkboxRef" type="checkbox" @click="toggleDark">
-      <span class="slider" />
-    </label>
-  </BentoWrapperCard>
+  <UiShadowCard class="!p-5px">
+    <div class="grid h-full w-full place-items-center">
+      <label class="switch">
+        <input ref="checkboxRef" type="checkbox" @click="toggleDark">
+        <span class="slider" />
+      </label>
+    </div>
+  </UiShadowCard>
 </template>
 
 <style scoped>
