@@ -23,7 +23,6 @@
   box-shadow: var(--ui-main-box-shadow);
   display: flex;
   flex-direction: column;
-  gap: 1em ;
 }
 .card-footer {
   padding: 1.5em;
