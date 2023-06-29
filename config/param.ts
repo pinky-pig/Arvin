@@ -36,6 +36,13 @@ export const PROJECTS = [
     repoUrl: 'https://github.com/pinky-pig/what-is-my-html-playground',
   },
   {
+    name: 'What Is My V3 Dragblock',
+    desc: 'Vue3 实现的拖拽组件',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230629151111.png',
+    demoUrl: 'https://dragblock.mmeme.me/',
+    repoUrl: 'https://github.com/pinky-pig/what-is-v3-dragblock',
+  },
+  {
     name: 'SVG Path Editor',
     desc: 'VUE 版本实现 SvgPathEditor',
     cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230627103811.png',
