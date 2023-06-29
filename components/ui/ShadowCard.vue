@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="card-outer">
+  <div class="card-outer border-0 dark:border-5px dark:border-[var(--card--border)] dark:border-solid">
     <div class="card-content">
       <slot name="default" />
     </div>
@@ -23,6 +23,7 @@
   box-shadow: var(--ui-main-box-shadow);
   display: flex;
   flex-direction: column;
+
 }
 .card-footer {
   padding: 1.5em;
