@@ -113,7 +113,7 @@ function refreshActiveTab(item: typeof navFilter[0], index: number) {
 .nav-container{
   position: relative;
   background: var(--nav-bg);
-  border: 2px solid var(--nav-border);
+  border: var(--nav-border);
   border-radius: 23px;
   display: flex;
   font-size: 14px;
@@ -124,6 +124,7 @@ function refreshActiveTab(item: typeof navFilter[0], index: number) {
   align-items: center;
   overflow: hidden;
   user-select: none;
+  box-shadow: var(--ui-second-box-shadow);
 }
 .nav-item{
   cursor: pointer;

@@ -25,7 +25,7 @@ html.dark{
 
   --nav-bg                      : transparent;
   --nav-text                    : #f0f2f8;
-  --nav-border                  : #30363d;
+  --nav-border                  : 2px solid #30363d;
   --nav-placeholder-bg          : #30363d;
 
   --blog-bg                     : #0D1117;
@@ -93,7 +93,8 @@ html{
 
   --nav-bg                       : #ffffff;
   --nav-text                     : #ffffff;
-  --nav-border                   : #F3F3F3;
+  /* --nav-border                   : 2px solid #F3F3F3; */
+  --nav-border                   : 0px solid transparent;
   --nav-placeholder-bg           : #000000;
 
   --blog-bg                      : #ffffff;

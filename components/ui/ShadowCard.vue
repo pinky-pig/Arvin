@@ -28,6 +28,7 @@
   padding: 1.5em;
 }
 .card-content{
+  pointer-events: none;
   flex: 1 1 0%;
   background: var(--ui-second-bg);
   border-radius: 5px;

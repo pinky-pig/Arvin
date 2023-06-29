@@ -50,7 +50,7 @@ function openModal(item: typeof PROJECTS[0]) {
         <UModal v-model="isOpen" :ui="{ background: 'bg-transparent', rounded: 'rounded-[10px]' }">
           <UiShadowCard v-if="currentProject" class="p-4">
             <template #default>
-              <div class="p-1.5em">
+              <div class="pointer-events-auto p-1.5em">
                 <div class="mb-4 flex flex-row items-center justify-between">
                   <h2 class="text-[1.25rem] font-bold">
                     {{ currentProject.name }}
