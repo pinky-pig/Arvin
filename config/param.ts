@@ -43,6 +43,13 @@ export const PROJECTS = [
     repoUrl: 'https://github.com/pinky-pig/what-is-v3-dragblock',
   },
   {
+    name: 'What Is My MouseTrail',
+    desc: '浏览器插件：显示鼠标轨迹',
+    cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230701013633.png',
+    demoUrl: 'https://mousetrail.mmeme.me/',
+    repoUrl: 'https://github.com/pinky-pig/what-is-my-mouse-trail/tree/refactor',
+  },
+  {
     name: 'SVG Path Editor',
     desc: 'VUE 版本实现 SvgPathEditor',
     cover: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/images20230627103811.png',
