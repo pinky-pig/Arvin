@@ -31,7 +31,7 @@ function openModal(item: typeof PROJECTS[0]) {
           </div>
           <!-- 标题 -->
           <div
-            class="title absolute bottom-0 left-0 h-56px w-full flex items-center justify-between from-slate-900/5 to-slate-900/60 bg-gradient-to-b p-4 pl-3 pr-3 leading-tight text-[var(--project-card-text)] opacity-0 backdrop-blur-md duration-500 ease-in-out"
+            class="title pointer-events-auto absolute bottom-0 left-0 h-56px w-full flex items-center justify-between from-slate-900/5 to-slate-900/60 bg-gradient-to-b p-4 pl-3 pr-3 leading-tight text-[var(--project-card-text)] opacity-0 backdrop-blur-md duration-500 ease-in-out"
           >
             <div class="truncate">
               {{ project.name }}
