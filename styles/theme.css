@@ -48,7 +48,7 @@ html.dark{
 
   --modal-overlay-bg                     : #000000a3;
   --modal-bg                             : #131417;
-  --modal-border                         : #27272A;
+  --modal-border                         : #30363C;
 
   --ui-main-bg                           : #0D1117;
   --ui-main-text                         : #ffffff;
@@ -118,7 +118,7 @@ html{
 
   --modal-overlay-bg                     : #e4e4e7db;
   --modal-bg                             : #ffffff;
-  --modal-border                         : #d3d3dd;
+  --modal-border                         : #f3f3f3;
 
   --ui-main-bg                           : #ffffff;
   --ui-main-text                         : #000000;

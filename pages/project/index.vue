@@ -66,7 +66,7 @@ function openModal(item: typeof PROJECTS[0]) {
             </template>
 
             <template #footer>
-              <div class="flex flex-row justify-between p-0 md:p-1.5em">
+              <div class="flex flex-row justify-between gap-20px p-0 md:p-1.5em">
                 <UiShadowButton class="rounded-md">
                   <div class="truncate">
                     {{ currentProject.desc }}
