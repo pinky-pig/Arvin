@@ -31,19 +31,14 @@ function openModal(item: typeof PROJECTS[0]) {
           </div>
           <!-- 标题 -->
           <div
-            class="title pointer-events-auto absolute bottom-0 left-0 h-56px w-full flex items-center justify-between from-slate-900/5 to-slate-900/60 bg-gradient-to-b p-4 pl-3 pr-3 leading-tight text-[var(--project-card-text)] opacity-0 backdrop-blur-md duration-500 ease-in-out"
+            class="pointer-events-auto absolute bottom-0 left-0 z-1 w-full flex items-center justify-between p-10px text-16px leading-7 text-[var(--project-card-text)]"
           >
-            <div class="truncate">
+            <a :href="project.demoUrl" class="inline-flex gap-0.5 pr-0.5 text-[0.95em] leading-none hover:underline" target="_blank" data-state="closed" @click="event => event.stopPropagation()">
               {{ project.name }}
-            </div>
-            <div class="grid h-10 w-10 place-items-center rounded-md bg-opacity-0 duration-500 ease-in-out hover:bg-slate-100 hover:bg-opacity-50 hover:text-black">
-              <a :href="project.demoUrl" target="_blank" class="cursor-pointer" @click="event => event.stopPropagation()">
-                <svg class="z-10" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path opacity="0.2" d="M7.8 21H14.2C15.8802 21 16.7202 21 17.362 20.673C17.9265 20.3854 18.3854 19.9265 18.673 19.362C19 18.7202 19 17.8802 19 16.2V14L10 5H7.8C6.11984 5 5.27976 5 4.63803 5.32698C4.07354 5.6146 3.6146 6.07354 3.32698 6.63803C3 7.27976 3 8.11984 3 9.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" fill="currentColor" />
-                  <path d="M21 9L21 3M21 3H15M21 3L13 11M10 5H7.8C6.11984 5 5.27976 5 4.63803 5.32698C4.07354 5.6146 3.6146 6.07354 3.32698 6.63803C3 7.27976 3 8.11984 3 9.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21H14.2C15.8802 21 16.7202 21 17.362 20.673C17.9265 20.3854 18.3854 19.9265 18.673 19.362C19 18.7202 19 17.8802 19 16.2V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </div>
+              <svg width="0.95em" height="0.95em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline-block translate-y-0.5" aria-hidden="true">
+                <path d="M20 13.5001C20 14.8946 20 15.5919 19.8618 16.1673C19.4229 17.9956 17.9955 19.423 16.1672 19.8619C15.5918 20.0001 14.8945 20.0001 13.5 20.0001H12C9.19974 20.0001 7.79961 20.0001 6.73005 19.4551C5.78924 18.9758 5.02433 18.2109 4.54497 17.2701C4 16.2005 4 14.8004 4 12.0001V11.5001C4 9.17035 4 8.0055 4.3806 7.08664C4.88807 5.8615 5.86144 4.88813 7.08658 4.38066C7.86344 4.05888 8.81614 4.00915 10.5 4.00146M19.7597 9.45455C20.0221 7.8217 20.0697 6.16984 19.9019 4.54138C19.8898 4.42328 19.838 4.31854 19.7597 4.24027M19.7597 4.24027C19.6815 4.16201 19.5767 4.11023 19.4586 4.09806C17.8302 3.93025 16.1783 3.97792 14.5455 4.24027M19.7597 4.24027L10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
           </div>
         </UiShadowCard>
 
@@ -100,10 +95,20 @@ function openModal(item: typeof PROJECTS[0]) {
 </template>
 
 <style scoped>
-.box:hover .title {
-  opacity: 1;
-}
 .box:hover .image {
   transform: scale(1.1);
+}
+.box{
+  position: relative;
+}
+.box::after{
+  content: "";
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), 50%, rgba(0, 0, 0, 0));
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 200px;
+  bottom: -150px;
+  transition: opacity 200ms ease 0s;
 }
 </style>
