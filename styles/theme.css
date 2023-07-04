@@ -53,6 +53,16 @@ html.dark{
   --ui-main-bg                           : #0D1117;
   --ui-main-text                         : #ffffff;
   --ui-main-border                       : #fffffffa;
+
+  --ui-button-shadow                     : inset 0 -3px 4px -1px rgba(255, 255, 255, .04),
+                                           0 2px 5px rgba(221, 150, 150, .04),
+                                           0 4px 4px rgba(255, 255, 255, .02),
+                                           0 0 0 1px rgba(255, 255, 255, .09);
+  --ui-button-hover-shadow               : inset 0 -3px 4px -1px rgba(200, 200, 200, .09),
+                                           0 2px 5px rgba(200, 200, 200, .13),
+                                           0 4px 4px rgba(200, 200, 200, .02),
+                                           0 0 0 1px rgba(200, 200, 200, .09);
+
   --ui-main-box-shadow                   : inset 0 -3px 4px -1px rgba(255, 255, 255, .04),
                                            0 2px 5px rgba(221, 150, 150, .04),
                                            0 4px 4px rgba(255, 255, 255, .02),
@@ -123,6 +133,16 @@ html{
   --ui-main-bg                           : #ffffff;
   --ui-main-text                         : #000000;
   --ui-main-border                       : #0000000a;
+
+  --ui-button-shadow                     : inset 0 -3px 4px -1px rgba(0, 0, 0, .04),
+                                          0 2px 5px rgba(221, 150, 150, .04),
+                                          0 4px 4px rgba(0, 0, 0, .02),
+                                          0 0 0 1px rgba(0, 0, 0, .09);
+  --ui-button-hover-shadow               : inset 0 -3px 4px -1px rgba(0, 0, 0, .09),
+                                          0 2px 5px rgba(0, 0, 0, .13),
+                                          0 4px 4px rgba(0, 0, 0, .02),
+                                          0 0 0 1px rgba(0, 0, 0, .09);
+
 
   /* 如果需要添加底部阴影，将下面的注释放开。以及 --nav-border */
   /* --ui-main-box-shadow                   : inset 0 -3px 4px -1px rgba(0, 0, 0, .04),

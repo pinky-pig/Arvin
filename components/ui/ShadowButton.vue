@@ -24,10 +24,10 @@
   text-decoration: none;
   transition: all .3s;
   border: 1px var(--ui-main-border);
-  box-shadow: var(--ui-main-box-shadow);
+  box-shadow: var(--ui-button-shadow);
 }
 
 .small-button:hover {
-  box-shadow: var(--ui-main-hover-box-shadow);
+  box-shadow: var(--ui-button-hover-shadow);
 }
 </style>
