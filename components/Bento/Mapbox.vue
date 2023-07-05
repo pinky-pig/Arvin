@@ -35,11 +35,15 @@ watch(isDark, () => {
 function toMapbox() {
   router.push('/mapbox')
 }
+const online = useOnline()
 </script>
 
 <template>
   <UiShadowCard class="!p-5px dark:!p-0">
-    <div ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
+    <div v-if="!online" class="mt-1/5 h-full w-full text-center font-[fantasy] italic">
+      You are offline
+    </div>
+    <div v-else ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
 
     <button class="detail-arrow" @click="toMapbox">
       <div class="h-16px w-16px" i-carbon-arrow-up-right />

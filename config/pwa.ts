@@ -34,10 +34,16 @@ export const pwa: ModuleOptions = {
     ],
   },
   workbox: {
-    globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}'],
+    globPatterns: ['**/*'],
+    // globPatterns: ['**/*.{js,css,html,txt,png,ico,svg}'],
     navigateFallbackDenylist: [/^\/api\//],
     navigateFallback: '/',
     cleanupOutdatedCaches: true,
+    globIgnores: [
+      '**/node_modules/**/*',
+      'sw.js',
+      'workbox-*.js',
+    ],
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/fonts.googleapis.com\/.*/i,
@@ -58,6 +64,20 @@ export const pwa: ModuleOptions = {
         handler: 'CacheFirst',
         options: {
           cacheName: 'gstatic-fonts-cache',
+          expiration: {
+            maxEntries: 10,
+            maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days
+          },
+          cacheableResponse: {
+            statuses: [0, 200],
+          },
+        },
+      },
+      {
+        urlPattern: /^https:\/\/cdn.jsdelivr.net\/.*/i,
+        handler: 'CacheFirst',
+        options: {
+          cacheName: 'jsdelivr-pic-cache',
           expiration: {
             maxEntries: 10,
             maxAgeSeconds: 60 * 60 * 24 * 365, // <== 365 days

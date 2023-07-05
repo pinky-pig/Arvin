@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import Bento from './bento.vue'
-
-const online = useOnline()
 </script>
 
 <template>
   <div>
     <Suspense>
       <ClientOnly>
-        <Bento v-if="online" />
-        <div v-else text-gray:80>
-          You're offline
-        </div>
+        <Bento />
       </ClientOnly>
       <template #fallback>
         <div italic op50>

@@ -26,7 +26,7 @@ function openModal(item: typeof PROJECTS[0]) {
           <div class="image min-h-200px w-full select-none px-10px py-20px duration-500">
             <img
               :src="project.cover"
-              class="pointer-events-none block h-full w-full rounded-md object-cover"
+              class="pointer-events-none block h-213.55px w-270px rounded-md object-cover"
             >
           </div>
           <!-- 标题 -->
