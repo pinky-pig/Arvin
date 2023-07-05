@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import Typed from 'typed.js'
+
+const typedInstance = ref<Typed>()
 const iconRef = ref<HTMLElement | null>(null)
 const avatarBgRef = ref<HTMLElement | null>(null)
 const avatarImgRef = ref<HTMLElement | null>(null)
 const currentAvatar = ref('Arvin')
 function handleSwitch() {
+  typedRestart()
   clearAllSetTimeout()
   currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
   avatarImgRef.value?.classList.add('expanding-avatar-circle')
@@ -19,30 +23,58 @@ function handleSwitch() {
   }, 1000)
 }
 
-// const debouncedSwitch = useDebounceFn(() => {
-//   handleSwitch()
-// }, 3000)
-
 function clearAllSetTimeout() {
   let id = setTimeout(() => { }, 0) as unknown as number
   while (id--)
     clearTimeout(id)
 }
+
+const $s1h = ref<HTMLElement>()
+const $s1 = ref<HTMLElement>()
+
+onMounted(async () => {
+  typedInstance.value = await typeSentence1()
+  typedInstance.value.cursor.remove()
+})
+
+function typedRestart() {
+  typedInstance.value?.reset()
+  typedInstance.value?.start()
+}
+async function typeSentence1() {
+  return new Promise<Typed>((resolve) => {
+    const _ = new Typed($s1.value, {
+      stringsElement: $s1h.value,
+      typeSpeed: 50,
+      onComplete(self) {
+        resolve(self)
+      },
+    })
+  })
+}
 </script>
 
 <template>
   <UiShadowCard class="!p-5px">
+    <div>
+      <div ref="$s1h" hidden>
+        <div>
+          <span class="text-20px font-[monospace]">
+            我是
+            <span class="text-30px font-[cursive]">王文博</span>
+            , 目前生活在南京的开发者。我很喜欢 Vue、Nuxt。目前从事前端开发及 WebGIS 。
+          </span>
+        </div>
+      </div>
+    </div>
+
     <div class="pointer-events-none relative p-1.5em">
       <div class="relative mb-30px h-96px w-96px">
         <img ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]" src="/logo.png" alt="">
         <div ref="avatarBgRef" class="avatar-bg" />
       </div>
 
-      <p style="z-index:1" class="intro-text">
-        我是
-        <span style="font-size:40px;font-family: cursive;">王文博</span>
-        , 目前生活在南京的开发者。我很喜欢 Vue、Nuxt。目前从事前端开发及 WebGIS 。
-      </p>
+      <span ref="$s1" />
 
       <button class="switch-btn pointer-events-auto" @click="handleSwitch">
         <div ref="iconRef" class="icon" :class="currentAvatar === 'Arvin' ? 'icon_rotate_one' : 'icon_rotate_two'" style="transform: rotate(0);">

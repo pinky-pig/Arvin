@@ -17,11 +17,13 @@
     "mapbox-gl": "^2.15.0",
     "nuxt-ssr-lit": "1.5.5",
     "three": "^0.154.0",
+    "typed.js": "^2.0.16",
     "v3-bento": "0.0.2-alpha.5.7"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.6",
     "@iconify-json/carbon": "^1.1.18",
+    "@iconify-json/fluent-emoji": "^1.1.13",
     "@iconify-json/twemoji": "^1.1.11",
     "@nuxt-themes/typography": "^1.0.0",
     "@nuxt/devtools": "^0.6.6",

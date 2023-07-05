@@ -2,6 +2,7 @@ export const SITE = {
   title: '博客',
   author: 'Arvin',
   description: '记录 Arvin 的不枯燥生活',
+  profileContent: '我是王文博，目前生活在南京的开发者。我很喜欢 Vue、Nuxt。目前从事前端开发及 WebGIS 。',
   keywords: 'Arvin,Pinky-pig,Blog,前端,Vue',
   icon: 'https://cdn.jsdelivr.net/gh/pinky-pig/pic-bed/imageslogo.svg',
   pic: 'https://cdn.fliggy.coblogPagem/upic/2XFNGI.png',
