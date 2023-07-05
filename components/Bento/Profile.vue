@@ -7,7 +7,6 @@ const avatarBgRef = ref<HTMLElement | null>(null)
 const avatarImgRef = ref<HTMLElement | null>(null)
 const currentAvatar = ref('Arvin')
 function handleSwitch() {
-  typedRestart()
   clearAllSetTimeout()
   currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
   avatarImgRef.value?.classList.add('expanding-avatar-circle')
@@ -21,6 +20,8 @@ function handleSwitch() {
   setTimeout(() => {
     avatarImgRef.value?.classList.remove('expanding-avatar-circle')
   }, 1000)
+
+  typedRestart()
 }
 
 function clearAllSetTimeout() {
@@ -34,19 +35,22 @@ const $s1 = ref<HTMLElement>()
 
 onMounted(async () => {
   typedInstance.value = await typeSentence1()
-  typedInstance.value.cursor.remove()
 })
 
 function typedRestart() {
   typedInstance.value?.reset()
-  typedInstance.value?.start()
 }
 async function typeSentence1() {
   return new Promise<Typed>((resolve) => {
     const _ = new Typed($s1.value, {
       stringsElement: $s1h.value,
+      cursorChar: ' ▋ ', // 光标字符
       typeSpeed: 50,
+      onBegin(self) {
+        // self.cursor.style.opacity = '1'
+      },
       onComplete(self) {
+        self.cursor.style.opacity = '0'
         resolve(self)
       },
     })
