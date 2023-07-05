@@ -8,9 +8,9 @@ const avatarImgRef = ref<HTMLElement | null>(null)
 const currentAvatar = ref('Arvin')
 function handleSwitch() {
   clearAllSetTimeout()
-  currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
   avatarImgRef.value?.classList.add('expanding-avatar-circle')
   setTimeout(() => {
+    currentAvatar.value = currentAvatar.value === 'Arvin' ? 'Arvin2' : 'Arvin'
     avatarBgRef.value?.classList.add('expanding-bg-circle')
     setTimeout(() => {
       avatarBgRef.value?.classList.remove('expanding-bg-circle')
@@ -74,7 +74,10 @@ async function typeSentence1() {
 
     <div class="pointer-events-none relative p-1.5em">
       <div class="relative mb-30px h-96px w-96px">
-        <img ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]" src="/logo.png" alt="">
+        <div ref="avatarImgRef" class="avatar-img absolute left-0 top-0 z-20 mb-8 h-96px w-96px rounded-full dark:bg-[var(--header-avatar-bg)]">
+          <div v-if="currentAvatar === 'Arvin'" class="h-full w-full" i-fluent-emoji:partying-face />
+          <img v-else ref="avatarImgRef" class="h-full w-full" src="/logo.png" alt="">
+        </div>
         <div ref="avatarBgRef" class="avatar-bg" />
       </div>
 
