@@ -52,9 +52,11 @@ async function typeSentence1() {
       },
       onComplete(self) {
         self.cursor.style.opacity = '0'
-        resolve(self)
+        // resolve(self)
       },
     })
+
+    resolve(_)
   })
 }
 </script>
@@ -84,7 +86,7 @@ async function typeSentence1() {
 
       <span ref="$s1" />
 
-      <button :disabled="!typedInstance" :class="typedInstance ? '' : 'opacity-20 !cursor-not-allowed'" class="switch-btn pointer-events-auto" @click="handleSwitch">
+      <button class="switch-btn pointer-events-auto" @click="handleSwitch">
         <div ref="iconRef" class="icon" :class="currentAvatar === 'Arvin' ? 'icon_rotate_one' : 'icon_rotate_two'" style="transform: rotate(0);">
           <svg
             width="15.702"
