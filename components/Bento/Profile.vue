@@ -30,6 +30,7 @@ function clearAllSetTimeout() {
     clearTimeout(id)
 }
 
+// https://jsfiddle.net/mattboldt/60h9an7y/
 const $s1h = ref<HTMLElement>()
 const $s1 = ref<HTMLElement>()
 
@@ -44,7 +45,7 @@ async function typeSentence1() {
   return new Promise<Typed>((resolve) => {
     const _ = new Typed($s1.value, {
       stringsElement: $s1h.value,
-      cursorChar: ' ▋ ', // 光标字符
+      // cursorChar: ' ▋ ', // 光标字符
       typeSpeed: 50,
       onBegin(self) {
         // self.cursor.style.opacity = '1'
@@ -83,7 +84,7 @@ async function typeSentence1() {
 
       <span ref="$s1" />
 
-      <button class="switch-btn pointer-events-auto" @click="handleSwitch">
+      <button :disabled="!typedInstance" :class="typedInstance ? '' : 'opacity-20 !cursor-not-allowed'" class="switch-btn pointer-events-auto" @click="handleSwitch">
         <div ref="iconRef" class="icon" :class="currentAvatar === 'Arvin' ? 'icon_rotate_one' : 'icon_rotate_two'" style="transform: rotate(0);">
           <svg
             width="15.702"
