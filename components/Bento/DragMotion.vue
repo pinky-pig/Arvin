@@ -2,9 +2,55 @@
 const isOpen = ref(false)
 /** ************************设置拖拽和旋转***************************** */
 const target = ref<HTMLElement>()
+
+const { variant, stop } = useMotion(target, {
+  initial: {
+    y: 100,
+    opacity: 0,
+  },
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 350,
+      damping: 20,
+      delay: 50,
+      onComplete: () => {
+        variant.value = 'levitate'
+      },
+    },
+  },
+  levitate: {
+    y: 15,
+    transition: {
+      duration: 2000,
+      repeat: Number.POSITIVE_INFINITY,
+      ease: 'easeInOut',
+      repeatType: 'mirror',
+    },
+  },
+})
+
+setTimeout(() => {
+  stop()
+}, 6000)
 const { apply } = useMotion(target, {
   initial: { rotate: 0 },
-  enter: { rotate: 0 },
+
+  enter: {
+    rotate: 0,
+  },
+
+  levitate: {
+    y: 15,
+    transition: {
+      duration: 2000,
+      repeat: Number.POSITIVE_INFINITY,
+      ease: 'easeInOut',
+      repeatType: 'mirror',
+    },
+  },
 })
 async function setRotate(rotate: number) {
   await apply({
