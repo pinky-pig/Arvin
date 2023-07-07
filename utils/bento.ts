@@ -9,6 +9,7 @@ import BentoNotion from '~/components/Bento/Notion.vue'
 // import BentoRain from '~/components/Bento/Rain.vue'
 import BentoPreview from '~/components/Bento/Preview.vue'
 import MouseTail from '~/components/Bento/MouseTail.vue'
+import DragMotion from '~/components/Bento/DragMotion.vue'
 
 export const bentoCellsInDesktop = [
   { id: '1', x: 0, y: 0, width: 2, height: 2, component: markRaw(BentoProfile) },
@@ -20,6 +21,7 @@ export const bentoCellsInDesktop = [
   // { id: '7', x: 0, y: 4, width: 1, height: 1, component: markRaw(BentoRain) },
   { id: '8', x: 1, y: 4, width: 1, height: 1, component: markRaw(BentoPreview) },
   { id: '9', x: 2, y: 4, width: 1, height: 1, component: markRaw(MouseTail) },
+  { id: '9', x: 3, y: 4, width: 1, height: 1, component: markRaw(DragMotion) },
 ]
 
 export const bentoCellsInMobile = [
@@ -32,4 +34,5 @@ export const bentoCellsInMobile = [
   // { id: '7', x: 1, y: 4, width: 1, height: 1, component: markRaw(BentoRain) },
   { id: '8', x: 1, y: 4, width: 1, height: 1, component: markRaw(BentoPreview) },
   { id: '9', x: 2, y: 4, width: 1, height: 1, component: markRaw(MouseTail) },
+  { id: '10', x: 1, y: 4, width: 1, height: 1, component: markRaw(MouseTail) },
 ]

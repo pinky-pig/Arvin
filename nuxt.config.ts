@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@vite-pwa/nuxt',
     '@nuxt/content',
+    '@vueuse/motion/nuxt',
     '@nuxthq/ui',
     ['nuxt-ssr-lit', { litElementPrefix: ['lit-'] }],
   ],
