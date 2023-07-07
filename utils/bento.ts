@@ -21,7 +21,7 @@ export const bentoCellsInDesktop = [
   // { id: '7', x: 0, y: 4, width: 1, height: 1, component: markRaw(BentoRain) },
   { id: '8', x: 1, y: 4, width: 1, height: 1, component: markRaw(BentoPreview) },
   { id: '9', x: 2, y: 4, width: 1, height: 1, component: markRaw(MouseTail) },
-  { id: '9', x: 3, y: 4, width: 1, height: 1, component: markRaw(DragMotion) },
+  { id: '10', x: 3, y: 4, width: 1, height: 1, component: markRaw(DragMotion) },
 ]
 
 export const bentoCellsInMobile = [

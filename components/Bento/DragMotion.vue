@@ -13,7 +13,7 @@ async function setRotate(rotate: number) {
   })
 }
 
-const { x, y, style } = useDraggable(target, {
+const { x, style } = useDraggable(target, {
   initialValue: { x: 40, y: 40 },
 })
 
@@ -27,30 +27,24 @@ const maxVelocity = 10 // 最大速度
 const maxRotation = 90 // 最大旋转角度
 const rotationFactor = 0.8 // 旋转系数，用于调整旋转幅度
 
-const startX = ref(0)
-const lastX = ref(0)
-const startTime = ref(0)
+let lastX = computed(() => x.value).value
+let startTime = performance.now()
 const currentVelocity = ref(0)
-onMounted(() => {
-  startX.value = x.value
-  lastX.value = startX.value
-  startTime.value = performance.now()
-})
 
 watch(x, () => {
   const currentX = x.value
   const currentTime = performance.now()
 
-  const distanceX = currentX - lastX.value
-  const deltaTime = currentTime - startTime.value
+  const distanceX = currentX - lastX
+  const deltaTime = currentTime - startTime
 
   currentVelocity.value = distanceX / deltaTime
 
   const rotationDelta = currentVelocity.value / maxVelocity * maxRotation * rotationFactor
   setRotate(rotationDelta)
 
-  lastX.value = currentX
-  startTime.value = currentTime
+  lastX = currentX
+  startTime = currentTime
 })
 </script>
 
