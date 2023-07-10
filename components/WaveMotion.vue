@@ -27,6 +27,8 @@ async function setRotate(rotate: number) {
 
 const { x, style, isDragging } = useDraggable(target, { initialValue: props.initialPosition })
 
+let rotationDelta = 0
+
 watch(isDragging, async () => {
   if (isDragging.value) {
     // 拖拽的时候，取消上下浮动
@@ -34,6 +36,7 @@ watch(isDragging, async () => {
   else {
     // 拖拽结束后，设置旋转角度为 0 ， 恢复上下浮动
     setRotate(0)
+    rotationDelta = 0
   }
 })
 /** **************************************************************** */
@@ -52,7 +55,7 @@ const cfg = {
 watch(x, () => {
   const { velocity, newX, newTime } = calVelocity(lastX, x.value, startTime)
   const { maxVelocity, maxRotation, rotationFactor } = cfg
-  const rotationDelta = velocity / maxVelocity * maxRotation * rotationFactor
+  rotationDelta = velocity / maxVelocity * maxRotation * rotationFactor
   setRotate(rotationDelta)
   lastX = newX
   startTime = newTime
@@ -72,11 +75,53 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
 
 <template>
   <div
-    ref="target"
-    :class="isDragging ? '' : 'element'"
-    :style="style"
+    ref="target" :class="isDragging ? '' : 'element'" :style="style"
     class="pointer-events-auto fixed z-999 grid cursor-pointer place-items-center rounded-md"
   >
+    <svg
+      class="scale-70"
+      xmlns="http://www.w3.org/2000/svg" direction="ltr" width="499" height="50"
+      viewBox="218.68555961942593 1803.897813546187 499 66" stroke-linecap="round" stroke-linejoin="round"
+      style="background-color: transparent;" encoding="UTF-8&quot;"
+    >
+      <defs />
+      <g transform="matrix(1, 0, 0, 1, 257.6856, 1829.8978)" opacity="1">
+        <g>
+          <defs>
+            <mask id="shape_dYkvQ8frqn9u5bShF4X_U_clip">
+              <rect x="-107" y="-94" width="635" height="202" fill="white" />
+              <path
+                d="M -7.000142685014907,7.937931690505816&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
+                fill="black" stroke="none"
+              />
+              <path
+                d="M 401.0001426850149,6.062068309494184&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
+                fill="black" stroke="none"
+              />
+            </mask>
+          </defs>
+          <g mask="url(#shape_dYkvQ8frqn9u5bShF4X_U_clip)">
+            <rect x="-100" y="-100" width="635" height="202" fill="transparent" stroke="none" />
+            <path
+              d="M-7,8L428,6" fill="none" stroke="#1d1d1d" stroke-width="10" stroke-dasharray="none"
+              stroke-dashoffset="none"
+            />
+          </g>
+          <path
+            d="M -7.000142685014907,7.937931690505816&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
+            fill="none" stroke="#1d1d1d" stroke-width="10"
+          />
+          <path
+            d="M 401.0001426850149,6.062068309494184&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
+            fill="none" stroke="#1d1d1d" stroke-width="10"
+          />
+        </g>
+      </g>
+    </svg>
+
+    <span class="absolute left-72px top-52px select-none text-4xl font-extrabold">
+      {{ rotationDelta.toFixed(2) }}
+    </span>
     <slot />
   </div>
 </template>
@@ -89,13 +134,16 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
 @keyframes moveUpDown {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(5px);
   }
+
   100% {
     transform: translateY(0);
   }
