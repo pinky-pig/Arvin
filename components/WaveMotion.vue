@@ -76,7 +76,7 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
 <template>
   <div
     ref="target" :class="isDragging ? '' : 'element'" :style="style"
-    class="pointer-events-auto fixed z-999 grid cursor-pointer place-items-center rounded-md"
+    class="pointer-events-auto fixed z-999 grid cursor-pointer touch-none place-items-center rounded-md"
   >
     <svg
       class="scale-70"
