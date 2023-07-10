@@ -24,5 +24,4 @@ export function AppSetup() {
 
   // registerLozad()
   registerHeti()
-  registerBaiduStatistics()
 }
