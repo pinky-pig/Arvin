@@ -4,6 +4,15 @@
 // 3. 拖拽结束后（速度小于一个阈值或者鼠标抬起或者鼠标移动到了外面），旋转幅度取消，上下浮动重新开始
 
 /** ************************设置拖拽和旋转***************************** */
+
+const props = defineProps({
+  initialPosition: {
+    default: () => ({
+      x: Math.random() * (window.innerWidth - 400),
+      y: Math.random() * (window.innerHeight - 160),
+    }),
+  },
+})
 const target = ref<HTMLElement>()
 const { apply: waveApply } = useMotion(target, {
   initial: { rotate: 0 },
@@ -16,17 +25,14 @@ async function setRotate(rotate: number) {
   })
 }
 
-const { x, style, isDragging } = useDraggable(target, {
-  initialValue: { x: 40, y: 40 },
-})
+const { x, style, isDragging } = useDraggable(target, { initialValue: props.initialPosition })
 
 watch(isDragging, async () => {
   if (isDragging.value) {
     // 拖拽的时候，取消上下浮动
-
   }
   else {
-    // 拖拽结束后，恢复上下浮动
+    // 拖拽结束后，设置旋转角度为 0 ， 恢复上下浮动
     setRotate(0)
   }
 })
@@ -69,9 +75,9 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
     ref="target"
     :class="isDragging ? '' : 'element'"
     :style="style"
-    class="fixed grid h-100px w-100px cursor-pointer place-items-center rounded-md bg-[#FAF769]"
+    class="pointer-events-auto fixed z-999 grid cursor-pointer place-items-center rounded-md"
   >
-    <div class="h-32px w-32px" i-carbon:face-wink />
+    <slot />
   </div>
 </template>
 
@@ -88,7 +94,7 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
     transform: translateY(0);
   }
   50% {
-    transform: translateY(15px);
+    transform: translateY(5px);
   }
   100% {
     transform: translateY(0);
