@@ -14,7 +14,7 @@ const isOpen = ref(false)
 
     <Teleport v-if="isOpen" to="body">
       <div class="pointer-events-none fixed inset-0 left-0 top-0 z-99 h-full w-full">
-        <WaveMotion v-show="isOpen">
+        <WaveMotion v-show="isOpen" @dblclick="isOpen = false">
           <img v-motion-pop class="pointer-events-none h-auto max-w-400px select-none !w-400px" src="/stickers/Tesla.png">
         </WaveMotion>
       </div>
