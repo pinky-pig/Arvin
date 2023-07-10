@@ -82,7 +82,6 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
       class="scale-70"
       xmlns="http://www.w3.org/2000/svg" direction="ltr" width="499" height="50"
       viewBox="218.68555961942593 1803.897813546187 499 66" stroke-linecap="round" stroke-linejoin="round"
-      style="background-color: transparent;" encoding="UTF-8&quot;"
     >
       <defs />
       <g transform="matrix(1, 0, 0, 1, 257.6856, 1829.8978)" opacity="1">
@@ -103,17 +102,17 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
           <g mask="url(#shape_dYkvQ8frqn9u5bShF4X_U_clip)">
             <rect x="-100" y="-100" width="635" height="202" fill="transparent" stroke="none" />
             <path
-              d="M-7,8L428,6" fill="none" stroke="#1d1d1d" stroke-width="10" stroke-dasharray="none"
+              d="M-7,8L428,6" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="none"
               stroke-dashoffset="none"
             />
           </g>
           <path
             d="M -7.000142685014907,7.937931690505816&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
-            fill="none" stroke="#1d1d1d" stroke-width="10"
+            fill="none" stroke="currentColor" stroke-width="10"
           />
           <path
             d="M 401.0001426850149,6.062068309494184&#10;  a 13.5,13.5 0 1,0 27,0&#10;  a 13.5,13.5 0 1,0 -27,0 "
-            fill="none" stroke="#1d1d1d" stroke-width="10"
+            fill="none" stroke="currentColor" stroke-width="10"
           />
         </g>
       </g>
