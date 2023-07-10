@@ -3,6 +3,11 @@ import { appDescription } from './constants/index'
 
 export default defineNuxtConfig({
   extends: '@nuxt-themes/typography',
+
+  devServer: {
+    port: 1212,
+  },
+
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
