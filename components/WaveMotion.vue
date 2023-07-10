@@ -10,39 +10,10 @@ const { apply: waveApply } = useMotion(target, {
   enter: { rotate: 0 },
 })
 
-const bounceInstance = useMotion(target, {
-  initial: {
-    rotate: 0,
-    y: 0,
-  },
-  enter: {
-    rotate: 0,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 350,
-      damping: 0,
-      delay: 50,
-      onComplete: () => {
-        bounceInstance.variant.value = 'levitate'
-      },
-    },
-  },
-  levitate: {
-    y: 15,
-    transition: {
-      duration: 2000,
-      repeat: Number.POSITIVE_INFINITY,
-      ease: 'easeInOut',
-      repeatType: 'mirror',
-    },
-  },
-})
-
 async function setRotate(rotate: number) {
-  // await waveApply({
-  //   rotate,
-  // })
+  await waveApply({
+    rotate,
+  })
 }
 
 const { x, style, isDragging } = useDraggable(target, {
@@ -51,13 +22,12 @@ const { x, style, isDragging } = useDraggable(target, {
 
 watch(isDragging, async () => {
   if (isDragging.value) {
-    await bounceInstance.stop()
+    // 拖拽的时候，取消上下浮动
+
   }
   else {
-    setTimeout(async () => {
-      setRotate(0)
-      await bounceInstance.apply('enter')
-    }, 800)
+    // 拖拽结束后，恢复上下浮动
+    setRotate(0)
   }
 })
 /** **************************************************************** */
@@ -97,6 +67,7 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
 <template>
   <div
     ref="target"
+    :class="isDragging ? '' : 'element'"
     :style="style"
     class="fixed grid h-100px w-100px cursor-pointer place-items-center rounded-md bg-[#FAF769]"
   >
@@ -105,5 +76,22 @@ function calVelocity(lastX: number, currentX: number, lastTime: number, currentT
 </template>
 
 <style scoped>
-
+.element {
+  animation-name: moveUpDown;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 </style>
