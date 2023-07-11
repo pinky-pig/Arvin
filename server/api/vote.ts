@@ -8,10 +8,6 @@ const ratelimit = new Ratelimit({
 })
 
 export default defineEventHandler(async (event) => {
-  const value = await redis.get<number[]>('vote')
-  if (!value)
-    await redis.set('vote', [0, 0, 0, 0])
-
   // todo: add ip ratelimit : await ratelimit.limit(getKey(id) + `_${req.ip ?? ''}`)
   const { success } = await ratelimit.limit('vote')
   if (!success) {
@@ -19,5 +15,10 @@ export default defineEventHandler(async (event) => {
       status: 429,
     })
   }
+
+  const value = await redis.get<number[]>('vote')
+  if (!value)
+    await redis.set('vote', [0, 0, 0, 0])
+
   return value ?? [0, 0, 0, 0]
 })
