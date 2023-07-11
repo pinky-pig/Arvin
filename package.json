@@ -34,6 +34,8 @@
     "@types/three": "^0.153.0",
     "@unocss/eslint-config": "^0.53.4",
     "@unocss/nuxt": "^0.53.4",
+    "@upstash/ratelimit": "^0.4.3",
+    "@upstash/redis": "^1.22.0",
     "@vite-pwa/nuxt": "^0.1.0",
     "@vueuse/motion": "^2.0.0",
     "@vueuse/nuxt": "^10.2.1",

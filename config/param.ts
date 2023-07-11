@@ -70,3 +70,9 @@ export enum MapboxSetting {
   mapLightStyle = 'mapbox://styles/pinky-pig/clgc32u1e004g01n2bitvj86a',
   mapDarkStyle = 'mapbox://styles/pinky-pig/clft35kll000o01osk8svnlfg',
 }
+
+// https://console.upstash.com/
+export enum UpstashSetting {
+  UPSTASH_REDIS_REST_URL = 'https://emerging-roughy-42883.upstash.io',
+  UPSTASH_REDIS_REST_TOKEN = 'AaeDASQgODUzYmUyMTgtMTVlZS00NzVlLTliZGQtYWYzN2Y4MjU0N2RkYjI3ZDY1ZWU3Y2JjNDQwM2JjM2M2OTMwZTJjYTFjNDg=',
+}
