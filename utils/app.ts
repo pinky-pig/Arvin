@@ -1,4 +1,5 @@
 import { SITE } from '~/config'
+import '~/components/lit-components'
 
 export function AppSetup() {
   // vue transition bug handle

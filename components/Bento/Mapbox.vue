@@ -10,7 +10,7 @@ let map: mapboxgl.Map | null = null
 onMounted(() => {
   map = new mapboxgl.Map({
     container: mapContainer.value!,
-    style: isDark.value ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle,
+    style: MapboxSetting.mapDarkStyle,
     center: [118.888175, 32.048268],
     zoom: 4,
     accessToken: MapboxSetting.token,
