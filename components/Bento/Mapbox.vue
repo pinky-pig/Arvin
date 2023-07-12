@@ -1,41 +1,26 @@
 <script setup lang="ts">
 import type { LngLatLike } from 'mapbox-gl'
 import mapboxgl from 'mapbox-gl'
-import { MapboxSetting } from '~~/config'
 
 const router = useRouter()
+function toMapbox() {
+  router.push('/mapbox')
+}
+const online = useOnline()
 
-const mapContainer = ref(null)
-let map: mapboxgl.Map | null = null
-onMounted(() => {
-  map = new mapboxgl.Map({
-    container: mapContainer.value!,
-    style: MapboxSetting.mapDarkStyle,
-    center: [118.888175, 32.048268],
-    zoom: 4,
-    accessToken: MapboxSetting.token,
-  })
+let mapInstance: mapboxgl.Map | null = null
 
-  map.on('load', () => {
+function marsOnloaded(map: mapboxgl.Map) {
+  mapInstance = map
+
+  mapInstance.on('load', () => {
     const el = document.createElement('div')
     el.innerHTML = `<logo-marker name="${'/logo.svg'}" />`
     new mapboxgl.Marker(el)
       .setLngLat([118.888175, 32.048268] as LngLatLike)
       .addTo(map!)
   })
-})
-onUnmounted(() => {
-  map!.remove()
-})
-
-watch(isDark, () => {
-  // 切换回默认主题
-  // map?.setStyle(isDark ? MapboxSetting.mapDarkStyle : MapboxSetting.mapLightStyle)
-})
-function toMapbox() {
-  router.push('/mapbox')
 }
-const online = useOnline()
 </script>
 
 <template>
@@ -43,7 +28,8 @@ const online = useOnline()
     <div v-if="!online" class="mt-1/5 h-full w-full text-center font-[fantasy] italic">
       You are offline
     </div>
-    <div v-else ref="mapContainer" style="width: 100%; height: 100%;pointer-events: none;" />
+
+    <MapsMapboxMap v-else @onload="marsOnloaded" />
 
     <button class="detail-arrow" @click="toMapbox">
       <div class="h-16px w-16px" i-carbon-arrow-up-right />
